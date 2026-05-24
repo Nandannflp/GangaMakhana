@@ -12,7 +12,7 @@ const flavors = [
     colorAltVar: "--color-flavor-normal-alt",
     tags: ["Best Seller", "100% Natural"],
     tastingNote: "Pure, wholesome, and authentic. The classic roasted taste.",
-    imgFront: "/images/products/normal-front.jpeg",
+    imgFront: "/images/products/normal-front.png",
     imgBack: "/images/products/normal-back.png"
   },
   {

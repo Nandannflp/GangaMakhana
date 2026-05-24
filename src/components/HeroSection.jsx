@@ -46,7 +46,7 @@ export default function HeroSection() {
         <div className="hero-visual">
           <div className="hero-blob"></div>
           <div className="hero-product-image">
-            <img src="/images/products/normal-front.jpeg" alt="Ganga Makhana Premium Pouch" className="hero-img" />
+            <img src="/images/products/normal-front.png" alt="Ganga Makhana Premium Pouch" className="hero-img" />
           </div>
         </div>
       </div>

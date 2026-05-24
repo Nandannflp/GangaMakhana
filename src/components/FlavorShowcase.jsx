@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import './FlavorShowcase.css';
 
 const flavors = [
-  { id: 'normal', name: 'Normal / Classic', color: 'var(--color-primary)', img: '/images/products/normal-front.jpeg' },
+  { id: 'normal', name: 'Normal / Classic', color: 'var(--color-primary)', img: '/images/products/normal-front.png' },
   { id: 'peri', name: 'Peri Peri', color: 'var(--color-flavor-peri)', img: '/images/products/peri-front.png' },
   { id: 'mint', name: 'Mint', color: 'var(--color-flavor-mint)', img: '/images/products/mint-front.png' },
   { id: 'pudina', name: 'Pudina', color: 'var(--color-flavor-pudina)', img: '/images/products/pudina-front.png' },
