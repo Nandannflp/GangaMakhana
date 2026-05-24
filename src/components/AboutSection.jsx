@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import './AboutSection.css';
 
 export default function AboutSection() {
@@ -23,7 +24,7 @@ export default function AboutSection() {
             <li>✔ Cleaned & roasted with pristine hygiene</li>
             <li>✔ No artificial preservatives or colors</li>
           </ul>
-          <button className="btn-secondary" style={{ marginTop: '20px' }}>Read Our Full Story</button>
+          <Link to="/story" className="btn-secondary" style={{ marginTop: '20px' }}>Read Our Full Story</Link>
         </div>
       </div>
     </section>

@@ -20,10 +20,10 @@ export default function Footer() {
           <div className="footer-col">
             <h4>Quick Links</h4>
             <ul>
-              <li><a href="#shop">Shop All Flavors</a></li>
-              <li><a href="#about">Our Story</a></li>
-              <li><a href="#health">Health Benefits</a></li>
-              <li><a href="#faq">FAQ</a></li>
+              <li><a href="/#shop">Shop All Flavors</a></li>
+              <li><a href="/story">Our Story</a></li>
+              <li><a href="/#health">Health Benefits</a></li>
+              <li><a href="/#faq">FAQ</a></li>
             </ul>
           </div>
 

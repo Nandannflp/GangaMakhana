@@ -1,25 +1,22 @@
 import React from 'react';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Navbar from './components/Navbar';
-import HeroSection from './components/HeroSection';
-import ShopSection from './components/ShopSection';
-import FlavorShowcase from './components/FlavorShowcase';
-import AboutSection from './components/AboutSection';
-import DistributorSection from './components/DistributorSection';
 import Footer from './components/Footer';
+import HomePage from './pages/HomePage';
+import StoryPage from './pages/StoryPage';
 
 function App() {
   return (
-    <>
+    <Router>
       <Navbar />
       <main>
-        <HeroSection />
-        <FlavorShowcase />
-        <ShopSection />
-        <AboutSection />
-        <DistributorSection />
+        <Routes>
+          <Route path="/" element={<HomePage />} />
+          <Route path="/story" element={<StoryPage />} />
+        </Routes>
       </main>
       <Footer />
-    </>
+    </Router>
   );
 }
 
