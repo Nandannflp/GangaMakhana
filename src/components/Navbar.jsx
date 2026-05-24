@@ -13,7 +13,6 @@ export default function Navbar() {
         <ul className="navbar-links">
           <li><a href="/#shop">Shop</a></li>
           <li><a href="/#about">Our Story</a></li>
-          <li><a href="/#export">Export</a></li>
           <li><a href="/#wholesale">Wholesale</a></li>
         </ul>
 
