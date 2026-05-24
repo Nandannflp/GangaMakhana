@@ -7,7 +7,7 @@ export default function Footer() {
       <div className="container">
         <div className="footer-grid">
           <div className="footer-col brand-col">
-            <h3 className="footer-logo">Ganga Makhana</h3>
+            <img src="/images/logo.png" alt="Ganga Makhana Logo" className="footer-brand-logo" />
             <p className="footer-desc">
               Authentic Bihar Heritage, Export Quality Makhana. 100% natural, handpicked, and perfectly roasted.
             </p>

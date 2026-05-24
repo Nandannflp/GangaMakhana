@@ -7,7 +7,7 @@ export default function Navbar() {
     <nav className="navbar">
       <div className="container navbar-container">
         <div className="navbar-logo">
-          <span className="logo-text">Ganga Makhana</span>
+          <img src="/images/logo.png" alt="Ganga Makhana Logo" className="brand-logo" />
         </div>
         
         <ul className="navbar-links">

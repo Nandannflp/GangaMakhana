@@ -11,10 +11,10 @@
   margin-bottom: 60px;
 }
 
-.footer-logo {
-  font-family: var(--font-primary);
-  font-size: 1.8rem;
-  color: var(--color-primary);
+.footer-brand-logo {
+  height: 50px;
+  width: auto;
+  object-fit: contain;
   margin-bottom: 15px;
 }
 
