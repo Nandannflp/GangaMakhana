@@ -8,6 +8,8 @@ import ShippingPage from './pages/ShippingPage';
 import TermsPage from './pages/TermsPage';
 import PrivacyPage from './pages/PrivacyPage';
 import TrackOrderPage from './pages/TrackOrderPage';
+import HealthBenefitsPage from './pages/HealthBenefitsPage';
+import FAQPage from './pages/FAQPage';
 
 function App() {
   return (
@@ -17,6 +19,8 @@ function App() {
         <Routes>
           <Route path="/" element={<HomePage />} />
           <Route path="/story" element={<StoryPage />} />
+          <Route path="/health" element={<HealthBenefitsPage />} />
+          <Route path="/faq" element={<FAQPage />} />
           <Route path="/shipping" element={<ShippingPage />} />
           <Route path="/terms" element={<TermsPage />} />
           <Route path="/privacy" element={<PrivacyPage />} />

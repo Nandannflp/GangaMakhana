@@ -22,9 +22,9 @@ export default function Footer() {
             <h4>Quick Links</h4>
             <ul>
               <li><a href="/#shop">Shop All Flavors</a></li>
-              <li><a href="/story">Our Story</a></li>
-              <li><a href="/#health">Health Benefits</a></li>
-              <li><a href="/#faq">FAQ</a></li>
+              <li><Link to="/story">Our Story</Link></li>
+              <li><Link to="/health">Health Benefits</Link></li>
+              <li><Link to="/faq">FAQ</Link></li>
             </ul>
           </div>
 
