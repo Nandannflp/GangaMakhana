@@ -7,8 +7,8 @@ export default function AboutSection() {
     <section id="about" className="about-section section-padding">
       <div className="container about-container">
         <div className="about-visual">
-          <div className="image-placeholder main-img">Bihar Farms</div>
-          <div className="image-placeholder sub-img">Harvesting</div>
+          <img src="/images/Bihar-farms.png" alt="Bihar Farms" className="about-img main-img" />
+          <img src="/images/Harvesting.png" alt="Harvesting" className="about-img sub-img" />
         </div>
         
         <div className="about-content">
