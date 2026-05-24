@@ -4,6 +4,10 @@ import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 import HomePage from './pages/HomePage';
 import StoryPage from './pages/StoryPage';
+import ShippingPage from './pages/ShippingPage';
+import TermsPage from './pages/TermsPage';
+import PrivacyPage from './pages/PrivacyPage';
+import TrackOrderPage from './pages/TrackOrderPage';
 
 function App() {
   return (
@@ -13,6 +17,10 @@ function App() {
         <Routes>
           <Route path="/" element={<HomePage />} />
           <Route path="/story" element={<StoryPage />} />
+          <Route path="/shipping" element={<ShippingPage />} />
+          <Route path="/terms" element={<TermsPage />} />
+          <Route path="/privacy" element={<PrivacyPage />} />
+          <Route path="/track" element={<TrackOrderPage />} />
         </Routes>
       </main>
       <Footer />
