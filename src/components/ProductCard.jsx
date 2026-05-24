@@ -1,16 +1,19 @@
 import React from 'react';
-import { ShoppingBag } from 'lucide-react';
+import { ShoppingBag, Plus, Minus } from 'lucide-react';
 import { useCart } from '../context/CartContext';
 import { useCurrency } from '../context/CurrencyContext';
 import './ProductCard.css';
 
 export default function ProductCard({ flavor, price, weight, colorVar, colorAltVar, tags, tastingNote, imgFront, imgBack }) {
-  const { addToCart } = useCart();
+  const { cart, addToCart, updateQuantity } = useCart();
   const { formatPrice } = useCurrency();
   
+  const id = flavor.toLowerCase().replace(/\s+/g, '-');
+  const cartItem = cart.find(item => item.id === id);
+
   const handleAdd = () => {
     addToCart({
-      id: flavor.toLowerCase().replace(/\s+/g, '-'),
+      id,
       flavor,
       price,
       weight,
@@ -43,10 +46,18 @@ export default function ProductCard({ flavor, price, weight, colorVar, colorAltV
           </div>
         </div>
 
-        <button className="btn-add-cart" onClick={handleAdd}>
-          <ShoppingBag size={18} />
-          Add to Cart
-        </button>
+        {cartItem ? (
+          <div className="product-qty-control">
+            <button onClick={() => updateQuantity(id, cartItem.quantity - 1)}><Minus size={18}/></button>
+            <span>{cartItem.quantity}</span>
+            <button onClick={() => updateQuantity(id, cartItem.quantity + 1)}><Plus size={18}/></button>
+          </div>
+        ) : (
+          <button className="btn-add-cart" onClick={handleAdd}>
+            <ShoppingBag size={18} />
+            Add to Cart
+          </button>
+        )}
       </div>
     </div>
   );
