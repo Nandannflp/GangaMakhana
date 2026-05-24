@@ -1,8 +1,20 @@
 import React from 'react';
 import { ShoppingBag } from 'lucide-react';
+import { useCart } from '../context/CartContext';
 import './ProductCard.css';
 
 export default function ProductCard({ flavor, price, weight, colorVar, colorAltVar, tags, tastingNote, imgFront, imgBack }) {
+  const { addToCart } = useCart();
+  
+  const handleAdd = () => {
+    addToCart({
+      id: flavor.toLowerCase().replace(/\s+/g, '-'),
+      flavor,
+      price,
+      weight,
+      imgFront
+    });
+  };
   return (
     <div className="product-card card" style={{ '--card-accent': `var(${colorVar})`, '--card-accent-alt': `var(${colorAltVar})` }}>
       <div className="product-image-container">
@@ -29,7 +41,7 @@ export default function ProductCard({ flavor, price, weight, colorVar, colorAltV
           </div>
         </div>
 
-        <button className="btn-add-cart">
+        <button className="btn-add-cart" onClick={handleAdd}>
           <ShoppingBag size={18} />
           Add to Cart
         </button>

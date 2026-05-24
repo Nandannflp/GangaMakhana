@@ -10,12 +10,15 @@ import PrivacyPage from './pages/PrivacyPage';
 import TrackOrderPage from './pages/TrackOrderPage';
 import HealthBenefitsPage from './pages/HealthBenefitsPage';
 import FAQPage from './pages/FAQPage';
+import CartPage from './pages/CartPage';
+import { CartProvider } from './context/CartContext';
 
 function App() {
   return (
-    <Router>
-      <Navbar />
-      <main>
+    <CartProvider>
+      <Router>
+        <Navbar />
+        <main>
         <Routes>
           <Route path="/" element={<HomePage />} />
           <Route path="/story" element={<StoryPage />} />
@@ -25,10 +28,12 @@ function App() {
           <Route path="/terms" element={<TermsPage />} />
           <Route path="/privacy" element={<PrivacyPage />} />
           <Route path="/track" element={<TrackOrderPage />} />
+          <Route path="/cart" element={<CartPage />} />
         </Routes>
       </main>
       <Footer />
     </Router>
+    </CartProvider>
   );
 }
 

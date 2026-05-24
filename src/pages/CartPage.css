@@ -1,0 +1,236 @@
+.cart-page {
+  padding: 60px 0 100px 0;
+  background-color: var(--color-base);
+  min-height: 70vh;
+}
+
+.cart-header {
+  margin-bottom: 40px;
+}
+
+.back-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--color-primary);
+  font-weight: 500;
+  margin-bottom: 20px;
+  text-decoration: none;
+  transition: opacity 0.2s;
+}
+
+.back-link:hover {
+  opacity: 0.8;
+}
+
+.cart-header h1 {
+  font-size: 2.5rem;
+  color: var(--color-primary);
+}
+
+.cart-layout {
+  display: grid;
+  grid-template-columns: 1fr 350px;
+  gap: 40px;
+}
+
+/* Cart Items */
+.cart-items {
+  background: #fff;
+  border-radius: var(--radius-md);
+  padding: 20px 30px;
+  box-shadow: var(--shadow-soft);
+}
+
+.cart-items-header {
+  display: flex;
+  padding-bottom: 15px;
+  border-bottom: 1px solid rgba(0,0,0,0.1);
+  font-weight: 600;
+  color: var(--color-text-light);
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.cart-item {
+  display: flex;
+  padding: 25px 0;
+  border-bottom: 1px solid rgba(0,0,0,0.05);
+  align-items: center;
+}
+
+.cart-item:last-child {
+  border-bottom: none;
+}
+
+.col-product { flex: 2; }
+.col-price { flex: 1; text-align: center; }
+.col-qty { flex: 1; display: flex; justify-content: center; }
+.col-total { flex: 1; text-align: right; font-weight: 600; }
+
+.item-product {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.btn-remove {
+  background: none;
+  border: none;
+  color: #ccc;
+  cursor: pointer;
+  transition: color 0.2s;
+  padding: 5px;
+  display: flex;
+}
+
+.btn-remove:hover {
+  color: #ff4d4d;
+}
+
+.item-img {
+  width: 80px;
+  height: 80px;
+  object-fit: contain;
+  background: var(--color-base);
+  border-radius: var(--radius-sm);
+  padding: 10px;
+}
+
+.item-details h3 {
+  font-size: 1.1rem;
+  margin-bottom: 5px;
+  color: var(--color-primary);
+}
+
+.item-details p {
+  font-size: 0.9rem;
+  color: var(--color-text-light);
+}
+
+.qty-control {
+  display: inline-flex;
+  align-items: center;
+  border: 1px solid rgba(0,0,0,0.1);
+  border-radius: var(--radius-sm);
+  overflow: hidden;
+}
+
+.qty-control button {
+  background: #f8f9fa;
+  border: none;
+  padding: 8px 12px;
+  cursor: pointer;
+  transition: background 0.2s;
+  display: flex;
+  align-items: center;
+}
+
+.qty-control button:hover {
+  background: #e9ecef;
+}
+
+.qty-control span {
+  width: 40px;
+  text-align: center;
+  font-weight: 500;
+}
+
+/* Cart Summary */
+.cart-summary {
+  background: #fff;
+  border-radius: var(--radius-md);
+  padding: 30px;
+  box-shadow: var(--shadow-soft);
+  height: fit-content;
+}
+
+.cart-summary h3 {
+  font-size: 1.3rem;
+  margin-bottom: 25px;
+  padding-bottom: 15px;
+  border-bottom: 1px solid rgba(0,0,0,0.1);
+  color: var(--color-primary);
+}
+
+.summary-row {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 15px;
+  color: var(--color-text-light);
+  font-size: 1.05rem;
+}
+
+.shipping-note {
+  font-size: 0.85rem;
+  color: var(--color-accent);
+  text-align: right;
+  margin-top: -10px;
+  margin-bottom: 20px;
+}
+
+.summary-total {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 25px;
+  padding-top: 20px;
+  border-top: 2px solid rgba(0,0,0,0.05);
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: var(--color-primary);
+}
+
+.btn-checkout {
+  width: 100%;
+  margin-top: 30px;
+  padding: 18px;
+  font-size: 1.1rem;
+}
+
+.secure-checkout {
+  margin-top: 20px;
+  text-align: center;
+  font-size: 0.9rem;
+  color: #777;
+}
+
+/* Responsive */
+@media (max-width: 992px) {
+  .cart-layout {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 768px) {
+  .cart-items-header {
+    display: none;
+  }
+  
+  .cart-item {
+    flex-wrap: wrap;
+    gap: 15px;
+    position: relative;
+  }
+  
+  .col-product { min-width: 100%; }
+  .col-price { display: none; }
+  
+  .col-qty { 
+    flex: 0 0 auto; 
+    margin-left: 115px; 
+  }
+  
+  .col-total { 
+    flex: 1; 
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+  }
+  
+  .btn-remove {
+    position: absolute;
+    top: 20px;
+    right: 0;
+  }
+}
