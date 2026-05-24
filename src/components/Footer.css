@@ -12,7 +12,8 @@
 }
 
 .footer-brand-logo {
-  height: 50px;
+  height: 90px;
+  max-width: 280px;
   width: auto;
   object-fit: contain;
   margin-bottom: 15px;
