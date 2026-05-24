@@ -30,14 +30,11 @@ export default function Navbar() {
         </ul>
 
         <div className="navbar-actions">
-          <Link to="/cart" className="nav-icon-btn">
-            <ShoppingBag size={22} color="var(--color-primary)" />
-            {cartCount > 0 && <span className="cart-badge">{cartCount}</span>}
+          <Link to="/cart" className="btn-primary cart-btn-elongated">
+            <ShoppingBag size={18} color="#ffffff" />
+            <span>Cart</span>
+            {cartCount > 0 && <span className="cart-badge-inline">{cartCount}</span>}
           </Link>
-          <a href="https://wa.me/919608669041" target="_blank" rel="noreferrer" className="btn-primary whatsapp-btn">
-            <MessageCircle size={18} />
-            <span>Chat</span>
-          </a>
         </div>
       </div>
     </nav>

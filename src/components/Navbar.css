@@ -72,9 +72,18 @@
   border-radius: 50%;
 }
 
-.whatsapp-btn {
+.cart-btn-elongated {
   padding: 10px 20px;
   font-size: 0.95rem;
+}
+
+.cart-badge-inline {
+  background-color: var(--color-accent);
+  color: #fff;
+  font-size: 0.8rem;
+  font-weight: 700;
+  padding: 2px 6px;
+  border-radius: 10px;
 }
 
 @media (max-width: 768px) {
