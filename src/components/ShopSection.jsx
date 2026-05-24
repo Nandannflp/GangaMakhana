@@ -18,7 +18,7 @@ const flavors = [
   {
     id: 2,
     flavor: "Peri Peri",
-    price: 380,
+    price: 350,
     weight: "250g",
     colorVar: "--color-flavor-peri",
     colorAltVar: "--color-flavor-peri-alt",
@@ -30,7 +30,7 @@ const flavors = [
   {
     id: 3,
     flavor: "Mint",
-    price: 380,
+    price: 350,
     weight: "250g",
     colorVar: "--color-flavor-mint",
     colorAltVar: "--color-flavor-mint-alt",
@@ -42,7 +42,7 @@ const flavors = [
   {
     id: 4,
     flavor: "Pudina",
-    price: 380,
+    price: 350,
     weight: "250g",
     colorVar: "--color-flavor-pudina",
     colorAltVar: "--color-flavor-pudina-alt",
@@ -54,7 +54,7 @@ const flavors = [
   {
     id: 5,
     flavor: "Chocolate",
-    price: 420,
+    price: 350,
     weight: "250g",
     colorVar: "--color-flavor-choco",
     colorAltVar: "--color-flavor-choco-alt",
@@ -66,7 +66,7 @@ const flavors = [
   {
     id: 6,
     flavor: "Onion",
-    price: 380,
+    price: 350,
     weight: "250g",
     colorVar: "--color-flavor-onion",
     colorAltVar: "--color-flavor-onion-alt",
