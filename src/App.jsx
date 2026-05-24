@@ -13,9 +13,11 @@ import HealthBenefitsPage from './pages/HealthBenefitsPage';
 import FAQPage from './pages/FAQPage';
 import CartPage from './pages/CartPage';
 import { CartProvider } from './context/CartContext';
+import { CurrencyProvider } from './context/CurrencyContext';
 
 function App() {
   return (
+    <CurrencyProvider>
     <CartProvider>
       <Router>
         <Navbar />
@@ -36,6 +38,7 @@ function App() {
       <Analytics />
     </Router>
     </CartProvider>
+    </CurrencyProvider>
   );
 }
 

@@ -2,10 +2,12 @@ import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { Trash2, Plus, Minus, ArrowLeft } from 'lucide-react';
 import { useCart } from '../context/CartContext';
+import { useCurrency } from '../context/CurrencyContext';
 import './CartPage.css';
 
 export default function CartPage() {
   const { cart, removeFromCart, updateQuantity, getCartTotal } = useCart();
+  const { formatPrice } = useCurrency();
   
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -60,7 +62,7 @@ export default function CartPage() {
                 </div>
                 
                 <div className="col-price item-price">
-                  ₹{item.price}
+                  {formatPrice(item.price)}
                 </div>
                 
                 <div className="col-qty item-qty">
@@ -72,7 +74,7 @@ export default function CartPage() {
                 </div>
                 
                 <div className="col-total item-total">
-                  ₹{item.price * item.quantity}
+                  {formatPrice(item.price * item.quantity)}
                 </div>
               </div>
             ))}
@@ -83,20 +85,20 @@ export default function CartPage() {
             
             <div className="summary-row">
               <span>Subtotal</span>
-              <span>₹{subtotal}</span>
+              <span>{formatPrice(subtotal)}</span>
             </div>
             
             <div className="summary-row">
               <span>Shipping</span>
-              <span>{shipping === 0 ? 'Free' : `₹${shipping}`}</span>
+              <span>{shipping === 0 ? 'Free' : formatPrice(shipping)}</span>
             </div>
             {shipping > 0 && (
-              <p className="shipping-note">Free shipping on orders over ₹999</p>
+              <p className="shipping-note">Free shipping on orders over {formatPrice(999)}</p>
             )}
 
             <div className="summary-total">
               <span>Total</span>
-              <span>₹{total}</span>
+              <span>{formatPrice(total)}</span>
             </div>
 
             <button className="btn-primary btn-checkout">Proceed to Checkout</button>

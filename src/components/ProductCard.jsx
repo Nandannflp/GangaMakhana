@@ -1,10 +1,12 @@
 import React from 'react';
 import { ShoppingBag } from 'lucide-react';
 import { useCart } from '../context/CartContext';
+import { useCurrency } from '../context/CurrencyContext';
 import './ProductCard.css';
 
 export default function ProductCard({ flavor, price, weight, colorVar, colorAltVar, tags, tastingNote, imgFront, imgBack }) {
   const { addToCart } = useCart();
+  const { formatPrice } = useCurrency();
   
   const handleAdd = () => {
     addToCart({
@@ -36,7 +38,7 @@ export default function ProductCard({ flavor, price, weight, colorVar, colorAltV
         
         <div className="product-meta flex justify-between items-center">
           <div className="product-price">
-            <span className="price-val">₹{price}</span>
+            <span className="price-val">{formatPrice(price)}</span>
             <span className="weight-val">/ {weight}</span>
           </div>
         </div>
