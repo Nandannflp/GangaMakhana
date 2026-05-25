@@ -1,4 +1,5 @@
 import React, { useEffect } from 'react';
+import SEO from '../components/SEO';
 import './LegalPage.css';
 
 export default function TermsPage() {
@@ -8,6 +9,10 @@ export default function TermsPage() {
 
   return (
     <div className="legal-page">
+      <SEO 
+        title="Terms & Conditions" 
+        description="Read the Terms and Conditions for using the Ganga Makhana website and purchasing our premium fox nut products." 
+      />
       <div className="container">
         <div className="legal-header">
           <h1 className="legal-title">Terms & Conditions</h1>

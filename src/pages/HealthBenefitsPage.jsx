@@ -1,4 +1,5 @@
 import React, { useEffect } from 'react';
+import SEO from '../components/SEO';
 import './LegalPage.css';
 
 export default function HealthBenefitsPage() {
@@ -8,6 +9,10 @@ export default function HealthBenefitsPage() {
 
   return (
     <div className="legal-page">
+      <SEO 
+        title="Health Benefits" 
+        description="Discover the incredible health benefits of Makhana (fox nuts). Rich in protein, antioxidants, and gluten-free, it's the perfect guilt-free snack." 
+      />
       <div className="container">
         <div className="legal-header">
           <h1 className="legal-title">Health Benefits of Makhana</h1>

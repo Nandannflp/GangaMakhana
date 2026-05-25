@@ -1,4 +1,5 @@
 import React, { useEffect } from 'react';
+import SEO from '../components/SEO';
 import './StoryPage.css';
 
 export default function StoryPage() {
@@ -8,6 +9,10 @@ export default function StoryPage() {
 
   return (
     <div className="story-page">
+      <SEO 
+        title="Our Story" 
+        description="Discover the heritage of Ganga Makhana. Sourced sustainably from Bihar's farms, we bring you 100% natural, premium makhana crafted for modern healthy lifestyles." 
+      />
       <div className="story-hero">
         <div className="container">
           <h1 className="story-title">Rooted in Bihar Heritage</h1>

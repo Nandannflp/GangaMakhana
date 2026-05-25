@@ -39,6 +39,10 @@
   padding: 0;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 body {
   background-color: var(--color-base);
   color: var(--color-text);

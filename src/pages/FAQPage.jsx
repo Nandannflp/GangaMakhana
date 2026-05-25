@@ -1,4 +1,5 @@
 import React, { useEffect } from 'react';
+import SEO from '../components/SEO';
 import './LegalPage.css';
 
 export default function FAQPage() {
@@ -8,6 +9,10 @@ export default function FAQPage() {
 
   return (
     <div className="legal-page">
+      <SEO 
+        title="FAQ" 
+        description="Frequently asked questions about Ganga Makhana, our sourcing, shipping, and wholesale processes." 
+      />
       <div className="container">
         <div className="legal-header">
           <h1 className="legal-title">Frequently Asked Questions</h1>

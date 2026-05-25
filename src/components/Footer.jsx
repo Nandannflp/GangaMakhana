@@ -47,7 +47,10 @@ export default function Footer() {
               District - Katihar, Pincode - 854108<br/>
               Bihar, India
             </address>
-            <p className="reg-num">Registration: 20426351000323</p>
+            <div className="fssai-section">
+              <span className="fssai-label">FSSAI Registration No:</span>
+              <p className="reg-num">20426351000323</p>
+            </div>
             <a href="https://wa.me/919608669041" className="whatsapp-link">
               WhatsApp: 9608669041
             </a>

@@ -1,4 +1,5 @@
 import React, { useEffect } from 'react';
+import SEO from '../components/SEO';
 import './LegalPage.css';
 
 export default function PrivacyPage() {
@@ -8,6 +9,10 @@ export default function PrivacyPage() {
 
   return (
     <div className="legal-page">
+      <SEO 
+        title="Privacy Policy" 
+        description="Read the Ganga Makhana Privacy Policy to understand how we protect and manage your data." 
+      />
       <div className="container">
         <div className="legal-header">
           <h1 className="legal-title">Privacy Policy</h1>

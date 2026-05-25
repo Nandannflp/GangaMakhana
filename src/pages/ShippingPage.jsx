@@ -1,4 +1,5 @@
 import React, { useEffect } from 'react';
+import SEO from '../components/SEO';
 import './LegalPage.css';
 
 export default function ShippingPage() {
@@ -8,6 +9,10 @@ export default function ShippingPage() {
 
   return (
     <div className="legal-page">
+      <SEO 
+        title="Shipping & Returns" 
+        description="Find out everything you need to know about Ganga Makhana's domestic and international shipping, as well as our return policy." 
+      />
       <div className="container">
         <div className="legal-header">
           <h1 className="legal-title">Shipping & Returns</h1>

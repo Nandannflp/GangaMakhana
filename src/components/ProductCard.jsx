@@ -1,12 +1,13 @@
-import React from 'react';
-import { ShoppingBag, Plus, Minus } from 'lucide-react';
+import React, { useState } from 'react';
+import { ShoppingBag, Plus, Minus, Info, X } from 'lucide-react';
 import { useCart } from '../context/CartContext';
 import { useCurrency } from '../context/CurrencyContext';
 import './ProductCard.css';
 
-export default function ProductCard({ flavor, price, weight, colorVar, colorAltVar, tags, tastingNote, imgFront, imgBack }) {
+export default function ProductCard({ flavor, price, weight, colorVar, colorAltVar, tags, tastingNote, imgFront, imgBack, nutrition }) {
   const { cart, addToCart, updateQuantity } = useCart();
   const { formatPrice } = useCurrency();
+  const [showNutrition, setShowNutrition] = useState(false);
   
   const id = flavor.toLowerCase().replace(/\s+/g, '-');
   const cartItem = cart.find(item => item.id === id);
@@ -33,10 +34,34 @@ export default function ProductCard({ flavor, price, weight, colorVar, colorAltV
             <span key={i} className="product-tag">{tag}</span>
           ))}
         </div>
+        
+        {nutrition && (
+          <div className={`nutrition-overlay ${showNutrition ? 'active' : ''}`}>
+            <button className="btn-close-nutrition" onClick={() => setShowNutrition(false)}><X size={16}/></button>
+            <h4>Nutrition Facts</h4>
+            <p style={{fontSize: '0.75rem', textAlign: 'center', marginBottom: '10px'}}>Per 100g (Approx.)</p>
+            <table className="nutrition-table">
+              <tbody>
+                <tr><th>Calories</th><td>{nutrition.calories}</td></tr>
+                <tr><th>Protein</th><td>{nutrition.protein}</td></tr>
+                <tr><th>Total Fat</th><td>{nutrition.fat}</td></tr>
+                <tr><th>Carbs</th><td>{nutrition.carbs}</td></tr>
+                <tr><th>Fiber</th><td>{nutrition.fiber}</td></tr>
+              </tbody>
+            </table>
+          </div>
+        )}
       </div>
       
       <div className="product-info">
-        <h3 className="product-title">{flavor}</h3>
+        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start' }}>
+          <h3 className="product-title">{flavor}</h3>
+          {nutrition && (
+            <button className="btn-nutrition" onClick={() => setShowNutrition(true)}>
+              <Info size={14} /> Nutrition
+            </button>
+          )}
+        </div>
         <p className="product-note">{tastingNote}</p>
         
         <div className="product-meta flex justify-between items-center">
