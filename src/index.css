@@ -100,54 +100,60 @@ button {
 .btn-primary {
   background-color: var(--color-primary);
   color: #fff;
-  padding: 14px 28px;
-  border-radius: var(--radius-sm);
+  padding: 16px 32px;
+  border-radius: 50px;
   font-weight: 500;
-  font-size: 1rem;
-  transition: all 0.3s ease;
+  font-size: 1.05rem;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: 8px;
+  gap: 10px;
+  letter-spacing: 0.5px;
+  border: 2px solid var(--color-primary);
 }
 
 .btn-primary:hover {
   background-color: var(--color-primary-light);
-  transform: translateY(-2px);
-  box-shadow: var(--shadow-soft);
+  border-color: var(--color-primary-light);
+  transform: translateY(-3px);
+  box-shadow: 0 15px 30px -10px rgba(26, 67, 49, 0.3);
 }
 
 .btn-secondary {
   background-color: transparent;
   color: var(--color-primary);
-  border: 1px solid var(--color-primary);
-  padding: 13px 27px;
-  border-radius: var(--radius-sm);
+  border: 2px solid var(--color-primary);
+  padding: 14px 30px;
+  border-radius: 50px;
   font-weight: 500;
-  font-size: 1rem;
-  transition: all 0.3s ease;
+  font-size: 1.05rem;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: 8px;
+  gap: 10px;
+  letter-spacing: 0.5px;
 }
 
 .btn-secondary:hover {
   background-color: var(--color-primary);
   color: #fff;
+  transform: translateY(-3px);
+  box-shadow: 0 15px 30px -10px rgba(26, 67, 49, 0.2);
 }
 
 .card {
   background-color: #fff;
-  border-radius: var(--radius-lg);
-  box-shadow: var(--shadow-soft);
-  transition: all 0.3s ease;
+  border-radius: 30px;
+  box-shadow: 0 12px 40px -15px rgba(0, 0, 0, 0.08);
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
   overflow: hidden;
 }
 
 .card:hover {
-  transform: translateY(-5px);
-  box-shadow: var(--shadow-hover);
+  transform: translateY(-8px);
+  box-shadow: 0 20px 50px -15px rgba(0, 0, 0, 0.12);
 }
 
 .badge {

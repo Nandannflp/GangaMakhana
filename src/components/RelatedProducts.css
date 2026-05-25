@@ -1,0 +1,17 @@
+.related-products {
+  margin-top: 5rem;
+  padding-top: 4rem;
+  border-top: 1px solid rgba(0,0,0,0.05);
+}
+
+.related-products h2 {
+  font-size: 2rem;
+  margin-bottom: 2rem;
+  text-align: center;
+}
+
+.related-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 30px;
+}
