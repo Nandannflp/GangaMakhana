@@ -11,7 +11,6 @@ import PrivacyPage from './pages/PrivacyPage';
 import TrackOrderPage from './pages/TrackOrderPage';
 import HealthBenefitsPage from './pages/HealthBenefitsPage';
 import FAQPage from './pages/FAQPage';
-import FAQPage from './pages/FAQPage';
 import CartPage from './pages/CartPage';
 import ProductPage from './pages/ProductPage';
 import { CartProvider } from './context/CartContext';
@@ -31,8 +30,6 @@ function App() {
           <Route path="/faq" element={<FAQPage />} />
           <Route path="/shipping" element={<ShippingPage />} />
           <Route path="/terms" element={<TermsPage />} />
-          <Route path="/privacy" element={<PrivacyPage />} />
-          <Route path="/track" element={<TrackOrderPage />} />
           <Route path="/privacy" element={<PrivacyPage />} />
           <Route path="/track" element={<TrackOrderPage />} />
           <Route path="/cart" element={<CartPage />} />

@@ -22,7 +22,7 @@ export default function Navbar() {
     <nav className={`navbar ${isScrolled ? 'scrolled' : ''}`}>
       <div className="container navbar-container">
         <div className="navbar-logo">
-          <Link to="/">
+          <Link to="/" className="logo-link">
             <img src="/images/logo.png" alt="Ganga Makhana Logo" className="brand-logo" />
           </Link>
         </div>
