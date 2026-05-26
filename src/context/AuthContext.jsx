@@ -37,12 +37,24 @@ export function AuthProvider({ children }) {
     return userCredential;
   }
 
-  function login(email, password) {
-    return signInWithEmailAndPassword(auth, email, password);
+  async function login(email, password) {
+    try {
+      await signInWithEmailAndPassword(auth, email, password);
+      console.log("Login Success");
+    } catch (error) {
+      console.log(error.message);
+      throw error; // re-throw so the UI can handle it
+    }
   }
 
-  function logout() {
-    return signOut(auth);
+  async function logout() {
+    try {
+      await signOut(auth);
+      console.log("Logged Out");
+    } catch (error) {
+      console.log(error.message);
+      throw error;
+    }
   }
 
   // Google Sign-In
@@ -73,7 +85,13 @@ export function AuthProvider({ children }) {
 
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (user) => {
-      setCurrentUser(user);
+      if (user) {
+        console.log(user);
+        setCurrentUser(user);
+      } else {
+        console.log("No user");
+        setCurrentUser(null);
+      }
       setLoading(false);
     });
 
