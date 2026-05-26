@@ -3,6 +3,7 @@ import { ShoppingBag, Menu, X } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { useCart } from '../context/CartContext';
 import { useCurrency } from '../context/CurrencyContext';
+import { useAuth } from '../context/AuthContext';
 import './Navbar.css';
 
 export default function Navbar() {
@@ -10,6 +11,7 @@ export default function Navbar() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const { getCartCount } = useCart();
   const { currency, setCurrency, supportedCurrencies } = useCurrency();
+  const { currentUser, logout } = useAuth();
   const cartCount = getCartCount();
 
   useEffect(() => {
@@ -34,6 +36,12 @@ export default function Navbar() {
         </ul>
 
         <div className="navbar-actions">
+          {currentUser ? (
+            <button onClick={logout} className="text-btn">Logout</button>
+          ) : (
+            <Link to="/login" className="text-btn" style={{ fontWeight: 500 }}>Login</Link>
+          )}
+
           <select 
             value={currency} 
             onChange={(e) => setCurrency(e.target.value)}

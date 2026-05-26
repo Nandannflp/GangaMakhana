@@ -13,11 +13,14 @@ import HealthBenefitsPage from './pages/HealthBenefitsPage';
 import FAQPage from './pages/FAQPage';
 import CartPage from './pages/CartPage';
 import ProductPage from './pages/ProductPage';
+import LoginPage from './pages/LoginPage';
 import { CartProvider } from './context/CartContext';
 import { CurrencyProvider } from './context/CurrencyContext';
+import { AuthProvider } from './context/AuthContext';
 
 function App() {
   return (
+    <AuthProvider>
     <CurrencyProvider>
     <CartProvider>
       <Router>
@@ -34,6 +37,7 @@ function App() {
           <Route path="/track" element={<TrackOrderPage />} />
           <Route path="/cart" element={<CartPage />} />
           <Route path="/product/:id" element={<ProductPage />} />
+          <Route path="/login" element={<LoginPage />} />
         </Routes>
       </main>
       <Footer />
@@ -41,6 +45,7 @@ function App() {
     </Router>
     </CartProvider>
     </CurrencyProvider>
+    </AuthProvider>
   );
 }
 
