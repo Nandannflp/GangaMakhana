@@ -3,7 +3,9 @@ import {
   signInWithEmailAndPassword,
   signOut,
   GoogleAuthProvider,
-  signInWithPopup
+  signInWithPopup,
+  RecaptchaVerifier,
+  signInWithPhoneNumber
 } from "firebase/auth";
 
 import {
@@ -119,6 +121,73 @@ export const logout = async () => {
     await signOut(auth);
 
     alert("Logged Out");
+
+  } catch (error) {
+
+    alert(error.message);
+
+  }
+};
+
+
+// SEND OTP
+export const sendOtp = async (phoneNumber) => {
+
+  try {
+
+    if (window.recaptchaVerifier) {
+      window.recaptchaVerifier.clear();
+      window.recaptchaVerifier = null;
+    }
+
+    window.recaptchaVerifier = new RecaptchaVerifier(
+      auth,
+      "recaptcha-container",
+      { size: "invisible" }
+    );
+
+    const formattedPhone = phoneNumber.startsWith("+")
+      ? phoneNumber
+      : `+91${phoneNumber}`;
+
+    const confirmationResult = await signInWithPhoneNumber(
+      auth,
+      formattedPhone,
+      window.recaptchaVerifier
+    );
+
+    window.confirmationResult = confirmationResult;
+
+    alert("OTP Sent!");
+
+  } catch (error) {
+
+    alert(error.message);
+
+  }
+};
+
+
+// VERIFY OTP
+export const verifyOtp = async (otp) => {
+
+  try {
+
+    const result = await window.confirmationResult.confirm(otp);
+
+    const user = result.user;
+
+    await setDoc(
+      doc(db, "users", user.uid),
+      {
+        uid: user.uid,
+        phone: user.phoneNumber,
+        createdAt: new Date()
+      },
+      { merge: true }
+    );
+
+    alert("Phone Login Successful");
 
   } catch (error) {
 

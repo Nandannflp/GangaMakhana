@@ -1,5 +1,5 @@
 .login-page {
-  min-height: calc(100vh - 160px); /* Adjust based on navbar/footer height */
+  min-height: calc(100vh - 160px);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -7,6 +7,37 @@
   background-color: var(--color-base);
   position: relative;
   overflow: hidden;
+}
+
+/* Tab Switcher */
+.tab-switcher {
+  display: flex;
+  gap: 0;
+  background: var(--color-base-alt);
+  border-radius: var(--radius-sm);
+  padding: 4px;
+  margin-bottom: 20px;
+}
+
+.tab-btn {
+  flex: 1;
+  padding: 9px 0;
+  border: none;
+  border-radius: 6px;
+  background: transparent;
+  color: var(--color-text-light);
+  font-family: var(--font-secondary);
+  font-size: 0.95rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.25s ease;
+}
+
+.tab-btn.active {
+  background: #fff;
+  color: var(--color-primary);
+  font-weight: 600;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
 }
 
 /* Subtle background decorations for premium feel */
@@ -162,7 +193,7 @@
 
 .input-group input {
   width: 100%;
-  padding: 14px 16px 14px 45px;
+  padding: 14px 16px;
   border: 1px solid #e2e8f0;
   border-radius: var(--radius-sm);
   font-family: var(--font-secondary);
