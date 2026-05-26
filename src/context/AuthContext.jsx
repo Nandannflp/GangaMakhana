@@ -9,7 +9,8 @@ import {
   RecaptchaVerifier,
   signInWithPhoneNumber
 } from 'firebase/auth';
-import { auth } from '../firebase';
+import { doc, setDoc } from 'firebase/firestore';
+import { auth, db } from '../firebase';
 
 const AuthContext = createContext();
 
@@ -21,9 +22,19 @@ export function AuthProvider({ children }) {
   const [currentUser, setCurrentUser] = useState(null);
   const [loading, setLoading] = useState(true);
 
-  // Email/Password
-  function signup(email, password) {
-    return createUserWithEmailAndPassword(auth, email, password);
+  // Email/Password signup — also saves user profile to Firestore
+  async function signup(email, password, name) {
+    const userCredential = await createUserWithEmailAndPassword(auth, email, password);
+    const user = userCredential.user;
+
+    await setDoc(doc(db, 'users', user.uid), {
+      uid: user.uid,
+      name: name || '',
+      email: email,
+      createdAt: new Date()
+    });
+
+    return userCredential;
   }
 
   function login(email, password) {

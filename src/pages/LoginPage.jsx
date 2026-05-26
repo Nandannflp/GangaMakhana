@@ -34,7 +34,7 @@ export default function LoginPage() {
     
     try {
       if (authMode === 'signup') {
-        await signup(email, password);
+        await signup(email, password, name);
         // You could also update profile with name here if needed
       } else {
         await login(email, password);
