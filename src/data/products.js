@@ -1,7 +1,7 @@
 export const products = [
   {
     id: "pudina-makhana",
-    name: "Ganga Makhana — Pudina Makhana",
+    name: "Pudina Makhana",
     flavor: "Pudina",
     tagline: "Earthy and tangy with a refreshing mint twist.",
     description: "Experience a refreshing pudina-flavored makhana snack that feels light, crunchy, cooling, and perfect for everyday snacking. Each bite delivers the earthy tang of traditional Indian pudina, carefully balanced with Himalayan salt and mild spices, making it an irresistible, guilt-free treat.",
@@ -112,7 +112,7 @@ export const products = [
   },
   {
     id: "peri-peri-makhana",
-    name: "Ganga Makhana — Peri Peri Makhana",
+    name: "Peri Peri Makhana",
     flavor: "Peri Peri",
     tagline: "A fiery burst of flavor in every crunchy bite.",
     description: "Ignite your taste buds with our Peri Peri Makhana. This high-energy snack delivers a vibrant, spicy kick combined with our signature crunch. It's the ultimate bold flavor experience for those who crave a little heat in their healthy snacking.",
@@ -168,7 +168,7 @@ export const products = [
   },
   {
     id: "mint-flavoured-makhana",
-    name: "Ganga Makhana — Mint Flavoured Makhana",
+    name: "Mint Flavoured Makhana",
     flavor: "Mint",
     tagline: "Fresh, cool, and perfectly crisp.",
     description: "Enjoy a smooth, refreshing experience with our Mint Flavoured Makhana. The cooling mint flavor notes paired with our perfectly roasted lotus seeds create a uniquely light and zesty snack that rejuvenates your palate with every bite.",
@@ -223,7 +223,7 @@ export const products = [
   },
   {
     id: "chocolate-makhana",
-    name: "Ganga Makhana — Chocolate Makhana",
+    name: "Chocolate Makhana",
     flavor: "Chocolate",
     tagline: "Rich chocolate goodness with a crunchy surprise.",
     description: "Indulge in a premium dessert-style snack with our Chocolate Makhana. We've coated our crunchy roasted makhana in a rich, luscious cocoa blend, creating a modern, sweet treat that feels decadent yet remains remarkably light and wholesome.",
@@ -279,7 +279,7 @@ export const products = [
   },
   {
     id: "onion-makhana",
-    name: "Ganga Makhana — Onion Makhana",
+    name: "Onion Makhana",
     flavor: "Onion",
     tagline: "Savory onion flavor with deep roasted crunch.",
     description: "Savor the comforting, aromatic taste of our Onion Makhana. This rich, savory snack features deep roasted crunch paired with earthy onion flavor notes. It is the quintessential comfort food designed perfectly to accompany your daily tea routine.",
@@ -335,7 +335,7 @@ export const products = [
   },
   {
     id: "raw-makhana",
-    name: "Premium Phool Makhana (Raw)",
+    name: "Raw Makhana",
     flavor: "Raw",
     tagline: "Unroasted, pure makhana ready for your recipes.",
     description: "Premium, large-sized unroasted makhana straight from the farms of Bihar. Perfect for traditional cooking, sweets, or roasting at home to your exact preference.",
@@ -384,7 +384,7 @@ export const products = [
   },
   {
     id: "jumbo-makhana-raw",
-    name: "Jumbo Makhana (Export Quality)",
+    name: "Jumbo Raw Makhana",
     flavor: "Raw",
     tagline: "The largest, most premium grade of unroasted makhana.",
     description: "Our finest selection of Jumbo sized raw makhana. Hand-picked for the largest size and perfect white color. Ideal for premium gifting, special occasions, or simply when you want the very best quality available.",

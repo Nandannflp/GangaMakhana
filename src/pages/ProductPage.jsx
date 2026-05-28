@@ -32,7 +32,7 @@ export default function ProductPage() {
 
   if (!product) return null;
 
-  const displayName = 'Mint Flavoured Makhana';
+  const displayName = product.name;
   const sizePrices = {
     Big: 550,
     Small: 350
