@@ -6,7 +6,7 @@
 
 .product-hero {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 1.3fr 1fr;
   gap: 60px;
   margin-bottom: 80px;
   align-items: start;
@@ -69,13 +69,79 @@
   font-size: 1.1rem;
   line-height: 1.7;
   color: var(--color-text-light);
+  margin-bottom: 30px;
+}
+
+.product-quick-facts {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 30px 0;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.product-quick-facts li {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 1.05rem;
+  color: var(--color-text);
+}
+
+.product-quick-facts li svg {
+  color: var(--color-primary);
+  flex-shrink: 0;
+}
+
+.trust-badges-block {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
   margin-bottom: 40px;
+}
+
+.trust-badge {
+  background-color: var(--color-base-alt);
+  color: var(--color-primary);
+  padding: 8px 14px;
+  border-radius: 20px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  border: 1px solid rgba(0,0,0,0.05);
+  display: inline-flex;
+  align-items: center;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.02);
+}
+
+.bulk-inquiry-whatsapp {
+  margin-bottom: 50px;
+}
+
+.bulk-inquiry-whatsapp a {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background-color: #25D366;
+  color: #fff;
+  padding: 12px 24px;
+  border-radius: 8px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 10px rgba(37, 211, 102, 0.3);
+}
+
+.bulk-inquiry-whatsapp a:hover {
+  background-color: #128C7E;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 15px rgba(37, 211, 102, 0.4);
 }
 
 .add-to-cart-container {
   display: flex;
   gap: 20px;
-  margin-bottom: 50px;
+  margin-bottom: 30px;
 }
 
 .qty-selector {

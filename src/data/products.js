@@ -386,5 +386,119 @@ export const products = [
         { name: "Anita K.", date: "March 28, 2026", rating: 5, text: "The aroma when you open the packet is amazing. Very high quality seasoning." }
       ]
     }
+  },
+  {
+    id: "raw-makhana",
+    name: "Premium Phool Makhana (Raw)",
+    flavor: "Raw",
+    tagline: "Unroasted, pure makhana ready for your recipes.",
+    description: "Premium, large-sized unroasted makhana straight from the farms of Bihar. Perfect for traditional cooking, sweets, or roasting at home to your exact preference.",
+    colorTheme: {
+      primary: "#2C3E50",
+      secondary: "#34495E",
+      bg: "#F8F9FA"
+    },
+    badges: ["Raw", "Premium Quality", "Unroasted"],
+    price: 300,
+    weight: "250g",
+    ingredients: ["Raw Makhana (Fox Nuts)"],
+    nutrition: {
+      calories: "347 kcal",
+      protein: "9.7g",
+      fiber: "14.5g",
+      carbs: "76.9g",
+      sodium: "210mg",
+      fat: "0.1g",
+      sugar: "0.0g"
+    },
+    howToEat: [
+      "Roast at home",
+      "Use in curries",
+      "Make makhana kheer",
+      "Traditional sweets"
+    ],
+    recipe: {
+      title: "Homemade Ghee Roast Makhana",
+      time: "10 mins",
+      serves: "4",
+      ingredients: ["2 cups Raw Makhana", "1 tbsp Ghee", "Salt & Pepper to taste"],
+      instructions: "Heat ghee in a heavy-bottomed pan. Add raw makhana and roast on low heat for 8-10 minutes until crisp. Toss with salt and pepper."
+    },
+    qualityAssurance: [
+      "Sorted by hand",
+      "Direct from farms",
+      "No additives"
+    ],
+    images: [
+      "/images/products/normal-front.png",
+      "/images/products/normal-back.png",
+      "/images/products/normal-texture.png",
+      "/images/products/normal-lifestyle.png"
+    ],
+    reviews: {
+      rating: 4.8,
+      count: 56,
+      breakdown: { taste: 5, packaging: 4.8, freshness: 5, repeat: 4.7 },
+      comments: [
+        { name: "Rahul S.", date: "Feb 10, 2026", rating: 5, text: "Excellent quality raw makhana. Very large size!" }
+      ]
+    }
+  },
+  {
+    id: "jumbo-makhana-raw",
+    name: "Jumbo Makhana (Export Quality)",
+    flavor: "Raw",
+    tagline: "The largest, most premium grade of unroasted makhana.",
+    description: "Our finest selection of Jumbo sized raw makhana. Hand-picked for the largest size and perfect white color. Ideal for premium gifting, special occasions, or simply when you want the very best quality available.",
+    colorTheme: {
+      primary: "#D4AF37",
+      secondary: "#F3E5AB",
+      bg: "#FFFAF0"
+    },
+    badges: ["Jumbo Size", "Export Quality", "Premium"],
+    price: 750,
+    weight: "500g",
+    ingredients: ["Raw Makhana (Fox Nuts)"],
+    nutrition: {
+      calories: "347 kcal",
+      protein: "9.7g",
+      fiber: "14.5g",
+      carbs: "76.9g",
+      sodium: "210mg",
+      fat: "0.1g",
+      sugar: "0.0g"
+    },
+    howToEat: [
+      "Premium roasting",
+      "Rich curries",
+      "Festive sweets",
+      "Special occasions"
+    ],
+    recipe: {
+      title: "Festive Makhana Kheer",
+      time: "30 mins",
+      serves: "4",
+      ingredients: ["1 cup Jumbo Makhana", "1 liter Milk", "Sugar to taste", "Cardamom powder", "Chopped nuts"],
+      instructions: "Coarsely crush half the makhana. Boil milk, add all makhana and simmer until milk reduces and thickens. Add sugar, cardamom, and nuts. Serve chilled."
+    },
+    qualityAssurance: [
+      "Jumbo size guaranteed",
+      "Export grade quality",
+      "Hand-selected"
+    ],
+    images: [
+      "/images/products/normal-front.png",
+      "/images/products/normal-back.png",
+      "/images/products/normal-texture.png",
+      "/images/products/normal-lifestyle.png"
+    ],
+    reviews: {
+      rating: 5.0,
+      count: 24,
+      breakdown: { taste: 5, packaging: 5, freshness: 5, repeat: 5 },
+      comments: [
+        { name: "Sunita M.", date: "Jan 15, 2026", rating: 5, text: "Truly jumbo size! Made amazing kheer with this." }
+      ]
+    }
   }
 ];

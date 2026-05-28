@@ -1,4 +1,5 @@
 import React, { useEffect } from 'react';
+import { Leaf, Droplets, Flame, Package, Heart, Users } from 'lucide-react';
 import SEO from '../components/SEO';
 import './StoryPage.css';
 
@@ -37,11 +38,43 @@ export default function StoryPage() {
             Unlike mass-produced snacks, our makhana is carefully selected, hygienically cleaned, gently roasted, and crafted into premium flavors without compromising its natural goodness. We combine traditional Indian sourcing methods with modern export-quality processing standards to create a snack that feels both wholesome and luxurious.
           </p>
           
-          <div className="story-highlight">
-            <p>But Ganga Makhana is not only about taste.</p>
-            <p>It is about supporting Indian farmers.<br/>
-            It is about preserving heritage.<br/>
-            It is about bringing honest nutrition back into everyday snacking.</p>
+          <div className="story-process">
+            <h3>How It Reaches You</h3>
+            <div className="process-steps">
+              <div className="process-step">
+                <div className="process-icon"><Leaf size={32} /></div>
+                <h4>Harvest</h4>
+                <p>Carefully hand-picked from the ponds of Bihar</p>
+              </div>
+              <div className="process-step">
+                <div className="process-icon"><Droplets size={32} /></div>
+                <h4>Cleaning</h4>
+                <p>Washed and sun-dried for pristine purity</p>
+              </div>
+              <div className="process-step">
+                <div className="process-icon"><Flame size={32} /></div>
+                <h4>Roasting</h4>
+                <p>Slow-roasted to perfection, never fried</p>
+              </div>
+              <div className="process-step">
+                <div className="process-icon"><Package size={32} /></div>
+                <h4>Packing</h4>
+                <p>Sealed with love and freshness in every pack</p>
+              </div>
+            </div>
+          </div>
+          
+          <div className="mission-values-section">
+            <div className="mission-card">
+              <Users size={40} className="mission-icon" />
+              <h3>Supporting Farmers</h3>
+              <p>By sourcing directly from local communities in Bihar, we empower farmers, ensuring fair trade practices and sustainable livelihoods for generations to come.</p>
+            </div>
+            <div className="mission-card">
+              <Heart size={40} className="mission-icon" />
+              <h3>Healthy Snacking</h3>
+              <p>We believe in bringing honest nutrition back into everyday snacking. No harmful preservatives, no artificial flavors—just 100% natural goodness.</p>
+            </div>
           </div>
           
           <h3>Every pack represents:</h3>

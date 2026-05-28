@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
-import { ChevronDown, ChevronUp, ShoppingBag } from 'lucide-react';
+import { ChevronDown, ChevronUp, ShoppingBag, MessageCircle, CheckCircle2 } from 'lucide-react';
 import { products } from '../data/products';
 import { useCart } from '../context/CartContext';
 import { useCurrency } from '../context/CurrencyContext';
@@ -68,7 +68,25 @@ export default function ProductPage() {
               <span className="product-weight">/ {product.weight}</span>
             </div>
 
-            <p className="product-desc">{product.description}</p>
+            <ul className="product-quick-facts">
+              <li><CheckCircle2 size={16} /> <strong>Taste:</strong> Authentic & bold flavor profile</li>
+              <li><CheckCircle2 size={16} /> <strong>Spice level:</strong> Perfectly balanced</li>
+              <li><CheckCircle2 size={16} /> <strong>Best for:</strong> Evening snack, kids' tiffin, post-workout</li>
+              <li><CheckCircle2 size={16} /> <strong>Value:</strong> 100% natural, no junk, premium grade</li>
+            </ul>
+
+            <p className="product-desc">
+              {product.description}
+              <br/><br/>
+              <strong style={{color: product.colorTheme.primary}}>Provenance Story:</strong> Sustainably hand-harvested and <strong>directly sourced from the fertile wetlands of Bihar</strong>, bringing you the most authentic and premium quality makhana straight from the origin.
+            </p>
+
+            <div className="trust-badges-block">
+              <span className="trust-badge">Gluten-free</span>
+              <span className="trust-badge">No MSG</span>
+              <span className="trust-badge">Roasted, not fried</span>
+              <span className="trust-badge">Clean ingredients</span>
+            </div>
 
             <div className="add-to-cart-container">
               <div className="qty-selector">
@@ -83,6 +101,12 @@ export default function ProductPage() {
               >
                 <ShoppingBag size={20} /> Add to Cart
               </button>
+            </div>
+
+            <div className="bulk-inquiry-whatsapp">
+              <a href="https://wa.me/919876543210?text=Hi! I am interested in bulk orders for Ganga Makhana." target="_blank" rel="noopener noreferrer">
+                <MessageCircle size={20} /> For Bulk Inquiries, WhatsApp Us
+              </a>
             </div>
 
             <div className="product-details-accordion">

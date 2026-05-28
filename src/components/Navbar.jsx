@@ -30,9 +30,9 @@ export default function Navbar() {
         </div>
         
         <ul className="navbar-links">
-          <li><a href="/#shop">Shop</a></li>
+          <li><Link to="/shop">Shop</Link></li>
           <li><Link to="/story">Our Story</Link></li>
-          <li><a href="/#wholesale">Wholesale</a></li>
+          <li><Link to="/wholesale">Wholesale</Link></li>
         </ul>
 
         <div className="navbar-actions">
@@ -57,6 +57,28 @@ export default function Navbar() {
             <span>Cart</span>
             {cartCount > 0 && <span className="cart-badge-inline">{cartCount}</span>}
           </Link>
+
+          <button className="nav-icon-btn mobile-menu-trigger" onClick={() => setMobileMenuOpen(true)}>
+            <Menu size={24} color="var(--color-primary)" />
+          </button>
+        </div>
+      </div>
+
+      <div className={`mobile-menu-overlay ${mobileMenuOpen ? 'open' : ''}`}>
+        <div className="mobile-menu-content">
+          <div className="mobile-menu-header">
+            <Link to="/" className="logo-link" onClick={() => setMobileMenuOpen(false)}>
+              <img src="/images/logo.png" alt="Ganga Makhana Logo" className="brand-logo" />
+            </Link>
+            <button className="nav-icon-btn close-menu-btn" onClick={() => setMobileMenuOpen(false)}>
+              <X size={28} color="var(--color-primary)" />
+            </button>
+          </div>
+          <ul className="mobile-nav-links">
+            <li><Link to="/shop" onClick={() => setMobileMenuOpen(false)}>Shop</Link></li>
+            <li><Link to="/story" onClick={() => setMobileMenuOpen(false)}>Our Story</Link></li>
+            <li><Link to="/wholesale" onClick={() => setMobileMenuOpen(false)}>Wholesale</Link></li>
+          </ul>
         </div>
       </div>
     </nav>

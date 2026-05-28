@@ -137,3 +137,15 @@
     flex-wrap: wrap;
   }
 }
+
+@media (max-width: 576px) {
+  .hero-actions {
+    gap: 10px;
+  }
+
+  .hero-actions .btn-lg {
+    padding: 10px 20px;
+    font-size: 0.82rem;
+    border-radius: 50px;
+  }
+}

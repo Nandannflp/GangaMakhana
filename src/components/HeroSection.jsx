@@ -1,5 +1,6 @@
 import React from 'react';
 import { ArrowRight, ShieldCheck, Leaf, Globe } from 'lucide-react';
+import { Link } from 'react-router-dom';
 import './HeroSection.css';
 
 export default function HeroSection() {
@@ -11,20 +12,20 @@ export default function HeroSection() {
             Premium Indian Superfood
           </div>
           <h1 className="hero-title">
-            Authentic Bihar Heritage, <br/>
-            <span className="text-accent">Export Quality</span> Makhana
+            Premium Ganga Makhana <br/>
+            <span className="text-accent">from Bihar</span>
           </h1>
           <p className="hero-subtitle">
-            Experience the purest, 100% natural, handpicked and perfectly roasted fox nuts. A luxury snacking experience rooted in tradition.
+            Indulge in our exquisite collection of export-quality, naturally sourced fox nuts. Hand-harvested in the heart of Bihar for a truly premium, healthy snacking experience.
           </p>
           
           <div className="hero-actions">
-            <a href="#shop" className="btn-primary btn-lg">
-              Shop Now <ArrowRight size={20} />
-            </a>
-            <a href="#wholesale" className="btn-secondary btn-lg">
-              Wholesale Inquiry
-            </a>
+            <Link to="/shop" className="btn-primary btn-lg">
+              Shop Flavoured Makhana <ArrowRight size={20} />
+            </Link>
+            <Link to="/shop?tab=raw" className="btn-secondary btn-lg">
+              Buy Raw Makhana
+            </Link>
           </div>
 
           <div className="hero-trust">

@@ -1,7 +1,10 @@
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
+import WhatsAppButton from './components/WhatsAppButton';
 import HomePage from './pages/HomePage';
+import ShopPage from './pages/ShopPage';
+import WholesalePage from './pages/WholesalePage';
 import LoginPage from './pages/LoginPage';
 import CartPage from './pages/CartPage';
 import StoryPage from './pages/StoryPage';
@@ -18,8 +21,11 @@ function App() {
   return (
     <Router>
       <Navbar />
+      <WhatsAppButton />
       <Routes>
         <Route path="/" element={<HomePage />} />
+        <Route path="/shop" element={<ShopPage />} />
+        <Route path="/wholesale" element={<WholesalePage />} />
         <Route path="/login" element={<LoginPage />} />
         <Route path="/cart" element={<CartPage />} />
         <Route path="/story" element={<StoryPage />} />
