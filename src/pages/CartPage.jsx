@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { Trash2, Plus, Minus, ArrowLeft } from 'lucide-react';
 import { useCart } from '../context/CartContext';
@@ -54,10 +54,10 @@ export default function CartPage() {
                   <button className="btn-remove" onClick={() => removeFromCart(item.id)}>
                     <Trash2 size={18} />
                   </button>
-                  <img src={item.imgFront} alt={item.flavor} className="item-img" />
+                  <img src={item.imgFront || item.image} alt={item.flavor || item.name} className="item-img" />
                   <div className="item-details">
-                    <h3>{item.flavor} Makhana</h3>
-                    <p>{item.weight}</p>
+                    <h3>{item.flavor || item.name}</h3>
+                    <p>{item.variant || [item.size, item.weight].filter(Boolean).join(' / ') || item.weight}</p>
                   </div>
                 </div>
                 

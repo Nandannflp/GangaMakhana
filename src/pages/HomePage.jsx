@@ -1,4 +1,3 @@
-import React from 'react';
 import HeroSection from '../components/HeroSection';
 import BenefitsStrip from '../components/BenefitsStrip';
 import ShopSection from '../components/ShopSection';

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { ShoppingBag, Plus, Minus, Info, X } from 'lucide-react';
 import { useCart } from '../context/CartContext';
 import { useCurrency } from '../context/CurrencyContext';
@@ -25,7 +25,7 @@ export default function ProductCard({ product }) {
   // Extract numeric price and format manually to split symbol from value
   const priceFormatted = formatPrice(product.price);
   // Separate rupee symbol from digits (handles ₹ and other currency symbols)
-  const priceMatch = priceFormatted.match(/^([^\d]+)([\d,\.]+)$/);
+  const priceMatch = priceFormatted.match(/^([^\d]+)([\d,.]+)$/);
   const currencySymbol = priceMatch ? priceMatch[1].trim() : '';
   const priceNumber = priceMatch ? priceMatch[2] : priceFormatted;
 

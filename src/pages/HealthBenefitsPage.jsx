@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import { useEffect } from 'react';
 import { Coffee, GraduationCap, Dumbbell, ShieldCheck, Heart, Leaf } from 'lucide-react';
 import SEO from '../components/SEO';
 import './HealthBenefitsPage.css';

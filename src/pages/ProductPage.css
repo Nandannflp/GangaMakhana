@@ -49,7 +49,7 @@
   display: flex;
   align-items: flex-end;
   gap: 15px;
-  margin-bottom: 30px;
+  margin-bottom: 24px;
 }
 
 .product-price {
@@ -63,6 +63,54 @@
   font-size: 1rem;
   color: var(--color-text-light);
   margin-bottom: 5px;
+}
+
+.product-options {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  margin-bottom: 30px;
+}
+
+.option-group {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.option-label {
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--color-text);
+  text-transform: uppercase;
+}
+
+.option-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.option-button {
+  min-width: 78px;
+  padding: 10px 16px;
+  border: 1px solid rgba(0,0,0,0.12);
+  border-radius: 8px;
+  background: #fff;
+  color: var(--color-text);
+  font-weight: 700;
+  transition: all 0.2s ease;
+}
+
+.option-button:hover {
+  border-color: var(--color-primary);
+  color: var(--color-primary);
+}
+
+.option-button.active {
+  background: var(--color-primary);
+  border-color: var(--color-primary);
+  color: #fff;
 }
 
 .product-desc {
@@ -112,6 +160,92 @@
   display: inline-flex;
   align-items: center;
   box-shadow: 0 2px 5px rgba(0,0,0,0.02);
+}
+
+.delivery-estimator {
+  background: #fff;
+  border: 1px solid rgba(0,0,0,0.08);
+  border-radius: 8px;
+  padding: 18px;
+  margin-bottom: 30px;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.04);
+}
+
+.delivery-heading {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 14px;
+  font-weight: 700;
+  color: var(--color-text);
+}
+
+.delivery-heading svg {
+  color: var(--color-primary);
+}
+
+.delivery-controls {
+  display: grid;
+  grid-template-columns: 130px 1fr;
+  gap: 12px;
+}
+
+.delivery-select,
+.pincode-field {
+  min-height: 46px;
+  border: 1px solid rgba(0,0,0,0.12);
+  border-radius: 8px;
+  background: var(--color-base);
+}
+
+.delivery-select {
+  padding: 0 12px;
+  color: var(--color-text);
+  font-weight: 600;
+}
+
+.pincode-field {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 0 14px;
+}
+
+.pincode-field svg {
+  color: var(--color-text-light);
+  flex-shrink: 0;
+}
+
+.pincode-field input {
+  width: 100%;
+  border: 0;
+  outline: 0;
+  background: transparent;
+  color: var(--color-text);
+  font-weight: 600;
+}
+
+.delivery-result {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  margin-top: 14px;
+  padding-top: 14px;
+  border-top: 1px solid rgba(0,0,0,0.07);
+}
+
+.delivery-result strong {
+  color: var(--color-primary);
+  font-size: 1.05rem;
+}
+
+.delivery-result span {
+  color: var(--color-text);
+  font-weight: 600;
+}
+
+.delivery-result small {
+  color: var(--color-text-light);
 }
 
 .bulk-inquiry-whatsapp {
@@ -257,6 +391,10 @@
   .product-info h1 {
     font-size: 2.8rem;
   }
+
+  .delivery-controls {
+    grid-template-columns: 1fr;
+  }
 }
 
 @media (max-width: 768px) {
@@ -283,5 +421,10 @@
   
   .qty-selector {
     display: none; /* Simplify mobile sticky cart */
+  }
+
+  .product-options,
+  .delivery-estimator {
+    margin-bottom: 24px;
   }
 }

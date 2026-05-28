@@ -1,4 +1,4 @@
-import React, { createContext, useContext, useState, useEffect } from 'react';
+import { createContext, useContext, useState, useEffect } from 'react';
 import { 
   createUserWithEmailAndPassword, 
   signInWithEmailAndPassword, 
@@ -72,9 +72,7 @@ export function AuthProvider({ children }) {
     }
     window.recaptchaVerifier = new RecaptchaVerifier(auth, containerId, {
       'size': 'invisible',
-      'callback': (response) => {
-        // reCAPTCHA solved
-      }
+      'callback': () => {}
     });
     return window.recaptchaVerifier;
   }

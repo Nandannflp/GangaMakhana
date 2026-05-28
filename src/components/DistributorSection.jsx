@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { Send, Building2, CheckCircle2 } from 'lucide-react';
 import './DistributorSection.css';
 

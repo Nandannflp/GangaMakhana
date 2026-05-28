@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import { useRef, useState, useEffect } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
 import { Mail, Lock, Phone, User, ArrowRight, Eye, EyeOff } from 'lucide-react';
@@ -15,6 +15,7 @@ export default function LoginPage() {
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
+  const confirmationResultRef = useRef(null);
 
   const { login, signup, signInWithGoogle, setupRecaptcha, signInWithPhone, currentUser } = useAuth();
   const navigate = useNavigate();
@@ -69,7 +70,7 @@ export default function LoginPage() {
       const appVerifier = setupRecaptcha('recaptcha-container');
       const formattedPhone = phone.startsWith('+') ? phone : `+91${phone}`; // Defaulting to India if no code
       const confirmationResult = await signInWithPhone(formattedPhone, appVerifier);
-      window.confirmationResult = confirmationResult;
+      confirmationResultRef.current = confirmationResult;
       setOtpSent(true);
     } catch (err) {
       setError(getErrorMessage(err.code) || 'Failed to send OTP. Please check the phone number.');
@@ -86,9 +87,9 @@ export default function LoginPage() {
     setError('');
     setLoading(true);
     try {
-      await window.confirmationResult.confirm(otp);
+      await confirmationResultRef.current.confirm(otp);
       navigate('/');
-    } catch (err) {
+    } catch {
       setError('Invalid OTP code. Please try again.');
     } finally {
       setLoading(false);

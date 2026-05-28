@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
-import { ChevronDown, ChevronUp, ShoppingBag, MessageCircle, CheckCircle2 } from 'lucide-react';
+import { ChevronDown, ChevronUp, ShoppingBag, MessageCircle, CheckCircle2, MapPin, Truck } from 'lucide-react';
 import { products } from '../data/products';
 import { useCart } from '../context/CartContext';
 import { useCurrency } from '../context/CurrencyContext';
@@ -14,9 +14,13 @@ export default function ProductPage() {
   const { id } = useParams();
   const navigate = useNavigate();
   const { addToCart } = useCart();
-  const { currency, formatPrice } = useCurrency();
+  const { formatPrice } = useCurrency();
   const [qty, setQty] = useState(1);
   const [activeAccordion, setActiveAccordion] = useState('ingredients');
+  const [selectedSize, setSelectedSize] = useState('Small');
+  const [selectedQuantity, setSelectedQuantity] = useState('250g');
+  const [pincode, setPincode] = useState('');
+  const [destinationType, setDestinationType] = useState('india');
 
   const product = products.find(p => p.id === id);
 
@@ -29,14 +33,82 @@ export default function ProductPage() {
 
   if (!product) return null;
 
+  const displayName = 'Mint Flavoured Makhana';
+  const sizePrices = {
+    Big: 550,
+    Small: 350
+  };
+  const quantityMultipliers = {
+    '250g': 1,
+    '500g': 2,
+    '750g': 3,
+    '1kg': 4
+  };
+  const currentPrice = sizePrices[selectedSize] * quantityMultipliers[selectedQuantity];
+  const selectedVariantLabel = `${selectedSize} size / ${selectedQuantity}`;
+
+  const getDeliveryEstimate = () => {
+    const cleanedPincode = pincode.trim();
+
+    if (!cleanedPincode) {
+      return null;
+    }
+
+    const now = new Date();
+    let range = [10, 15];
+    let label = 'International delivery';
+    let detail = 'Estimated courier time for international shipments.';
+
+    if (destinationType === 'india' && /^\d{6}$/.test(cleanedPincode)) {
+      const zone = Number(cleanedPincode[0]);
+
+      if ([8].includes(zone)) {
+        range = [2, 3];
+        label = 'Bihar and nearby states';
+        detail = 'Fastest courier route from Bihar.';
+      } else if ([7, 9].includes(zone)) {
+        range = [3, 5];
+        label = 'Eastern and northern India';
+        detail = 'Regional courier route from Bihar.';
+      } else {
+        range = [6, 8];
+        label = 'Long-distance domestic delivery';
+        detail = 'Estimated courier time from Bihar to this PIN code.';
+      }
+    }
+
+    const formatDate = (offsetDays) => {
+      const date = new Date(now);
+      date.setDate(date.getDate() + offsetDays);
+      return date.toLocaleDateString('en-IN', {
+        day: 'numeric',
+        month: 'short'
+      });
+    };
+
+    return {
+      days: `${range[0]}-${range[1]} days`,
+      dates: `${formatDate(range[0])} - ${formatDate(range[1])}`,
+      label,
+      detail
+    };
+  };
+
+  const deliveryEstimate = getDeliveryEstimate();
+
   const handleAddToCart = () => {
     addToCart({
-      id: product.id,
-      name: product.name,
-      price: product.price,
+      id: `${product.id}-${selectedSize.toLowerCase()}-${selectedQuantity}`,
+      productId: product.id,
+      flavor: displayName,
+      name: displayName,
+      price: currentPrice,
+      weight: selectedQuantity,
+      size: selectedSize,
+      variant: selectedVariantLabel,
+      imgFront: product.images[0],
       image: product.images[0]
     }, qty);
-    // Optional: show a toast or feedback
   };
 
   const toggleAccordion = (section) => {
@@ -45,7 +117,7 @@ export default function ProductPage() {
 
   return (
     <div className="product-page-container" style={{ backgroundColor: product.colorTheme.bg }}>
-      <SEO title={product.name} description={product.description} />
+      <SEO title={displayName} description={product.description} />
       
       <div className="container">
         <div className="product-hero">
@@ -60,12 +132,46 @@ export default function ProductPage() {
               ))}
             </div>
 
-            <h1 style={{ color: product.colorTheme.primary }}>{product.name}</h1>
+            <h1 style={{ color: product.colorTheme.primary }}>{displayName}</h1>
             <p className="product-tagline">{product.tagline}</p>
 
             <div className="product-price-weight">
-              <span className="product-price">{formatPrice(product.price)}</span>
-              <span className="product-weight">/ {product.weight}</span>
+              <span className="product-price">{formatPrice(currentPrice)}</span>
+              <span className="product-weight">/ {selectedVariantLabel}</span>
+            </div>
+
+            <div className="product-options">
+              <div className="option-group">
+                <span className="option-label">Size</span>
+                <div className="option-buttons" role="group" aria-label="Select size">
+                  {Object.keys(sizePrices).map((size) => (
+                    <button
+                      key={size}
+                      type="button"
+                      className={`option-button ${selectedSize === size ? 'active' : ''}`}
+                      onClick={() => setSelectedSize(size)}
+                    >
+                      {size}
+                    </button>
+                  ))}
+                </div>
+              </div>
+
+              <div className="option-group">
+                <span className="option-label">Quantity</span>
+                <div className="option-buttons" role="group" aria-label="Select quantity">
+                  {Object.keys(quantityMultipliers).map((quantity) => (
+                    <button
+                      key={quantity}
+                      type="button"
+                      className={`option-button ${selectedQuantity === quantity ? 'active' : ''}`}
+                      onClick={() => setSelectedQuantity(quantity)}
+                    >
+                      {quantity}
+                    </button>
+                  ))}
+                </div>
+              </div>
             </div>
 
             <ul className="product-quick-facts">
@@ -86,6 +192,42 @@ export default function ProductPage() {
               <span className="trust-badge">No MSG</span>
               <span className="trust-badge">Roasted, not fried</span>
               <span className="trust-badge">Clean ingredients</span>
+            </div>
+
+            <div className="delivery-estimator">
+              <div className="delivery-heading">
+                <Truck size={18} />
+                <span>Check delivery date</span>
+              </div>
+              <div className="delivery-controls">
+                <select
+                  className="delivery-select"
+                  value={destinationType}
+                  onChange={(event) => setDestinationType(event.target.value)}
+                  aria-label="Destination type"
+                >
+                  <option value="india">India</option>
+                  <option value="international">International</option>
+                </select>
+                <div className="pincode-field">
+                  <MapPin size={18} />
+                  <input
+                    type="text"
+                    value={pincode}
+                    onChange={(event) => setPincode(event.target.value)}
+                    placeholder={destinationType === 'india' ? 'Enter PIN code' : 'Enter postal code'}
+                    inputMode={destinationType === 'india' ? 'numeric' : 'text'}
+                    maxLength={destinationType === 'india' ? 6 : 12}
+                  />
+                </div>
+              </div>
+              {deliveryEstimate && (
+                <div className="delivery-result">
+                  <strong>{deliveryEstimate.dates}</strong>
+                  <span>{deliveryEstimate.days} - {deliveryEstimate.label}</span>
+                  <small>{deliveryEstimate.detail}</small>
+                </div>
+              )}
             </div>
 
             <div className="add-to-cart-container">

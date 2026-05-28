@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import { useEffect } from 'react';
 import { Leaf, Droplets, Flame, Package, Heart, Users } from 'lucide-react';
 import SEO from '../components/SEO';
 import './StoryPage.css';

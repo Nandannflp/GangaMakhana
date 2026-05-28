@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useRef, useState } from 'react';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 import './ProductGallery.css';
 
@@ -13,16 +13,16 @@ export default function ProductGallery({ images, altText }) {
     setCurrentIndex((prev) => (prev - 1 + images.length) % images.length);
   };
 
-  // Simple swipe support
-  let touchStartX = 0;
+  const touchStartX = useRef(0);
+
   const handleTouchStart = (e) => {
-    touchStartX = e.changedTouches[0].screenX;
+    touchStartX.current = e.changedTouches[0].screenX;
   };
 
   const handleTouchEnd = (e) => {
     const touchEndX = e.changedTouches[0].screenX;
-    if (touchStartX - touchEndX > 50) nextImage();
-    if (touchStartX - touchEndX < -50) prevImage();
+    if (touchStartX.current - touchEndX > 50) nextImage();
+    if (touchStartX.current - touchEndX < -50) prevImage();
   };
 
   return (

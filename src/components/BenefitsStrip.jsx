@@ -1,4 +1,3 @@
-import React from 'react';
 import { Leaf, Dumbbell, Flame, MapPin } from 'lucide-react';
 import './BenefitsStrip.css';
 

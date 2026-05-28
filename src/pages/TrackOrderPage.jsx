@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from 'react';
-import { Search, Package, CheckCircle, AlertCircle } from 'lucide-react';
+import { useEffect, useState } from 'react';
+import { Search, Package, AlertCircle } from 'lucide-react';
 import SEO from '../components/SEO';
 import './LegalPage.css';
 

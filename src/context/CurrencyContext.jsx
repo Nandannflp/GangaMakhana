@@ -1,6 +1,7 @@
-import React, { createContext, useContext, useState, useEffect } from 'react';
+import { createContext, useContext, useState, useEffect } from 'react';
 
 const CurrencyContext = createContext();
+const SUPPORTED_CURRENCIES = ['INR', 'USD', 'EUR', 'GBP', 'AUD', 'CAD', 'SGD', 'AED'];
 
 export function useCurrency() {
   return useContext(CurrencyContext);
@@ -10,8 +11,6 @@ export function CurrencyProvider({ children }) {
   const [currency, setCurrency] = useState('INR');
   const [rates, setRates] = useState({ INR: 1 });
   const [loading, setLoading] = useState(true);
-
-  const SUPPORTED_CURRENCIES = ['INR', 'USD', 'EUR', 'GBP', 'AUD', 'CAD', 'SGD', 'AED'];
 
   useEffect(() => {
     const initializeCurrency = async () => {
