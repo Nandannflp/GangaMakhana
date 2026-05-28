@@ -193,7 +193,7 @@
 
 .input-group input {
   width: 100%;
-  padding: 14px 16px;
+  padding: 14px 16px 14px 48px;
   border: 1px solid #e2e8f0;
   border-radius: var(--radius-sm);
   font-family: var(--font-secondary);
