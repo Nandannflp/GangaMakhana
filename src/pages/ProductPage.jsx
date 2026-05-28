@@ -23,6 +23,7 @@ export default function ProductPage() {
   const [selectedQuantity, setSelectedQuantity] = useState('250g');
   const [pincode, setPincode] = useState('');
   const [destinationType, setDestinationType] = useState('india');
+  const [imageError, setImageError] = useState(false);
 
   const product = products.find(p => p.id === id);
   const { averageRating, totalReviews } = useReviews(id);
@@ -32,6 +33,7 @@ export default function ProductPage() {
       navigate('/');
     }
     window.scrollTo(0, 0);
+    setImageError(false);
   }, [id, product, navigate]);
 
   if (!product) return null;
@@ -349,12 +351,14 @@ export default function ProductPage() {
           </div>
         </div>
 
-        {product.id === 'chocolate-makhana' && (
+
+        {!imageError && (
           <div className="product-infographic" style={{ marginTop: '40px', marginBottom: '10px', textAlign: 'center' }}>
             <img 
-              src="/images/products/chocolate-infographic.jpg" 
-              alt="Chocolate Makhana Features" 
+              src={`/images/products/${product.id}-infographic.jpg`} 
+              alt={`${product.name} Features`} 
               style={{ maxWidth: '100%', height: 'auto', borderRadius: '16px', boxShadow: '0 10px 30px rgba(0,0,0,0.08)' }} 
+              onError={() => setImageError(true)}
             />
           </div>
         )}
