@@ -1,5 +1,6 @@
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import Navbar from './components/Navbar';
+import BenefitsStrip from './components/BenefitsStrip';
 import Footer from './components/Footer';
 import WhatsAppButton from './components/WhatsAppButton';
 import HomePage from './pages/HomePage';
@@ -21,6 +22,7 @@ import './App.css';
 function App() {
   return (
     <Router>
+      <BenefitsStrip />
       <Navbar />
       <WhatsAppButton />
       <Routes>
