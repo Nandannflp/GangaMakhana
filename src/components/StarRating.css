@@ -1,0 +1,28 @@
+.star-rating {
+  display: inline-flex;
+  align-items: center;
+}
+
+.star {
+  transition: transform 0.1s ease;
+}
+
+.star.interactive {
+  cursor: pointer;
+}
+
+.star.interactive:hover {
+  transform: scale(1.15);
+}
+
+.star-empty path {
+  fill: #FFFFFF;
+}
+
+.star-full path {
+  fill: #D4AF37;
+}
+
+.star-half path {
+  /* This relies on the SVG defs using inline style in JSX */
+}

@@ -2,12 +2,15 @@ import { useState } from 'react';
 import { ShoppingBag, Plus, Minus, Info, X } from 'lucide-react';
 import { useCart } from '../context/CartContext';
 import { useCurrency } from '../context/CurrencyContext';
+import { useReviews } from '../hooks/useReviews';
 import { Link } from 'react-router-dom';
+import StarRating from './StarRating';
 import './ProductCard.css';
 
 export default function ProductCard({ product }) {
   const { cart, addToCart, updateQuantity } = useCart();
   const { formatPrice } = useCurrency();
+  const { averageRating, totalReviews } = useReviews(product.id);
   const [showNutrition, setShowNutrition] = useState(false);
   
   const cartItem = cart.find(item => item.id === product.id);
@@ -71,6 +74,21 @@ export default function ProductCard({ product }) {
               </button>
             )}
           </div>
+          
+          <div className="product-card-rating" style={{ marginBottom: '8px' }}>
+            {averageRating > 0 ? (
+              <a href={`/product/${product.id}#reviews`} onClick={(e) => e.stopPropagation()} style={{ textDecoration: 'none', display: 'flex', alignItems: 'center', gap: '6px' }}>
+                <StarRating rating={averageRating} size={14} />
+                <span style={{ fontSize: '0.8rem', color: 'var(--color-text-light)' }}>({totalReviews})</span>
+              </a>
+            ) : (
+              <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
+                <StarRating rating={0} size={14} />
+                <span style={{ fontSize: '0.8rem', color: 'var(--color-text-light)' }}>No reviews</span>
+              </div>
+            )}
+          </div>
+
           <p className="product-note">{product.tagline}</p>
 
           <div className="product-meta flex justify-between items-center">

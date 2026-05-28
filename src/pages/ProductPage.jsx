@@ -7,6 +7,9 @@ import { useCurrency } from '../context/CurrencyContext';
 import SEO from '../components/SEO';
 import ProductGallery from '../components/ProductGallery';
 import RelatedProducts from '../components/RelatedProducts';
+import StarRating from '../components/StarRating';
+import ProductReviews from '../components/ProductReviews';
+import { useReviews } from '../hooks/useReviews';
 import './ProductPage.css';
 
 export default function ProductPage() {
@@ -22,6 +25,7 @@ export default function ProductPage() {
   const [destinationType, setDestinationType] = useState('india');
 
   const product = products.find(p => p.id === id);
+  const { averageRating, totalReviews } = useReviews(id);
 
   useEffect(() => {
     if (!product) {
@@ -132,6 +136,23 @@ export default function ProductPage() {
             </div>
 
             <h1 style={{ color: product.colorTheme.primary }}>{displayName}</h1>
+            
+            <div className="product-page-rating" style={{ marginBottom: '15px' }}>
+              {averageRating > 0 ? (
+                <a href="#reviews" style={{ textDecoration: 'none', display: 'flex', alignItems: 'center', gap: '8px' }}>
+                  <StarRating rating={averageRating} size={18} />
+                  <span style={{ color: 'var(--color-text)', fontWeight: '500' }}>
+                    {averageRating.toFixed(1)} <span style={{ color: 'var(--color-text-light)', fontWeight: 'normal' }}>({totalReviews} reviews)</span>
+                  </span>
+                </a>
+              ) : (
+                <a href="#reviews" style={{ textDecoration: 'none', display: 'flex', alignItems: 'center', gap: '8px' }}>
+                  <StarRating rating={0} size={18} />
+                  <span style={{ color: 'var(--color-text-light)' }}>Write a review</span>
+                </a>
+              )}
+            </div>
+
             <p className="product-tagline">{product.tagline}</p>
 
             <div className="product-price-weight">
@@ -327,6 +348,8 @@ export default function ProductPage() {
             </div>
           </div>
         </div>
+
+        <ProductReviews productId={product.id} themeColor={product.colorTheme.primary} />
 
         <RelatedProducts currentProductId={product.id} />
 
