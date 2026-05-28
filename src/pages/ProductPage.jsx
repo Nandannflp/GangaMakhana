@@ -6,7 +6,6 @@ import { useCart } from '../context/CartContext';
 import { useCurrency } from '../context/CurrencyContext';
 import SEO from '../components/SEO';
 import ProductGallery from '../components/ProductGallery';
-import ProductReviews from '../components/ProductReviews';
 import RelatedProducts from '../components/RelatedProducts';
 import './ProductPage.css';
 
@@ -329,8 +328,6 @@ export default function ProductPage() {
           </div>
         </div>
 
-        <ProductReviews reviews={product.reviews} />
-        
         <RelatedProducts currentProductId={product.id} />
 
       </div>

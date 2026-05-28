@@ -54,16 +54,7 @@ export const products = [
       "/images/products/pudina-back.png",
       "/images/products/pudina-texture.png",
       "/images/products/pudina-lifestyle.png"
-    ],
-    reviews: {
-      rating: 4.8,
-      count: 124,
-      breakdown: { taste: 5, packaging: 4.5, freshness: 5, repeat: 4.8 },
-      comments: [
-        { name: "Sneha R.", date: "May 12, 2026", rating: 5, text: "Such a refreshing flavor! The crunch is incredibly addictive, and it feels like a very light snack. Highly recommended." },
-        { name: "Kunal M.", date: "May 05, 2026", rating: 5, text: "Perfect balance of tanginess and mint. I eat these every evening with my tea." }
-      ]
-    }
+    ]
   },
   {
     id: "classic-roasted-makhana",
@@ -117,16 +108,7 @@ export const products = [
       "/images/products/normal-back.png",
       "/images/products/normal-texture.png",
       "/images/products/normal-lifestyle.png"
-    ],
-    reviews: {
-      rating: 4.9,
-      count: 312,
-      breakdown: { taste: 5, packaging: 5, freshness: 5, repeat: 4.9 },
-      comments: [
-        { name: "Priya Menon", date: "May 20, 2026", rating: 5, text: "Export quality indeed! The crunch is unbelievable. I appreciate the transparent sourcing from Bihar farms. Highly recommend the Classic flavor for diet-conscious folks." },
-        { name: "Arjun S.", date: "April 18, 2026", rating: 5, text: "The natural taste is preserved perfectly. My everyday go-to snack." }
-      ]
-    }
+    ]
   },
   {
     id: "peri-peri-makhana",
@@ -182,16 +164,7 @@ export const products = [
       "/images/products/peri-back.png",
       "/images/products/peri-texture.png",
       "/images/products/peri-lifestyle.png"
-    ],
-    reviews: {
-      rating: 4.7,
-      count: 245,
-      breakdown: { taste: 4.8, packaging: 4.5, freshness: 4.9, repeat: 4.7 },
-      comments: [
-        { name: "Aarti Sharma", date: "May 22, 2026", rating: 5, text: "The best makhana I've ever tasted. You can really feel the quality and freshness. The Peri Peri flavor is my absolute favorite for evening snacking!" },
-        { name: "Vikram K.", date: "April 30, 2026", rating: 4, text: "Great spicy kick! Extremely addictive flavor. Could be a bit less salty, but overall fantastic." }
-      ]
-    }
+    ]
   },
   {
     id: "mint-flavoured-makhana",
@@ -246,16 +219,7 @@ export const products = [
       "/images/products/mint-back.png",
       "/images/products/mint-texture.png",
       "/images/products/mint-lifestyle.png"
-    ],
-    reviews: {
-      rating: 4.6,
-      count: 98,
-      breakdown: { taste: 4.5, packaging: 4.8, freshness: 5, repeat: 4.5 },
-      comments: [
-        { name: "Neha G.", date: "May 15, 2026", rating: 5, text: "Such a cool flavor! Very refreshing taste and the seasoning is perfectly balanced." },
-        { name: "Rohan P.", date: "March 12, 2026", rating: 4, text: "A great light snack. I love taking this to work." }
-      ]
-    }
+    ]
   },
   {
     id: "chocolate-makhana",
@@ -311,16 +275,7 @@ export const products = [
       "/images/products/choco-back.png",
       "/images/products/choco-texture.png",
       "/images/products/choco-lifestyle.png"
-    ],
-    reviews: {
-      rating: 4.9,
-      count: 410,
-      breakdown: { taste: 5, packaging: 4.8, freshness: 4.9, repeat: 5 },
-      comments: [
-        { name: "Rahul Desai", date: "May 24, 2026", rating: 5, text: "I love that these are naturally sourced and don't have that artificial oily taste. Perfect guilt-free snack for my kids. The Chocolate flavor is a huge hit." },
-        { name: "Simran A.", date: "April 02, 2026", rating: 5, text: "Such a premium chocolate flavor. It tastes like a high-end dessert but it's just makhana!" }
-      ]
-    }
+    ]
   },
   {
     id: "onion-makhana",
@@ -376,16 +331,7 @@ export const products = [
       "/images/products/onion-back.png",
       "/images/products/onion-texture.png",
       "/images/products/onion-lifestyle.png"
-    ],
-    reviews: {
-      rating: 4.8,
-      count: 180,
-      breakdown: { taste: 4.9, packaging: 4.8, freshness: 5, repeat: 4.6 },
-      comments: [
-        { name: "Deepak S.", date: "May 10, 2026", rating: 5, text: "Such a savory flavor! It is absolutely perfect with my evening masala chai. Flavorful crunch." },
-        { name: "Anita K.", date: "March 28, 2026", rating: 5, text: "The aroma when you open the packet is amazing. Very high quality seasoning." }
-      ]
-    }
+    ]
   },
   {
     id: "raw-makhana",
@@ -434,15 +380,7 @@ export const products = [
       "/images/products/normal-back.png",
       "/images/products/normal-texture.png",
       "/images/products/normal-lifestyle.png"
-    ],
-    reviews: {
-      rating: 4.8,
-      count: 56,
-      breakdown: { taste: 5, packaging: 4.8, freshness: 5, repeat: 4.7 },
-      comments: [
-        { name: "Rahul S.", date: "Feb 10, 2026", rating: 5, text: "Excellent quality raw makhana. Very large size!" }
-      ]
-    }
+    ]
   },
   {
     id: "jumbo-makhana-raw",
@@ -491,14 +429,6 @@ export const products = [
       "/images/products/normal-back.png",
       "/images/products/normal-texture.png",
       "/images/products/normal-lifestyle.png"
-    ],
-    reviews: {
-      rating: 5.0,
-      count: 24,
-      breakdown: { taste: 5, packaging: 5, freshness: 5, repeat: 5 },
-      comments: [
-        { name: "Sunita M.", date: "Jan 15, 2026", rating: 5, text: "Truly jumbo size! Made amazing kheer with this." }
-      ]
-    }
+    ]
   }
 ];
