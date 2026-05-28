@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
-import { Mail, Lock, Phone, User, ArrowRight } from 'lucide-react';
+import { Mail, Lock, Phone, User, ArrowRight, Eye, EyeOff } from 'lucide-react';
 import './LoginPage.css';
 
 export default function LoginPage() {
@@ -14,6 +14,7 @@ export default function LoginPage() {
   const [otpSent, setOtpSent] = useState(false);
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(false);
+  const [showPassword, setShowPassword] = useState(false);
 
   const { login, signup, signInWithGoogle, setupRecaptcha, signInWithPhone, currentUser } = useAuth();
   const navigate = useNavigate();
@@ -166,13 +167,21 @@ export default function LoginPage() {
               <div className="input-group">
                 <Lock className="input-icon" size={20} />
                 <input 
-                  type="password" 
+                  type={showPassword ? 'text' : 'password'} 
                   placeholder="Password" 
                   value={password} 
                   onChange={(e) => setPassword(e.target.value)} 
                   required 
                   minLength="6"
                 />
+                <button 
+                  type="button"
+                  className="password-toggle-btn"
+                  onClick={() => setShowPassword(!showPassword)}
+                  style={{ position: 'absolute', right: '16px', background: 'none', border: 'none', color: 'var(--color-text-light)', opacity: 0.6, cursor: 'pointer', display: 'flex', alignItems: 'center', padding: 0 }}
+                >
+                  {showPassword ? <EyeOff size={20} /> : <Eye size={20} />}
+                </button>
               </div>
 
               {authMode === 'login' && (
