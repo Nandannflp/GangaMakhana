@@ -79,22 +79,7 @@ export default function BenefitsStrip() {
       }}
     >
       <div className="pointer-events-none absolute inset-x-0 top-0 h-20 bg-gradient-to-b from-white/35 to-transparent" />
-      <div className="container">
-        <div className="mb-8 text-center">
-          <span
-            className="mb-4 inline-flex items-center rounded-full border border-[rgba(26,67,49,0.12)] bg-white/70 px-4 py-2 text-sm font-medium text-[var(--color-primary)] backdrop-blur"
-            style={{ fontFamily: 'var(--font-primary)' }}
-          >
-            Why Makhana Works
-          </span>
-          <h2 className="section-title mx-auto max-w-3xl">
-            More than a healthy snack, makhana brings together Bihar heritage, clean crunch, and everyday versatility.
-          </h2>
-          <p className="section-subtitle max-w-3xl">
-            A quick look at what makes makhana special, from Bihar sourcing to the light roasted crunch people keep coming back for.
-          </p>
-        </div>
-
+      <div className="w-full overflow-hidden">
         <Marquee
           pauseOnHover
           duration={34}

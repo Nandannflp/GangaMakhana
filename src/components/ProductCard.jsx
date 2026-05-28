@@ -76,6 +76,9 @@ export default function ProductCard({ product }) {
           <div className="product-meta flex justify-between items-center">
             <div className="product-price">
               <span className="price-currency">{currencySymbol} </span><span className="price-val">{priceNumber}</span>
+              <span className="price-weight" style={{ fontSize: '0.85rem', color: 'var(--color-text-light)', marginLeft: '6px', fontWeight: 'normal' }}>
+                / {product.weight}
+              </span>
             </div>
           </div>
 
