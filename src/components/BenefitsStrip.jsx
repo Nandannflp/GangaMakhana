@@ -87,25 +87,20 @@ export default function BenefitsStrip() {
           fadeAmount={6}
         >
           {marqueeItems.map((item) => (
-            <article
+            <div
               key={item.title}
-              className="mx-3 flex min-h-[128px] w-[320px] shrink-0 items-start gap-4 rounded-[24px] border border-[rgba(26,67,49,0.08)] bg-white/92 p-5 shadow-[0_14px_34px_-24px_rgba(26,67,49,0.28)]"
+              className="mx-8 flex shrink-0 items-center gap-3"
             >
-              <div className="flex h-14 w-14 shrink-0 items-center justify-center rounded-full bg-[rgba(212,175,55,0.14)] text-[var(--color-primary)]">
+              <div className="text-[var(--color-primary)]">
                 {item.icon}
               </div>
-              <div>
-                <h3
-                  className="mb-1 text-[1.15rem] font-semibold leading-tight text-[var(--color-text)]"
-                  style={{ fontFamily: 'var(--font-primary)' }}
-                >
-                  {item.title}
-                </h3>
-                <p className="text-sm leading-6 text-[var(--color-text-light)]">
-                  {item.description}
-                </p>
-              </div>
-            </article>
+              <span
+                className="text-xl font-medium text-[var(--color-text)] whitespace-nowrap"
+                style={{ fontFamily: 'var(--font-primary)' }}
+              >
+                {item.title}
+              </span>
+            </div>
           ))}
         </Marquee>
       </div>
