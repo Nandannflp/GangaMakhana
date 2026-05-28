@@ -349,6 +349,16 @@ export default function ProductPage() {
           </div>
         </div>
 
+        {product.id === 'chocolate-makhana' && (
+          <div className="product-infographic" style={{ marginTop: '40px', marginBottom: '10px', textAlign: 'center' }}>
+            <img 
+              src="/images/products/chocolate-infographic.jpg" 
+              alt="Chocolate Makhana Features" 
+              style={{ maxWidth: '100%', height: 'auto', borderRadius: '16px', boxShadow: '0 10px 30px rgba(0,0,0,0.08)' }} 
+            />
+          </div>
+        )}
+
         <ProductReviews productId={product.id} themeColor={product.colorTheme.primary} />
 
         <RelatedProducts currentProductId={product.id} />
