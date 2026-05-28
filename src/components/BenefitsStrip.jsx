@@ -69,37 +69,30 @@ export default function BenefitsStrip() {
   ];
 
   return (
-    <section
-      className="relative overflow-hidden py-16"
-      style={{
-        background:
-          'radial-gradient(circle at top left, rgba(212, 175, 55, 0.12), transparent 24%), linear-gradient(180deg, #f8f3ea 0%, #fdfaf4 48%, #f5efe4 100%)',
-        borderTop: '1px solid rgba(212, 175, 55, 0.12)',
-        borderBottom: '1px solid rgba(212, 175, 55, 0.12)',
-      }}
-    >
-      <div className="pointer-events-none absolute inset-x-0 top-0 h-20 bg-gradient-to-b from-white/35 to-transparent" />
-      <div className="w-full overflow-hidden">
+    <section className="bg-[var(--color-primary)] py-4 border-y border-[rgba(212,175,55,0.2)] overflow-hidden">
+      <div className="w-full">
         <Marquee
           pauseOnHover
-          duration={34}
-          className="py-3"
-          fadeAmount={6}
+          duration={35}
+          className="py-1"
+          fadeAmount={0}
         >
-          {marqueeItems.map((item) => (
+          {marqueeItems.map((item, index) => (
             <div
-              key={item.title}
-              className="mx-8 flex shrink-0 items-center gap-3"
+              key={index}
+              className="flex shrink-0 items-center gap-3 px-10"
             >
-              <div className="text-[var(--color-primary)]">
+              <div className="text-[#D4AF37] flex items-center justify-center">
                 {item.icon}
               </div>
               <span
-                className="text-xl font-medium text-[var(--color-text)] whitespace-nowrap"
-                style={{ fontFamily: 'var(--font-primary)' }}
+                className="text-[0.95rem] uppercase tracking-[0.15em] font-semibold text-white whitespace-nowrap"
               >
                 {item.title}
               </span>
+              <div className="text-[#D4AF37]/40 ml-10 text-xs">
+                ✦
+              </div>
             </div>
           ))}
         </Marquee>
