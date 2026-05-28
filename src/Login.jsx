@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Link } from "react-router-dom";
 import { login, googleLogin, sendOtp, verifyOtp } from "./auth";
 import "./pages/LoginPage.css";
 
@@ -158,13 +159,12 @@ function Login() {
             </div>
           )}
 
-          {/* Footer */}
           <div className="auth-footer">
             <p>
               Don't have an account?{" "}
-              <a href="/signup" className="primary-text">
+              <Link to="/signup" className="primary-text">
                 Sign up
-              </a>
+              </Link>
             </p>
           </div>
 
