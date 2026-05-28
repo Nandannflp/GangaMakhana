@@ -3,7 +3,6 @@ import BenefitsStrip from '../components/BenefitsStrip';
 import ShopSection from '../components/ShopSection';
 import FlavorShowcase from '../components/FlavorShowcase';
 import AboutSection from '../components/AboutSection';
-import StoryTeaser from '../components/StoryTeaser';
 import SEO from '../components/SEO';
 
 export default function HomePage() {
@@ -18,7 +17,6 @@ export default function HomePage() {
       <FlavorShowcase />
       <ShopSection />
       <AboutSection />
-      <StoryTeaser />
     </>
   );
 }

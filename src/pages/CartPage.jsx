@@ -101,7 +101,7 @@ export default function CartPage() {
               <span>{formatPrice(total)}</span>
             </div>
 
-            <button className="btn-primary btn-checkout">Proceed to Checkout</button>
+            <Link to="/checkout" className="btn-primary btn-checkout">Proceed to Checkout</Link>
             
             <div className="secure-checkout">
               <p>🔒 Secure Encrypted Checkout</p>

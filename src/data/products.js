@@ -51,9 +51,7 @@ export const products = [
     ],
     images: [
       "/images/products/pudina-front.png",
-      "/images/products/pudina-back.png",
-      "/images/products/pudina-texture.png",
-      "/images/products/pudina-lifestyle.png"
+      "/images/products/pudina-back.png"
     ]
   },
   {
@@ -105,9 +103,7 @@ export const products = [
     ],
     images: [
       "/images/products/normal-front.png",
-      "/images/products/normal-back.png",
-      "/images/products/normal-texture.png",
-      "/images/products/normal-lifestyle.png"
+      "/images/products/normal-back.png"
     ]
   },
   {
@@ -161,9 +157,7 @@ export const products = [
     ],
     images: [
       "/images/products/peri-front.png",
-      "/images/products/peri-back.png",
-      "/images/products/peri-texture.png",
-      "/images/products/peri-lifestyle.png"
+      "/images/products/peri-back.png"
     ]
   },
   {
@@ -216,9 +210,7 @@ export const products = [
     ],
     images: [
       "/images/products/mint-front.png",
-      "/images/products/mint-back.png",
-      "/images/products/mint-texture.png",
-      "/images/products/mint-lifestyle.png"
+      "/images/products/mint-back.png"
     ]
   },
   {
@@ -272,9 +264,7 @@ export const products = [
     ],
     images: [
       "/images/products/choco-front.png",
-      "/images/products/choco-back.png",
-      "/images/products/choco-texture.png",
-      "/images/products/choco-lifestyle.png"
+      "/images/products/choco-back.png"
     ]
   },
   {
@@ -328,9 +318,7 @@ export const products = [
     ],
     images: [
       "/images/products/onion-front.png",
-      "/images/products/onion-back.png",
-      "/images/products/onion-texture.png",
-      "/images/products/onion-lifestyle.png"
+      "/images/products/onion-back.png"
     ]
   },
   {
@@ -377,9 +365,7 @@ export const products = [
     ],
     images: [
       "/images/products/normal-front.png",
-      "/images/products/normal-back.png",
-      "/images/products/normal-texture.png",
-      "/images/products/normal-lifestyle.png"
+      "/images/products/normal-back.png"
     ]
   },
   {
@@ -426,9 +412,7 @@ export const products = [
     ],
     images: [
       "/images/products/normal-front.png",
-      "/images/products/normal-back.png",
-      "/images/products/normal-texture.png",
-      "/images/products/normal-lifestyle.png"
+      "/images/products/normal-back.png"
     ]
   }
 ];

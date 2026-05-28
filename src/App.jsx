@@ -7,6 +7,7 @@ import ShopPage from './pages/ShopPage';
 import WholesalePage from './pages/WholesalePage';
 import LoginPage from './pages/LoginPage';
 import CartPage from './pages/CartPage';
+import CheckoutPage from './pages/CheckoutPage';
 import StoryPage from './pages/StoryPage';
 import ProductPage from './pages/ProductPage';
 import FAQPage from './pages/FAQPage';
@@ -28,6 +29,7 @@ function App() {
         <Route path="/wholesale" element={<WholesalePage />} />
         <Route path="/login" element={<LoginPage />} />
         <Route path="/cart" element={<CartPage />} />
+        <Route path="/checkout" element={<CheckoutPage />} />
         <Route path="/story" element={<StoryPage />} />
         <Route path="/product/:id" element={<ProductPage />} />
         <Route path="/faq" element={<FAQPage />} />
