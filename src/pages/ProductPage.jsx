@@ -357,7 +357,7 @@ export default function ProductPage() {
             <img 
               src={`/images/products/${product.id}-infographic.jpg`} 
               alt={`${product.name} Features`} 
-              style={{ maxWidth: '100%', height: 'auto', borderRadius: '16px', boxShadow: '0 10px 30px rgba(0,0,0,0.08)' }} 
+              style={{ display: 'block', margin: '0 auto', maxWidth: '100%', height: 'auto', borderRadius: '16px', boxShadow: '0 10px 30px rgba(0,0,0,0.08)' }} 
               onError={() => setImageError(true)}
             />
           </div>
