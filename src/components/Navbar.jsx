@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
-import { ShoppingBag, Menu, X } from 'lucide-react';
-import { Link } from 'react-router-dom';
+import { ShoppingBag, Menu, X, User } from 'lucide-react';
+import { Link, useNavigate } from 'react-router-dom';
 import { useCart } from '../context/CartContext';
 import { useCurrency } from '../context/CurrencyContext';
 import { useAuth } from '../context/AuthContext';
@@ -11,14 +11,22 @@ export default function Navbar() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const { getCartCount } = useCart();
   const { currency, setCurrency, supportedCurrencies } = useCurrency();
-  const { currentUser, logout } = useAuth();
+  const { currentUser } = useAuth();
   const cartCount = getCartCount();
+  const navigate = useNavigate();
 
   useEffect(() => {
     const handleScroll = () => setIsScrolled(window.scrollY > 50);
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
+
+  const handleCartClick = (e) => {
+    if (!currentUser) {
+      e.preventDefault();
+      navigate('/login');
+    }
+  };
 
   return (
     <nav className={`navbar ${isScrolled ? 'scrolled' : ''}`}>
@@ -38,7 +46,9 @@ export default function Navbar() {
 
         <div className="navbar-actions">
           {currentUser ? (
-            <button onClick={logout} className="text-btn">Logout</button>
+            <Link to="/profile" className="nav-icon-btn profile-link">
+              <User size={22} color="var(--color-text)" />
+            </Link>
           ) : (
             <Link to="/login" className="text-btn" style={{ fontWeight: 500 }}>Login</Link>
           )}
@@ -53,10 +63,15 @@ export default function Navbar() {
             ))}
           </select>
           
-          <Link to="/cart" className="btn-primary cart-btn-elongated">
+          <Link 
+            to="/cart" 
+            onClick={handleCartClick}
+            className={`btn-primary cart-btn-elongated ${!currentUser ? 'disabled-cart' : ''}`}
+            title={!currentUser ? "Login to access cart" : ""}
+          >
             <ShoppingBag size={18} color="#ffffff" />
             <span>Cart</span>
-            {cartCount > 0 && <span className="cart-badge-inline">{cartCount}</span>}
+            {currentUser && cartCount > 0 && <span className="cart-badge-inline">{cartCount}</span>}
           </Link>
 
           <button className="nav-icon-btn mobile-menu-trigger" onClick={() => setMobileMenuOpen(true)}>
@@ -80,6 +95,11 @@ export default function Navbar() {
             <li><Link to="/shop" onClick={() => setMobileMenuOpen(false)}>Shop</Link></li>
             <li><Link to="/story" onClick={() => setMobileMenuOpen(false)}>Our Story</Link></li>
             <li><Link to="/wholesale" onClick={() => setMobileMenuOpen(false)}>Wholesale</Link></li>
+            {currentUser ? (
+              <li><Link to="/profile" onClick={() => setMobileMenuOpen(false)}>Profile</Link></li>
+            ) : (
+              <li><Link to="/login" onClick={() => setMobileMenuOpen(false)}>Login</Link></li>
+            )}
           </ul>
         </div>
       </div>

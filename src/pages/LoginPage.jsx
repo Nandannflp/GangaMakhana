@@ -1,5 +1,5 @@
 import { useRef, useState, useEffect } from 'react';
-import { useNavigate, useLocation } from 'react-router-dom';
+import { useNavigate, useLocation, Link } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
 import { Mail, Lock, Phone, User, ArrowRight, Eye, EyeOff } from 'lucide-react';
 import './LoginPage.css';
@@ -187,7 +187,7 @@ export default function LoginPage() {
 
               {authMode === 'login' && (
                 <div className="forgot-password">
-                  <a href="#">Forgot password?</a>
+                  <Link to="/forgot-password">Forgot password?</Link>
                 </div>
               )}
 

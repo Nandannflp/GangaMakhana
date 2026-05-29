@@ -4,6 +4,8 @@ import { ChevronDown, ChevronUp, ShoppingBag, MessageCircle, CheckCircle2, MapPi
 import { products } from '../data/products';
 import { useCart } from '../context/CartContext';
 import { useCurrency } from '../context/CurrencyContext';
+import { useAuth } from '../context/AuthContext';
+import { getDeliveryEstimate } from '../lib/delivery';
 import SEO from '../components/SEO';
 import ProductGallery from '../components/ProductGallery';
 import RelatedProducts from '../components/RelatedProducts';
@@ -17,6 +19,8 @@ export default function ProductPage() {
   const navigate = useNavigate();
   const { addToCart } = useCart();
   const { formatPrice } = useCurrency();
+  const { currentUser, userProfile } = useAuth();
+  
   const [qty, setQty] = useState(1);
   const [activeAccordion, setActiveAccordion] = useState('ingredients');
   const [selectedSize, setSelectedSize] = useState('Small');
@@ -36,6 +40,12 @@ export default function ProductPage() {
     setImageError(false);
   }, [id, product, navigate]);
 
+  useEffect(() => {
+    if (userProfile?.defaultPincode) {
+      setPincode(userProfile.defaultPincode);
+    }
+  }, [userProfile]);
+
   if (!product) return null;
 
   const displayName = product.name;
@@ -52,57 +62,26 @@ export default function ProductPage() {
   const currentPrice = sizePrices[selectedSize] * quantityMultipliers[selectedQuantity];
   const selectedVariantLabel = `${selectedSize} size / ${selectedQuantity}`;
 
-  const getDeliveryEstimate = () => {
-    const cleanedPincode = pincode.trim();
-
-    if (!cleanedPincode) {
-      return null;
-    }
-
-    const now = new Date();
-    let range = [10, 15];
-    let label = 'International delivery';
-    let detail = 'Estimated courier time for international shipments.';
-
-    if (destinationType === 'india' && /^\d{6}$/.test(cleanedPincode)) {
-      const zone = Number(cleanedPincode[0]);
-
-      if ([8].includes(zone)) {
-        range = [2, 3];
-        label = 'Bihar and nearby states';
-        detail = 'Fastest courier route from Bihar.';
-      } else if ([7, 9].includes(zone)) {
-        range = [3, 5];
-        label = 'Eastern and northern India';
-        detail = 'Regional courier route from Bihar.';
-      } else {
-        range = [6, 8];
-        label = 'Long-distance domestic delivery';
-        detail = 'Estimated courier time from Bihar to this PIN code.';
-      }
-    }
-
-    const formatDate = (offsetDays) => {
-      const date = new Date(now);
-      date.setDate(date.getDate() + offsetDays);
-      return date.toLocaleDateString('en-IN', {
-        day: 'numeric',
-        month: 'short'
-      });
+  let deliveryEstimate = null;
+  if (destinationType === 'india' && pincode.length === 6) {
+    const est = getDeliveryEstimate(pincode);
+    deliveryEstimate = {
+      dates: est.formattedText,
+      days: `${est.daysMin}-${est.daysMax} days`,
+      label: 'Estimated Delivery',
+      detail: 'Based on your PIN code.'
     };
-
-    return {
-      days: `${range[0]}-${range[1]} days`,
-      dates: `${formatDate(range[0])} - ${formatDate(range[1])}`,
-      label,
-      detail
+  } else if (destinationType === 'international') {
+    deliveryEstimate = {
+      dates: '10-15 Business Days',
+      days: '10-15 days',
+      label: 'International delivery',
+      detail: 'Estimated courier time for international shipments.'
     };
-  };
-
-  const deliveryEstimate = getDeliveryEstimate();
+  }
 
   const handleAddToCart = () => {
-    addToCart({
+    const result = addToCart({
       id: `${product.id}-${selectedSize.toLowerCase()}-${selectedQuantity}`,
       productId: product.id,
       flavor: displayName,
@@ -114,6 +93,10 @@ export default function ProductPage() {
       imgFront: product.images[0],
       image: product.images[0]
     }, qty);
+
+    if (result && result.requireLogin) {
+      navigate('/login');
+    }
   };
 
   const toggleAccordion = (section) => {

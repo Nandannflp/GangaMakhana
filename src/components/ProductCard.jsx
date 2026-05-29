@@ -3,7 +3,7 @@ import { ShoppingBag, Plus, Minus, Info, X } from 'lucide-react';
 import { useCart } from '../context/CartContext';
 import { useCurrency } from '../context/CurrencyContext';
 import { useReviews } from '../hooks/useReviews';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import StarRating from './StarRating';
 import './ProductCard.css';
 
@@ -12,17 +12,22 @@ export default function ProductCard({ product }) {
   const { formatPrice } = useCurrency();
   const { averageRating, totalReviews } = useReviews(product.id);
   const [showNutrition, setShowNutrition] = useState(false);
+  const navigate = useNavigate();
   
   const cartItem = cart.find(item => item.id === product.id);
 
   const handleAdd = () => {
-    addToCart({
+    const result = addToCart({
       id: product.id,
       flavor: product.flavor,
       price: product.price,
       weight: product.weight,
       imgFront: product.images[0]
     });
+    
+    if (result && result.requireLogin) {
+      navigate('/login');
+    }
   };
 
   // Extract numeric price and format manually to split symbol from value
