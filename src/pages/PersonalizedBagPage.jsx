@@ -66,7 +66,7 @@ export default function PersonalizedBagPage() {
     
     makhanaContainerRef.current.innerHTML = '';
     
-    let count = Math.min(20 * (qtyGrams / 250), 150); // scale by weight, max 150 particles
+    let count = Math.min(20 * (quantityGrams / 250), 150); // scale by weight, max 150 particles
 
     for (let i = 0; i < count; i++) {
       const particle = document.createElement('img');
