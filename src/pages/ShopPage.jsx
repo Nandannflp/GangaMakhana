@@ -4,15 +4,6 @@ import { products } from '../data/products';
 import './ShopPage.css';
 
 export default function ShopPage() {
-  const [filter, setFilter] = useState('Flavoured');
-
-  const filteredProducts = products.filter(product => {
-    const isFlavored = product.flavor !== 'Normal / Classic';
-    if (filter === 'Flavoured') return isFlavored;
-    if (filter === 'Raw/Bulk') return !isFlavored;
-    return true;
-  });
-
   return (
     <div className="shop-page page-enter">
       <div className="shop-hero">
@@ -32,31 +23,16 @@ export default function ShopPage() {
       </div>
 
       <div className="shop-content container section-padding">
-        <div className="filter-tabs">
-          <button 
-            className={`filter-btn ${filter === 'Flavoured' ? 'active' : ''}`}
-            onClick={() => setFilter('Flavoured')}
-          >
-            Flavoured
-          </button>
-          <button 
-            className={`filter-btn ${filter === 'Raw/Bulk' ? 'active' : ''}`}
-            onClick={() => setFilter('Raw/Bulk')}
-          >
-            Raw / Bulk
-          </button>
-        </div>
-
         <div className="shop-grid">
-          {filteredProducts.map(product => (
+          {products.map(product => (
             <ProductCard key={product.id} product={product} />
           ))}
         </div>
         
-        {filteredProducts.length === 0 && (
+        {products.length === 0 && (
           <div className="empty-state">
-            <h3>No products found in this category.</h3>
-            <p>Check back later or try a different filter.</p>
+            <h3>No products found.</h3>
+            <p>Check back later.</p>
           </div>
         )}
       </div>
