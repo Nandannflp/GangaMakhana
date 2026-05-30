@@ -11,7 +11,7 @@ export default function StoryTeaser() {
             <div className="story-teaser-image-placeholder">
               <div className="placeholder-pattern"></div>
               <img 
-                src="/images/about/bihar-farm.jpg" 
+                src="/images/about/bihar-farm.webp" 
                 alt="Makhana farming in Bihar" 
                 className="story-teaser-img"
                 onError={(e) => {

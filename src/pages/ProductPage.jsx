@@ -338,7 +338,7 @@ export default function ProductPage() {
         {!imageError && (
           <div className="product-infographic" style={{ marginTop: '40px', marginBottom: '10px', textAlign: 'center' }}>
             <img 
-              src={`/images/products/${product.id}-infographic.jpg`} 
+              src={`/images/products/${product.id}-infographic.webp`} 
               alt={`${product.name} Features`} 
               style={{ display: 'block', margin: '0 auto', maxWidth: '100%', height: 'auto', borderRadius: '16px', boxShadow: '0 10px 30px rgba(0,0,0,0.08)' }} 
               onError={() => setImageError(true)}
