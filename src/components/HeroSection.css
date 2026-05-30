@@ -190,4 +190,34 @@
     font-size: 0.82rem;
     border-radius: 50px;
   }
+  
+  .hero-visual {
+    height: 350px;
+  }
+  
+  .hero-product-image {
+    width: 220px;
+    height: 310px;
+  }
+  
+  .hero-blob {
+    width: 280px;
+    height: 280px;
+  }
+  
+  .pack-left {
+    transform: translateX(-70px) translateY(25px) rotate(-12deg) scale(0.85);
+  }
+  
+  .pack-right {
+    transform: translateX(70px) translateY(25px) rotate(12deg) scale(0.85);
+  }
+  
+  .hero-visual:hover .pack-left {
+    transform: translateX(-90px) translateY(15px) rotate(-18deg) scale(0.85);
+  }
+  
+  .hero-visual:hover .pack-right {
+    transform: translateX(90px) translateY(15px) rotate(18deg) scale(0.85);
+  }
 }
