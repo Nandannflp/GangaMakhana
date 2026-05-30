@@ -10,7 +10,8 @@ const QUANTITIES = ['250g', '500g', '750g', '1kg', '2kg'];
 export default function PersonalizedBagPage() {
   const [step, setStep] = useState(1);
   const [selectedFlavor, setSelectedFlavor] = useState(null);
-  const [selectedQuantity, setSelectedQuantity] = useState(null);
+  const [selectedSize, setSelectedSize] = useState('Big');
+  const [quantityGrams, setQuantityGrams] = useState(250);
   const [location, setLocation] = useState(null);
   const [isFalling, setIsFalling] = useState(false);
   const [isClipped, setIsClipped] = useState(false);
@@ -38,33 +39,30 @@ export default function PersonalizedBagPage() {
       setStep(2);
     }, 800); // Wait for the transition to finish
   };
-
+  
   const handleBackToFlavors = () => {
     setStep(1);
     setSelectedFlavor(null);
-    setSelectedQuantity(null);
+    setSelectedSize('Big');
+    setQuantityGrams(250);
     setIsFalling(false);
     setIsClipped(false);
   };
 
-  const handleSelectQuantity = (qty) => {
-    setSelectedQuantity(qty);
+  const handleFillBag = () => {
     setStep(3);
     setIsFalling(true);
-    createFallingMakhana(qty);
+    createFallingMakhana(quantityGrams);
   };
+
+  const formattedQuantity = quantityGrams >= 1000 ? `${quantityGrams / 1000}kg` : `${quantityGrams}g`;
 
   const createFallingMakhana = (qty) => {
     if (!makhanaContainerRef.current || !selectedFlavor) return;
     
     makhanaContainerRef.current.innerHTML = '';
     
-    // Determine particle count based on quantity
-    let count = 20;
-    if (qty === '500g') count = 40;
-    if (qty === '750g') count = 60;
-    if (qty === '1kg') count = 80;
-    if (qty === '2kg') count = 120;
+    let count = Math.min(20 * (qtyGrams / 250), 150); // scale by weight, max 150 particles
 
     for (let i = 0; i < count; i++) {
       const particle = document.createElement('div');
@@ -95,24 +93,19 @@ export default function PersonalizedBagPage() {
   };
 
   const handleCheckout = () => {
-    // Add custom product to cart
-    if (selectedFlavor && selectedQuantity) {
-      // Calculate a custom price based on base price (which is for 250g)
-      const basePrice = selectedFlavor.price;
-      let multiplier = 1;
-      if (selectedQuantity === '500g') multiplier = 1.9;
-      if (selectedQuantity === '750g') multiplier = 2.8;
-      if (selectedQuantity === '1kg') multiplier = 3.6;
-      if (selectedQuantity === '2kg') multiplier = 7.0;
-      
+    if (selectedFlavor) {
+      const basePrice = selectedSize === 'Big' ? 550 : 350;
+      const multiplier = quantityGrams / 250;
       const customPrice = Math.round(basePrice * multiplier);
       
       const customItem = {
         ...selectedFlavor,
-        id: `${selectedFlavor.id}-custom-${selectedQuantity}`,
-        name: `Custom ${selectedFlavor.flavor} Bag (${selectedQuantity})`,
+        id: `${selectedFlavor.id}-custom-${selectedSize.toLowerCase()}-${quantityGrams}g`,
+        name: `Custom ${selectedFlavor.flavor} Bag (${selectedSize} Size, ${formattedQuantity})`,
         price: customPrice,
-        weight: selectedQuantity,
+        weight: formattedQuantity,
+        size: selectedSize,
+        variant: `${selectedSize} size / ${formattedQuantity}`,
         imgFront: selectedFlavor.images[0]
       };
       
@@ -127,21 +120,19 @@ export default function PersonalizedBagPage() {
   };
 
   const handleAddAnother = () => {
-    // Save current to cart first
-    if (selectedFlavor && selectedQuantity) {
-      const basePrice = selectedFlavor.price;
-      let multiplier = 1;
-      if (selectedQuantity === '500g') multiplier = 1.9;
-      if (selectedQuantity === '750g') multiplier = 2.8;
-      if (selectedQuantity === '1kg') multiplier = 3.6;
-      if (selectedQuantity === '2kg') multiplier = 7.0;
+    if (selectedFlavor) {
+      const basePrice = selectedSize === 'Big' ? 550 : 350;
+      const multiplier = quantityGrams / 250;
+      const customPrice = Math.round(basePrice * multiplier);
       
       const customItem = {
         ...selectedFlavor,
-        id: `${selectedFlavor.id}-custom-${selectedQuantity}`,
-        name: `Custom ${selectedFlavor.flavor} Bag (${selectedQuantity})`,
-        price: Math.round(basePrice * multiplier),
-        weight: selectedQuantity,
+        id: `${selectedFlavor.id}-custom-${selectedSize.toLowerCase()}-${quantityGrams}g`,
+        name: `Custom ${selectedFlavor.flavor} Bag (${selectedSize} Size, ${formattedQuantity})`,
+        price: customPrice,
+        weight: formattedQuantity,
+        size: selectedSize,
+        variant: `${selectedSize} size / ${formattedQuantity}`,
         imgFront: selectedFlavor.images[0]
       };
       addToCart(customItem, 1);
@@ -150,7 +141,8 @@ export default function PersonalizedBagPage() {
     // Reset state
     setStep(1);
     setSelectedFlavor(null);
-    setSelectedQuantity(null);
+    setSelectedSize('Big');
+    setQuantityGrams(250);
     setLocation(null);
     setIsFalling(false);
     setIsClipped(false);
@@ -159,7 +151,7 @@ export default function PersonalizedBagPage() {
   const renderStepIndicator = () => {
     const steps = [
       'Choose Flavor',
-      'Select Quantity',
+      'Customize & Size',
       'Fill the Bag',
       'Clip It',
       'Order Now',
@@ -236,26 +228,70 @@ export default function PersonalizedBagPage() {
                 className="pb-real-bag-image" 
               />
               
+              <div className="pb-bag-front-design">
+                <h3>{selectedFlavor.flavor}</h3>
+                <p>{formattedQuantity}</p>
+              </div>
+              
             </div>
           </div>
         )}
 
         {/* Step 2: Select Quantity */}
         {step === 2 && (
-          <div className="pb-action-section fade-in">
-            <h2 className="pb-instruction">Select Quantity</h2>
-            <div className="pb-quantity-options">
-              {QUANTITIES.map(qty => (
+          <div className="pb-action-section fade-in pb-customization-step">
+            
+            <div className="pb-config-group">
+              <h3 className="pb-config-title">Makhana Size</h3>
+              <div className="pb-size-options">
                 <button 
-                  key={qty} 
-                  className={`pb-qty-btn ${['Mint', 'Pudina'].includes(selectedFlavor?.flavor) ? 'dark-text-on-light' : ''}`}
-                  onClick={() => handleSelectQuantity(qty)}
+                  className={`pb-size-btn ${selectedSize === 'Big' ? 'active' : ''}`}
+                  onClick={() => setSelectedSize('Big')}
+                  style={{ borderColor: selectedFlavor?.colorTheme.primary, backgroundColor: selectedSize === 'Big' ? selectedFlavor?.colorTheme.primary : 'transparent', color: selectedSize === 'Big' ? '#fff' : 'inherit' }}
+                >
+                  Big (Premium)
+                </button>
+                <button 
+                  className={`pb-size-btn ${selectedSize === 'Small' ? 'active' : ''}`}
+                  onClick={() => setSelectedSize('Small')}
+                  style={{ borderColor: selectedFlavor?.colorTheme.primary, backgroundColor: selectedSize === 'Small' ? selectedFlavor?.colorTheme.primary : 'transparent', color: selectedSize === 'Small' ? '#fff' : 'inherit' }}
+                >
+                  Small (Regular)
+                </button>
+              </div>
+            </div>
+
+            <div className="pb-config-group">
+              <h3 className="pb-config-title">Quantity (Weight)</h3>
+              <div className="pb-weight-adjuster">
+                <button 
+                  className="pb-weight-btn minus" 
+                  onClick={() => setQuantityGrams(prev => Math.max(prev - 250, 250))}
                   style={{ backgroundColor: selectedFlavor?.colorTheme.secondary }}
                 >
-                  {qty}
+                  -
                 </button>
-              ))}
+                <div className="pb-weight-display">
+                  {formattedQuantity}
+                </div>
+                <button 
+                  className="pb-weight-btn plus" 
+                  onClick={() => setQuantityGrams(prev => Math.min(prev + 250, 5000))}
+                  style={{ backgroundColor: selectedFlavor?.colorTheme.secondary }}
+                >
+                  +
+                </button>
+              </div>
+              <p style={{fontSize: '0.85rem', color: 'var(--color-text-light)', marginTop: '8px'}}>Adjust by 250g increments</p>
             </div>
+
+            <button 
+              className="pb-action-btn order-btn" 
+              onClick={handleFillBag}
+              style={{ marginTop: '20px' }}
+            >
+              Fill Bag & Continue
+            </button>
           </div>
         )}
 

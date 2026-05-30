@@ -273,32 +273,91 @@
   animation: fadeIn 0.5s ease-out forwards;
 }
 
-.pb-quantity-options {
+/* Customization Step (Size & Weight) */
+.pb-customization-step {
+  display: flex;
+  flex-direction: row;
+  gap: 30px;
+  justify-content: center;
+  flex-wrap: wrap;
+  width: 100%;
+  max-width: 600px;
+}
+
+.pb-config-group {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: rgba(255, 255, 255, 0.5);
+  padding: 20px;
+  border-radius: 15px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+  flex: 1;
+  min-width: 250px;
+}
+
+.dark-theme .pb-config-group {
+  background: rgba(0, 0, 0, 0.2);
+}
+
+.pb-config-title {
+  font-size: 1.2rem;
+  color: var(--color-primary);
+  margin-bottom: 15px;
+  margin-top: 0;
+}
+
+.pb-size-options {
   display: flex;
   gap: 15px;
-  flex-wrap: wrap;
-  justify-content: center;
 }
 
-.pb-qty-btn {
-  padding: 12px 25px;
-  border: none;
-  border-radius: 30px;
-  font-size: 1.1rem;
+.pb-size-btn {
+  padding: 10px 20px;
+  border: 2px solid;
+  border-radius: 20px;
   font-weight: 600;
-  color: var(--color-text);
   cursor: pointer;
+  transition: all 0.3s;
+}
+
+.pb-size-btn:hover {
+  transform: translateY(-2px);
   box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+.pb-weight-adjuster {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.pb-weight-btn {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: none;
+  font-size: 1.5rem;
+  font-weight: bold;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #000; /* Usually light colors like Mint, so dark text is safe, or dynamic */
   transition: transform 0.2s, box-shadow 0.2s;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
 }
 
-.pb-qty-btn:hover {
-  transform: scale(1.05);
-  box-shadow: 0 6px 15px rgba(0,0,0,0.15);
+.pb-weight-btn:hover {
+  transform: scale(1.1);
 }
 
-.dark-theme .pb-qty-btn.dark-text-on-light {
-  color: #000;
+.pb-weight-display {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--color-text);
+  min-width: 80px;
+  text-align: center;
 }
 
 .pb-action-btn {
