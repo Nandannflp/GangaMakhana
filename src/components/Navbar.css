@@ -94,6 +94,11 @@
   border-radius: 10px;
 }
 
+.dark-theme .cart-badge,
+.dark-theme .cart-badge-inline {
+  color: #000;
+}
+
 .currency-selector {
   background: transparent;
   border: 1px solid rgba(26, 67, 49, 0.2);
