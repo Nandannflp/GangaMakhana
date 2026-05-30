@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 
 export default function SettingsPanel({ onLogout }) {
   const { userProfile, updateProfileData } = useAuth();
-  const { theme, toggleTheme } = useTheme();
+  const { theme, toggleTheme, autoThemeEnabled, toggleAutoTheme } = useTheme();
 
   const handleNotificationToggle = async () => {
     const newVal = !userProfile?.notificationsEnabled;
@@ -42,6 +42,36 @@ export default function SettingsPanel({ onLogout }) {
           >
             Switch to {theme === 'dark' ? 'Light' : 'Dark'}
           </button>
+        </div>
+
+        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '15px', backgroundColor: 'var(--color-background)', borderRadius: '8px', marginTop: '10px' }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
+            {autoThemeEnabled ? <Moon size={20} color="var(--color-primary)" /> : <Sun size={20} color="var(--color-text-light)" />}
+            <div>
+              <p style={{ margin: 0, fontWeight: 500 }}>Auto Dark Mode</p>
+              <p style={{ margin: 0, fontSize: '0.85rem', color: 'var(--color-text-light)' }}>Automatically switch to dark mode in the evening based on your location</p>
+            </div>
+          </div>
+          
+          <label style={{ position: 'relative', display: 'inline-block', width: '50px', height: '24px' }}>
+            <input 
+              type="checkbox" 
+              checked={!!autoThemeEnabled}
+              onChange={(e) => toggleAutoTheme(e.target.checked)}
+              style={{ opacity: 0, width: 0, height: 0 }}
+            />
+            <span style={{
+              position: 'absolute', cursor: 'pointer', top: 0, left: 0, right: 0, bottom: 0, 
+              backgroundColor: autoThemeEnabled ? 'var(--color-primary)' : '#ccc',
+              transition: '.4s', borderRadius: '34px'
+            }}>
+              <span style={{
+                position: 'absolute', content: '""', height: '16px', width: '16px', 
+                left: autoThemeEnabled ? '30px' : '4px', bottom: '4px',
+                backgroundColor: 'white', transition: '.4s', borderRadius: '50%'
+              }}></span>
+            </span>
+          </label>
         </div>
       </div>
 

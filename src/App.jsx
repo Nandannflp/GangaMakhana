@@ -3,6 +3,7 @@ import Navbar from './components/Navbar';
 import BenefitsStrip from './components/BenefitsStrip';
 import Footer from './components/Footer';
 import WhatsAppButton from './components/WhatsAppButton';
+import ConsentBanner from './components/ConsentBanner';
 import HomePage from './pages/HomePage';
 import ShopPage from './pages/ShopPage';
 import WholesalePage from './pages/WholesalePage';
@@ -47,6 +48,7 @@ function App() {
         <Route path="*" element={<Navigate to="/" />} />
       </Routes>
       <Footer />
+      <ConsentBanner />
     </Router>
   );
 }
