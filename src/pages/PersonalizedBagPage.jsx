@@ -39,6 +39,14 @@ export default function PersonalizedBagPage() {
     }, 800); // Wait for the transition to finish
   };
 
+  const handleBackToFlavors = () => {
+    setStep(1);
+    setSelectedFlavor(null);
+    setSelectedQuantity(null);
+    setIsFalling(false);
+    setIsClipped(false);
+  };
+
   const handleSelectQuantity = (qty) => {
     setSelectedQuantity(qty);
     setStep(3);
@@ -103,7 +111,8 @@ export default function PersonalizedBagPage() {
         id: `${selectedFlavor.id}-custom-${selectedQuantity}`,
         name: `Custom ${selectedFlavor.flavor} Bag (${selectedQuantity})`,
         price: customPrice,
-        weight: selectedQuantity
+        weight: selectedQuantity,
+        imgFront: selectedFlavor.images[0]
       };
       
       addToCart(customItem, 1);
@@ -131,7 +140,8 @@ export default function PersonalizedBagPage() {
         id: `${selectedFlavor.id}-custom-${selectedQuantity}`,
         name: `Custom ${selectedFlavor.flavor} Bag (${selectedQuantity})`,
         price: Math.round(basePrice * multiplier),
-        weight: selectedQuantity
+        weight: selectedQuantity,
+        imgFront: selectedFlavor.images[0]
       };
       addToCart(customItem, 1);
     }
@@ -194,6 +204,12 @@ export default function PersonalizedBagPage() {
               );
             })}
           </div>
+          
+          {step >= 2 && (
+            <button className="pb-secondary-btn fade-in" onClick={handleBackToFlavors} style={{ marginTop: '20px' }}>
+              ← Change Flavor
+            </button>
+          )}
         </div>
 
         {/* Dynamic Open Bag area */}
@@ -231,7 +247,7 @@ export default function PersonalizedBagPage() {
               {QUANTITIES.map(qty => (
                 <button 
                   key={qty} 
-                  className="pb-qty-btn"
+                  className={`pb-qty-btn ${['Mint', 'Pudina'].includes(selectedFlavor?.flavor) ? 'dark-text-on-light' : ''}`}
                   onClick={() => handleSelectQuantity(qty)}
                   style={{ backgroundColor: selectedFlavor?.colorTheme.secondary }}
                 >

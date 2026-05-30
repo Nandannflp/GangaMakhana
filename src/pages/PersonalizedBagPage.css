@@ -296,6 +296,10 @@
   box-shadow: 0 6px 15px rgba(0,0,0,0.15);
 }
 
+.dark-theme .pb-qty-btn.dark-text-on-light {
+  color: #000;
+}
+
 .pb-action-btn {
   padding: 15px 40px;
   font-size: 1.2rem;
