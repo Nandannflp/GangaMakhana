@@ -72,7 +72,8 @@ export default function PersonalizedBagPage() {
       particle.style.backgroundColor = selectedFlavor.colorTheme.primary;
       
       // Randomize position, delay, and size
-      particle.style.left = `${Math.random() * 80 + 10}%`; // 10% to 90% width
+      // Constrain horizontal position to the center (25% to 75%) so they don't fall outside the bag
+      particle.style.left = `${Math.random() * 50 + 25}%`; 
       particle.style.animationDelay = `${Math.random() * 2}s`;
       const size = Math.random() * 15 + 15; // 15px to 30px
       particle.style.width = `${size}px`;

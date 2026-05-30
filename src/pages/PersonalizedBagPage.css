@@ -243,6 +243,7 @@
   height: 100%;
   pointer-events: none;
   z-index: 2; /* In front of inside lip, behind front image */
+  clip-path: polygon(0 -100%, 100% -100%, 100% 85%, 0 85%);
 }
 
 .makhana-particle {
