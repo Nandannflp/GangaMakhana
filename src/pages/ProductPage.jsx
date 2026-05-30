@@ -5,6 +5,7 @@ import { products } from '../data/products';
 import { useCart } from '../context/CartContext';
 import { useCurrency } from '../context/CurrencyContext';
 import { useAuth } from '../context/AuthContext';
+import { useTheme } from '../context/ThemeContext';
 import { getDeliveryEstimate } from '../lib/delivery';
 import SEO from '../components/SEO';
 import ProductGallery from '../components/ProductGallery';
@@ -20,6 +21,7 @@ export default function ProductPage() {
   const { addToCart } = useCart();
   const { formatPrice } = useCurrency();
   const { currentUser, userProfile } = useAuth();
+  const { theme } = useTheme();
   
   const [qty, setQty] = useState(1);
   const [activeAccordion, setActiveAccordion] = useState('ingredients');
@@ -104,7 +106,7 @@ export default function ProductPage() {
   };
 
   return (
-    <div className="product-page-container" style={{ backgroundColor: product.colorTheme.bg }}>
+    <div className="product-page-container" style={{ backgroundColor: theme === 'dark' ? 'var(--color-background)' : product.colorTheme.bg }}>
       <SEO title={displayName} description={product.description} />
       
       <div className="container">

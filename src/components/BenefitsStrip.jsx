@@ -86,7 +86,7 @@ export default function BenefitsStrip() {
                 {item.icon}
               </div>
               <span
-                className="text-[0.95rem] uppercase tracking-[0.15em] font-semibold text-white whitespace-nowrap"
+                className="text-[0.95rem] uppercase tracking-[0.15em] font-semibold text-[var(--color-on-primary)] whitespace-nowrap"
               >
                 {item.title}
               </span>

@@ -85,12 +85,12 @@
 
 .profile-nav button:hover {
   background-color: var(--color-background);
-  color: var(--color-primary);
+  color: var(--color-nav-active-text);
 }
 
 .profile-nav button.active {
   background-color: var(--color-primary-light);
-  color: var(--color-primary);
+  color: var(--color-nav-active-text);
 }
 
 .nav-divider {

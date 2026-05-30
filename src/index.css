@@ -9,6 +9,8 @@
   --color-accent: #D4AF37;
   --color-text: #2C352D;
   --color-text-light: #5A645B;
+  --color-on-primary: #ffffff;
+  --color-nav-active-text: var(--color-primary);
   
   --color-flavor-normal: #F5EEDB;
   --color-flavor-normal-alt: #E3D3B3;
@@ -47,6 +49,8 @@
   --color-accent: #E5C365;
   --color-text: #E0E0E0;
   --color-text-light: #A0A0A0;
+  --color-on-primary: #121212;
+  --color-nav-active-text: #121212;
   
   --color-navbar-bg: rgba(18, 18, 18, 0.95);
   --color-border: rgba(136, 201, 153, 0.1);
@@ -120,7 +124,7 @@ button {
 
 .btn-primary {
   background-color: var(--color-primary);
-  color: #fff;
+  color: var(--color-on-primary);
   padding: 16px 32px;
   border-radius: 50px;
   font-weight: 500;
@@ -159,7 +163,7 @@ button {
 
 .btn-secondary:hover {
   background-color: var(--color-primary);
-  color: #fff;
+  color: var(--color-on-primary);
   transform: translateY(-3px);
   box-shadow: 0 15px 30px -10px rgba(26, 67, 49, 0.2);
 }

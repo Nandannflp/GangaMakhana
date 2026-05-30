@@ -75,7 +75,7 @@ export default function Navbar() {
             className={`btn-primary cart-btn-elongated ${!currentUser ? 'disabled-cart' : ''}`}
             title={!currentUser ? "Login to access cart" : ""}
           >
-            <ShoppingBag size={18} color="#ffffff" />
+            <ShoppingBag size={18} />
             <span>Cart</span>
             {currentUser && cartCount > 0 && <span className="cart-badge-inline">{cartCount}</span>}
           </Link>
