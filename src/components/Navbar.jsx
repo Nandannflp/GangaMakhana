@@ -23,6 +23,10 @@ export default function Navbar() {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  const handleHomeClick = () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
   const handleCartClick = (e) => {
     if (!currentUser) {
       e.preventDefault();
@@ -34,13 +38,13 @@ export default function Navbar() {
     <nav className={`navbar ${isScrolled ? 'scrolled' : ''}`}>
       <div className="container navbar-container">
         <div className="navbar-logo">
-          <Link to="/" className="logo-link">
+          <Link to="/" className="logo-link" onClick={handleHomeClick}>
             <img src={theme === 'dark' ? "/images/logo.webp" : "/images/logo.png"} alt="Ganga Makhana Logo" className="brand-logo" />
           </Link>
         </div>
         
         <ul className="navbar-links">
-          <li><Link to="/">Home</Link></li>
+          <li><Link to="/" onClick={handleHomeClick}>Home</Link></li>
           <li><Link to="/shop">Shop</Link></li>
           <li><Link to="/story">Our Story</Link></li>
           <li><Link to="/wholesale">Wholesale</Link></li>
@@ -89,7 +93,7 @@ export default function Navbar() {
       <div className={`mobile-menu-overlay ${mobileMenuOpen ? 'open' : ''}`}>
         <div className="mobile-menu-content">
           <div className="mobile-menu-header">
-            <Link to="/" className="logo-link" onClick={() => setMobileMenuOpen(false)}>
+            <Link to="/" className="logo-link" onClick={() => { setMobileMenuOpen(false); handleHomeClick(); }}>
               <img src={theme === 'dark' ? "/images/logo.webp" : "/images/logo.png"} alt="Ganga Makhana Logo" className="brand-logo" />
             </Link>
             <button className="nav-icon-btn close-menu-btn" onClick={() => setMobileMenuOpen(false)}>
@@ -97,7 +101,7 @@ export default function Navbar() {
             </button>
           </div>
           <ul className="mobile-nav-links">
-            <li><Link to="/" onClick={() => setMobileMenuOpen(false)}>Home</Link></li>
+            <li><Link to="/" onClick={() => { setMobileMenuOpen(false); handleHomeClick(); }}>Home</Link></li>
             <li><Link to="/shop" onClick={() => setMobileMenuOpen(false)}>Shop</Link></li>
             <li><Link to="/story" onClick={() => setMobileMenuOpen(false)}>Our Story</Link></li>
             <li><Link to="/wholesale" onClick={() => setMobileMenuOpen(false)}>Wholesale</Link></li>

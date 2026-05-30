@@ -5,12 +5,18 @@ import './Footer.css';
 export default function Footer() {
   const { theme } = useTheme();
 
+  const handleHomeClick = () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
   return (
     <footer className="footer">
       <div className="container">
         <div className="footer-grid">
           <div className="footer-col brand-col">
-            <img src={theme === 'dark' ? "/images/logo.webp" : "/images/logo.png"} alt="Ganga Makhana Logo" className="footer-brand-logo" />
+            <Link to="/" onClick={handleHomeClick} style={{ display: 'inline-block' }}>
+              <img src={theme === 'dark' ? "/images/logo.webp" : "/images/logo.png"} alt="Ganga Makhana Logo" className="footer-brand-logo" />
+            </Link>
             <p className="footer-desc">
               Authentic Bihar Heritage, Export Quality Makhana. 100% natural, handpicked, and perfectly roasted.
             </p>
