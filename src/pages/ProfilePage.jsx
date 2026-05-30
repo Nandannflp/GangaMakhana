@@ -10,6 +10,7 @@ import './ProfilePage.css';
 
 export default function ProfilePage() {
   const [activeTab, setActiveTab] = useState('personal');
+  const [showLogoutModal, setShowLogoutModal] = useState(false);
   const { currentUser, logout, userProfile } = useAuth();
   const navigate = useNavigate();
 
@@ -21,7 +22,11 @@ export default function ProfilePage() {
 
   if (!currentUser) return null;
 
-  const handleLogout = async () => {
+  const handleLogoutClick = () => {
+    setShowLogoutModal(true);
+  };
+
+  const confirmLogout = async () => {
     try {
       await logout();
       navigate('/');
@@ -30,11 +35,15 @@ export default function ProfilePage() {
     }
   };
 
+  const cancelLogout = () => {
+    setShowLogoutModal(false);
+  };
+
   const renderContent = () => {
     switch (activeTab) {
       case 'personal': return <PersonalInfo />;
       case 'address': return <AddressBook />;
-      case 'settings': return <SettingsPanel onLogout={handleLogout} />;
+      case 'settings': return <SettingsPanel onLogout={handleLogoutClick} />;
       case 'security': return <SecuritySettings />;
       default: return <PersonalInfo />;
     }
@@ -84,7 +93,7 @@ export default function ProfilePage() {
             
             <div className="nav-divider"></div>
             
-            <button className="logout-btn" onClick={handleLogout}>
+            <button className="logout-btn" onClick={handleLogoutClick}>
               <LogOut size={18} /> Logout
             </button>
           </nav>
@@ -94,6 +103,22 @@ export default function ProfilePage() {
           {renderContent()}
         </main>
       </div>
+
+      {showLogoutModal && (
+        <div className="logout-modal-overlay">
+          <div className="logout-modal-content">
+            <h3 style={{ marginBottom: '20px', color: 'var(--color-text)' }}>Are you sure want to log out?</h3>
+            <div className="logout-modal-actions">
+              <button className="btn-secondary" onClick={confirmLogout} style={{ flex: 1 }}>
+                Yes
+              </button>
+              <button className="btn-primary" onClick={cancelLogout} style={{ flex: 2 }}>
+                Continue Shopping
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 }
