@@ -75,8 +75,10 @@ export default function PersonalizedBagPage() {
       particle.alt = 'makhana';
       
       // Randomize position, delay, and size
-      particle.style.left = `${Math.random() * 60 + 20}%`; // slightly wider spread 20-80%
-      particle.style.animationDelay = `${Math.random() * 3}s`; // spread delay out to 3 seconds
+      // Makhanas should fall from the upper bag mouth (around top: -200px to -150px)
+      particle.style.left = `${Math.random() * 40 + 30}%`; // tighter spread to fit in the bag
+      particle.style.top = `${-250 + Math.random() * 50}px`; // start from the upper bag mouth
+      particle.style.animationDelay = `${Math.random() * 3.5}s`; // spread delay out
       const size = Math.random() * 25 + 25; // 25px to 50px
       particle.style.width = `${size}px`;
       particle.style.height = `${size}px`;
@@ -226,6 +228,23 @@ export default function PersonalizedBagPage() {
         {/* Dynamic Open Bag area */}
         {step >= 2 && selectedFlavor && (
           <div className="pb-bag-area">
+            
+            {/* The Upper Pouring Bag */}
+            {isFalling && (
+              <div className="pb-upper-bag-container">
+                <img 
+                  src={selectedFlavor.images[0]} 
+                  alt="Pouring bag" 
+                  className="pb-upper-bag"
+                  style={{ 
+                    '--tilt-base': quantityGrams >= 1000 ? '135deg' : quantityGrams >= 500 ? '145deg' : '155deg',
+                    '--tilt-shake1': quantityGrams >= 1000 ? '125deg' : quantityGrams >= 500 ? '135deg' : '145deg',
+                    '--tilt-shake2': quantityGrams >= 1000 ? '145deg' : quantityGrams >= 500 ? '155deg' : '165deg'
+                  }}
+                />
+              </div>
+            )}
+
             <div className={`pb-image-bag-wrapper ${isClipped ? 'clipped' : 'opened'}`}>
               
               {/* Back inside lip of the open bag */}

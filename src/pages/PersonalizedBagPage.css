@@ -248,7 +248,7 @@
 
 .makhana-particle {
   position: absolute;
-  top: -400px; /* Start way higher */
+  /* top is set dynamically in JS */
   object-fit: contain;
   border-radius: 50%; /* Force roundness */
   animation: fallIntoBag 3.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
@@ -258,6 +258,44 @@
   0% { transform: translateY(0) rotate(0deg); opacity: 0; }
   10% { opacity: 1; }
   100% { transform: translateY(800px) rotate(360deg); opacity: 1; }
+}
+
+/* Upper Pouring Bag */
+.pb-upper-bag-container {
+  position: absolute;
+  top: -220px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 10;
+  width: 250px;
+  pointer-events: none;
+}
+
+@media (max-width: 768px) {
+  .pb-upper-bag-container { width: 200px; top: -180px; }
+}
+
+.pb-upper-bag {
+  width: 100%;
+  height: auto;
+  transform-origin: center center;
+  /* Cut off the top 12% so it looks open when inverted */
+  clip-path: polygon(0 12%, 100% 12%, 100% 100%, 0 100%);
+  animation: pourAnimation 5.5s ease-in-out forwards;
+  filter: drop-shadow(0 15px 25px rgba(0,0,0,0.3));
+}
+
+@keyframes pourAnimation {
+  0% { transform: translateY(-300px) rotate(180deg); opacity: 0; }
+  10% { transform: translateY(0) rotate(180deg); opacity: 1; }
+  15% { transform: translateY(0) rotate(var(--tilt-base)); }
+  25% { transform: translateY(0) rotate(var(--tilt-shake1)); }
+  40% { transform: translateY(0) rotate(var(--tilt-shake2)); }
+  55% { transform: translateY(0) rotate(var(--tilt-shake1)); }
+  70% { transform: translateY(0) rotate(var(--tilt-shake2)); }
+  85% { transform: translateY(0) rotate(var(--tilt-base)); opacity: 1; }
+  92% { transform: translateY(0) rotate(180deg); opacity: 1; }
+  100% { transform: translateY(-300px) rotate(180deg); opacity: 0; }
 }
 
 /* Actions & Buttons */
