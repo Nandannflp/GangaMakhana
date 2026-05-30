@@ -99,7 +99,7 @@
   display: flex;
   flex-direction: column;
   flex-grow: 1;
-  background: #fff;
+  background-color: transparent;
 }
 
 .product-title {
@@ -132,6 +132,13 @@
   font-weight: 700;
   color: var(--color-primary);
   vertical-align: middle;
+}
+
+.dark-theme .product-title,
+.dark-theme .product-note,
+.dark-theme .price-currency,
+.dark-theme .price-val {
+  color: var(--color-text);
 }
 
 .btn-add-cart {
@@ -205,6 +212,10 @@
   transition: opacity 0.3s ease;
 }
 
+.dark-theme .nutrition-overlay {
+  background-color: rgba(30, 30, 30, 0.95);
+}
+
 .nutrition-overlay.active {
   opacity: 1;
   pointer-events: auto;
@@ -227,6 +238,12 @@
   padding: 6px 0;
   border-bottom: 1px solid rgba(0,0,0,0.08);
   text-align: left;
+}
+
+.dark-theme .nutrition-table th, 
+.dark-theme .nutrition-table td {
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+  color: var(--color-text);
 }
 
 .nutrition-table th {
