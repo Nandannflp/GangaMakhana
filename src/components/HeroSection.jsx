@@ -45,7 +45,16 @@ export default function HeroSection() {
         
         <div className="hero-visual">
           <div className="hero-blob"></div>
-          <div className="hero-product-image">
+          
+          <div className="hero-product-image pack-left">
+            <img src="/images/products/peri-front.png" alt="Peri Peri Flavor" className="hero-img" />
+          </div>
+          
+          <div className="hero-product-image pack-right">
+            <img src="/images/products/choco-front.png" alt="Chocolate Flavor" className="hero-img" />
+          </div>
+
+          <div className="hero-product-image pack-main">
             <img src="/images/products/normal-front.png" alt="Ganga Makhana Premium Pouch" className="hero-img" />
           </div>
         </div>
