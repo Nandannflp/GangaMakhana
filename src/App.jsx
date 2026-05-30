@@ -5,6 +5,7 @@ import Footer from './components/Footer';
 import WhatsAppButton from './components/WhatsAppButton';
 import ScrollToTopButton from './components/ScrollToTopButton';
 import ConsentBanner from './components/ConsentBanner';
+import MakhanaVibe from './components/MakhanaVibe';
 import HomePage from './pages/HomePage';
 import ShopPage from './pages/ShopPage';
 import WholesalePage from './pages/WholesalePage';
@@ -26,6 +27,7 @@ import './App.css';
 function App() {
   return (
     <Router>
+      <MakhanaVibe />
       <BenefitsStrip />
       <Navbar />
       <WhatsAppButton />

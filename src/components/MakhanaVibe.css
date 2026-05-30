@@ -1,0 +1,44 @@
+.makhana-vibe-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  pointer-events: none;
+  z-index: 0;
+  overflow: hidden;
+}
+
+.makhana-flake-wrapper {
+  position: absolute;
+  /* Smooth transition if they resize, though fixed percentages handle this mostly */
+  transition: opacity 0.5s ease;
+}
+
+.makhana-flake {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  /* Add a soft drop shadow for a premium 3D look */
+  filter: drop-shadow(0 15px 20px rgba(0,0,0,0.25));
+  animation: floatMakhana 20s infinite ease-in-out;
+}
+
+.dark-theme .makhana-flake {
+  filter: drop-shadow(0 15px 20px rgba(0,0,0,0.5)) brightness(0.8);
+}
+
+@keyframes floatMakhana {
+  0% {
+    transform: translateY(0px) rotate(0deg) scale(1);
+  }
+  33% {
+    transform: translateY(-25px) rotate(15deg) scale(1.05);
+  }
+  66% {
+    transform: translateY(15px) rotate(-10deg) scale(0.95);
+  }
+  100% {
+    transform: translateY(0px) rotate(0deg) scale(1);
+  }
+}
