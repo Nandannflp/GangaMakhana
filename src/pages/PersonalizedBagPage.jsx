@@ -61,6 +61,26 @@ export default function PersonalizedBagPage() {
 
   const formattedQuantity = quantityGrams >= 1000 ? `${quantityGrams / 1000}kg` : `${quantityGrams}g`;
 
+  // Calculate pouring angles based on quantity
+  const tiltBase = quantityGrams >= 1000 ? 180 : quantityGrams >= 500 ? 155 : 135;
+  const shake1 = tiltBase - 8;
+  const shake2 = tiltBase + 8;
+
+  const dynamicStyles = `
+    @keyframes pourAnimationDynamic {
+      0% { transform: translateY(-400px) rotate(0deg); opacity: 0; }
+      10% { transform: translateY(0) rotate(0deg); opacity: 1; }
+      20% { transform: translateY(0) rotate(${tiltBase}deg); opacity: 1; }
+      30% { transform: translateY(0) rotate(${shake1}deg); }
+      45% { transform: translateY(0) rotate(${shake2}deg); }
+      60% { transform: translateY(0) rotate(${shake1}deg); }
+      75% { transform: translateY(0) rotate(${shake2}deg); }
+      85% { transform: translateY(0) rotate(${tiltBase}deg); opacity: 1; }
+      92% { transform: translateY(0) rotate(0deg); opacity: 1; }
+      100% { transform: translateY(-400px) rotate(0deg); opacity: 0; }
+    }
+  `;
+
   const createFallingMakhana = (qty) => {
     if (!makhanaContainerRef.current || !selectedFlavor) return;
     
@@ -75,9 +95,9 @@ export default function PersonalizedBagPage() {
       particle.alt = 'makhana';
       
       // Randomize position, delay, and size
-      // Makhanas should fall from inside the upper bag
-      particle.style.left = `${Math.random() * 30 + 35}%`; // very tight spread (35% to 65%) to ensure they stay inside bag boundaries
-      particle.style.top = `${-480 + Math.random() * 50}px`; // start higher to fall through the upper bag
+      // Makhanas should fall from inside the upper bag mouth
+      particle.style.left = `${Math.random() * 20 + 40}%`; // very tight spread (40% to 60%)
+      particle.style.top = `${-270 + Math.random() * 20}px`; // exact mouth of the upper bag based on 50% 12% origin
       particle.style.animationDelay = `${Math.random() * 3.5}s`; // spread delay out
       const size = Math.random() * 15 + 15; // smaller size: 15px to 30px
       particle.style.width = `${size}px`;
@@ -229,6 +249,9 @@ export default function PersonalizedBagPage() {
         {step >= 2 && selectedFlavor && (
           <div className={`pb-bag-area ${isFalling ? 'pouring-active' : ''}`}>
             
+            {/* Inject dynamic styles for perfect tilt calculations */}
+            <style>{dynamicStyles}</style>
+
             {/* The Upper Pouring Bag */}
             {isFalling && (
               <div className="pb-upper-bag-container">
@@ -236,11 +259,6 @@ export default function PersonalizedBagPage() {
                   src={selectedFlavor.images[0]} 
                   alt="Pouring bag" 
                   className="pb-upper-bag"
-                  style={{ 
-                    '--tilt-base': quantityGrams >= 1000 ? '135deg' : quantityGrams >= 500 ? '145deg' : '155deg',
-                    '--tilt-shake1': quantityGrams >= 1000 ? '125deg' : quantityGrams >= 500 ? '135deg' : '145deg',
-                    '--tilt-shake2': quantityGrams >= 1000 ? '145deg' : quantityGrams >= 500 ? '155deg' : '165deg'
-                  }}
                 />
               </div>
             )}
