@@ -1,8 +1,6 @@
 import { useState } from 'react';
 import { useAuth } from '../../context/AuthContext';
-import { compressImage } from '../../lib/imageUtils';
-import { ref, uploadBytes, getDownloadURL } from 'firebase/storage';
-import { storage } from '../../firebase';
+import { compressImageAsBase64 } from '../../lib/imageUtils';
 
 export default function PersonalInfo() {
   const { userProfile, updateProfileData, updateLocalProfile, currentUser } = useAuth();
@@ -48,17 +46,12 @@ export default function PersonalInfo() {
     updateLocalProfile({ photoURL: localPreview });
 
     try {
-      const compressedFile = await compressImage(file, 300);
-      const storageRef = ref(storage, `profile_pictures/${currentUser.uid}`);
-      
-      await uploadBytes(storageRef, compressedFile);
-      const downloadURL = await getDownloadURL(storageRef);
-      
-      await updateProfileData({ photoURL: downloadURL });
+      const base64Image = await compressImageAsBase64(file, 150); // Convert to compact base64
+      await updateProfileData({ photoURL: base64Image });
       setMessage('Profile picture updated!');
     } catch (error) {
       console.error(error);
-      setMessage('Failed to upload image.');
+      setMessage('Failed to upload image. Using local preview temporarily.');
     }
     setUploadingImage(false);
     setTimeout(() => setMessage(''), 3000);
