@@ -32,7 +32,7 @@ export default function PersonalizedBagPage() {
       const timer = setTimeout(() => {
         setIsFalling(false);
         setStep(4);
-      }, 4000); // 4 seconds falling animation to allow them to fall one by one smoothly
+      }, 5500); // Wait longer for slow falling
       return () => clearTimeout(timer);
     }
   }, [step, isFalling]);
@@ -71,14 +71,13 @@ export default function PersonalizedBagPage() {
     for (let i = 0; i < count; i++) {
       const particle = document.createElement('img');
       particle.className = 'makhana-particle';
-      particle.src = selectedFlavor.makhanaImage || selectedFlavor.images[0];
+      particle.src = selectedFlavor.makhanaImage || `/images/products/${selectedFlavor.flavor.split(' ')[0].toLowerCase()}-makhana.png`;
       particle.alt = 'makhana';
       
       // Randomize position, delay, and size
-      // Constrain horizontal position to the center (25% to 75%) so they don't fall outside the bag
-      particle.style.left = `${Math.random() * 50 + 25}%`; 
-      particle.style.animationDelay = `${Math.random() * 2.5}s`;
-      const size = Math.random() * 20 + 20; // 20px to 40px
+      particle.style.left = `${Math.random() * 60 + 20}%`; // slightly wider spread 20-80%
+      particle.style.animationDelay = `${Math.random() * 3}s`; // spread delay out to 3 seconds
+      const size = Math.random() * 25 + 25; // 25px to 50px
       particle.style.width = `${size}px`;
       particle.style.height = `${size}px`;
       
@@ -222,12 +221,6 @@ export default function PersonalizedBagPage() {
               );
             })}
           </div>
-          
-          {step >= 2 && (
-            <button className="pb-secondary-btn fade-in" onClick={handleBackToFlavors} style={{ marginTop: '20px' }}>
-              ← Change Flavor
-            </button>
-          )}
         </div>
 
         {/* Dynamic Open Bag area */}
@@ -316,6 +309,9 @@ export default function PersonalizedBagPage() {
               style={{ marginTop: '20px' }}
             >
               Fill Bag & Continue
+            </button>
+            <button className="pb-secondary-btn fade-in" onClick={handleBackToFlavors} style={{ marginTop: '15px' }}>
+              ← Change Flavor
             </button>
           </div>
         )}
