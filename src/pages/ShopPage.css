@@ -41,6 +41,11 @@
   box-shadow: 0 2px 4px rgba(0,0,0,0.05);
 }
 
+.dark-theme .promo-strip {
+  background-color: #000000;
+  color: var(--color-accent);
+}
+
 .promo-strip p {
   margin: 0;
   font-size: 0.95rem;

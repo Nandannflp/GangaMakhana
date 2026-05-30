@@ -131,6 +131,10 @@ export function AuthProvider({ children }) {
     setUserProfile(prev => ({ ...prev, ...data }));
   }
 
+  function updateLocalProfile(data) {
+    setUserProfile(prev => ({ ...prev, ...data }));
+  }
+
   function updateEmail(newEmail) {
     if (!currentUser) return;
     return firebaseUpdateEmail(currentUser, newEmail).then(() => {
@@ -180,6 +184,7 @@ export function AuthProvider({ children }) {
     signInWithPhone,
     reauthenticate,
     updateProfileData,
+    updateLocalProfile,
     updateEmail,
     updatePassword
   };

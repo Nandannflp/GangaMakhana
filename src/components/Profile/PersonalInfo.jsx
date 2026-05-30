@@ -5,7 +5,7 @@ import { ref, uploadBytes, getDownloadURL } from 'firebase/storage';
 import { storage } from '../../firebase';
 
 export default function PersonalInfo() {
-  const { userProfile, updateProfileData, currentUser } = useAuth();
+  const { userProfile, updateProfileData, updateLocalProfile, currentUser } = useAuth();
   
   const [name, setName] = useState(userProfile?.name || '');
   const [mobile, setMobile] = useState(userProfile?.mobile || '');
@@ -42,6 +42,11 @@ export default function PersonalInfo() {
     }
 
     setUploadingImage(true);
+    
+    // Optimistic UI update for immediate feedback across the app
+    const localPreview = URL.createObjectURL(file);
+    updateLocalProfile({ photoURL: localPreview });
+
     try {
       const compressedFile = await compressImage(file, 300);
       const storageRef = ref(storage, `profile_pictures/${currentUser.uid}`);
