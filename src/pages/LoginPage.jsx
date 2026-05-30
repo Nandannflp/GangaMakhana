@@ -24,8 +24,9 @@ export default function LoginPage() {
   // Redirect if already logged in
   useEffect(() => {
     if (currentUser) {
-      const origin = location.state?.from?.pathname || '/';
-      navigate(origin);
+      const queryParams = new URLSearchParams(location.search);
+      const redirectUrl = queryParams.get('redirect') || location.state?.from?.pathname || '/';
+      navigate(redirectUrl);
     }
   }, [currentUser, navigate, location]);
 
@@ -41,7 +42,7 @@ export default function LoginPage() {
       } else {
         await login(email, password);
       }
-      navigate('/');
+      // Navigation is handled by the useEffect watching currentUser
     } catch (err) {
       setError(getErrorMessage(err.code) || 'Failed to authenticate. Please check your credentials.');
     } finally {
@@ -54,7 +55,7 @@ export default function LoginPage() {
     setLoading(true);
     try {
       await signInWithGoogle();
-      navigate('/');
+      // Navigation handled by useEffect
     } catch (err) {
       setError(getErrorMessage(err.code) || 'Failed to sign in with Google.');
     } finally {
@@ -88,7 +89,7 @@ export default function LoginPage() {
     setLoading(true);
     try {
       await confirmationResultRef.current.confirm(otp);
-      navigate('/');
+      // Navigation handled by useEffect
     } catch {
       setError('Invalid OTP code. Please try again.');
     } finally {

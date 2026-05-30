@@ -44,16 +44,38 @@ export default function WholesalePage() {
     setErrorMessage('');
 
     try {
-      // Submit to Firebase
-      await addDoc(collection(db, 'inquiries'), {
-        name: formData.name,
-        email: formData.email,
-        phone: formData.phone,
-        requirements: formData.requirements,
-        message: formData.message,
-        createdAt: serverTimestamp(),
-        source: 'wholesale_page'
-      });
+      const webhookUrl = import.meta.env.VITE_WHOLESALE_WEBHOOK_URL;
+      
+      if (webhookUrl) {
+        // Send data directly to Google Sheet Webhook
+        // We use mode: 'no-cors' because Google Apps Script redirects responses, which standard CORS fetch blocks.
+        await fetch(webhookUrl, {
+          method: 'POST',
+          mode: 'no-cors',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({
+            name: formData.name,
+            email: formData.email,
+            phone: formData.phone,
+            requirements: formData.requirements,
+            message: formData.message,
+            timestamp: new Date().toISOString()
+          })
+        });
+      } else {
+        // Fallback: Submit to Firebase if Webhook is not configured
+        await addDoc(collection(db, 'inquiries'), {
+          name: formData.name,
+          email: formData.email,
+          phone: formData.phone,
+          requirements: formData.requirements,
+          message: formData.message,
+          createdAt: serverTimestamp(),
+          source: 'wholesale_page'
+        });
+      }
       
       setStatus('success');
       setFormData({

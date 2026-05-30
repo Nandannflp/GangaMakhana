@@ -1,8 +1,11 @@
 import { useEffect, useState } from 'react';
 import { Link, Navigate } from 'react-router-dom';
-import { ArrowLeft, BadgeCheck, CreditCard, Landmark, MapPin, ShieldCheck, Truck } from 'lucide-react';
+import { ArrowLeft, BadgeCheck, CreditCard, Landmark, MapPin, ShieldCheck, Truck, AlertCircle } from 'lucide-react';
 import { useCart } from '../context/CartContext';
 import { useCurrency } from '../context/CurrencyContext';
+import { useAuth } from '../context/AuthContext';
+import { doc, setDoc } from 'firebase/firestore';
+import { db } from '../firebase';
 import SEO from '../components/SEO';
 import './CheckoutPage.css';
 
@@ -28,8 +31,10 @@ const paymentOptions = [
 ];
 
 export default function CheckoutPage() {
-  const { cart, getCartTotal } = useCart();
+  const { cart, getCartTotal, clearCart } = useCart();
   const { formatPrice } = useCurrency();
+  const { currentUser } = useAuth();
+  
   const [paymentMethod, setPaymentMethod] = useState('upi');
   const [formData, setFormData] = useState({
     fullName: '',
@@ -43,11 +48,15 @@ export default function CheckoutPage() {
     notes: '',
   });
 
+  const [status, setStatus] = useState('idle'); // idle, submitting, success, error
+  const [errorMessage, setErrorMessage] = useState('');
+  const [createdOrder, setCreatedOrder] = useState(null);
+
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
 
-  if (cart.length === 0) {
+  if (cart.length === 0 && status !== 'success') {
     return <Navigate to="/cart" replace />;
   }
 
@@ -62,9 +71,135 @@ export default function CheckoutPage() {
     }));
   };
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
+    setErrorMessage('');
+    
+    // Validations
+    if (!formData.fullName.trim() || !formData.phone.trim() || !formData.email.trim() ||
+        !formData.addressLine1.trim() || !formData.city.trim() || !formData.state.trim() || !formData.pincode.trim()) {
+      setErrorMessage('Please fill out all required fields.');
+      return;
+    }
+
+    if (!/^\S+@\S+\.\S+$/.test(formData.email)) {
+      setErrorMessage('Please enter a valid email address.');
+      return;
+    }
+
+    // Pincode validation: 6 digits for India
+    if (!/^\d{6}$/.test(formData.pincode)) {
+      setErrorMessage('Please enter a valid 6-digit PIN code.');
+      return;
+    }
+
+    // Phone validation: min 10 digits
+    if (!/^\+?[\d\s-]{10,14}$/.test(formData.phone.replace(/[\s-]/g, ''))) {
+      setErrorMessage('Please enter a valid phone number (at least 10 digits).');
+      return;
+    }
+
+    setStatus('submitting');
+
+    try {
+      const orderId = `GM-${Math.floor(100000 + Math.random() * 900000)}`;
+      const orderData = {
+        orderId,
+        userId: currentUser ? currentUser.uid : 'guest',
+        fullName: formData.fullName,
+        phone: formData.phone,
+        email: formData.email,
+        addressLine1: formData.addressLine1,
+        addressLine2: formData.addressLine2,
+        city: formData.city,
+        state: formData.state,
+        pincode: formData.pincode,
+        notes: formData.notes,
+        paymentMethod,
+        items: cart.map(item => ({
+          id: item.id,
+          name: item.name || item.flavor,
+          flavor: item.flavor || item.name,
+          quantity: item.quantity,
+          price: item.price,
+          variant: item.variant || [item.size, item.weight].filter(Boolean).join(' / ') || item.weight
+        })),
+        subtotal,
+        shipping,
+        total,
+        status: 'Pending Verification',
+        createdAt: new Date().toISOString(),
+      };
+
+      // Save order to Firestore
+      await setDoc(doc(db, 'orders', orderId), orderData);
+
+      setCreatedOrder(orderData);
+      setStatus('success');
+      clearCart();
+    } catch (error) {
+      console.error('Error submitting order:', error);
+      setErrorMessage('Failed to place order. Please try again or contact support.');
+      setStatus('error');
+    }
   };
+
+  if (status === 'success' && createdOrder) {
+    return (
+      <div className="checkout-success-page page-enter">
+        <div className="container text-center">
+          <div className="success-card card">
+            <div className="success-icon-wrapper">
+              <BadgeCheck size={56} className="success-icon" />
+            </div>
+            <h1 className="text-display">Order Confirmed!</h1>
+            <p className="success-intro">Thank you for your purchase. Your order has been received and is being processed.</p>
+            
+            <div className="order-details-box">
+              <div className="order-row">
+                <span>Order ID:</span>
+                <strong>{createdOrder.orderId}</strong>
+              </div>
+              <div className="order-row">
+                <span>Date:</span>
+                <span>{new Date(createdOrder.createdAt).toLocaleDateString()}</span>
+              </div>
+              <div className="order-row">
+                <span>Payment Method:</span>
+                <span className="uppercase">{createdOrder.paymentMethod}</span>
+              </div>
+              <div className="order-row">
+                <span>Total Amount:</span>
+                <strong>{formatPrice(createdOrder.total)}</strong>
+              </div>
+            </div>
+
+            <div className="success-shipping-info">
+              <h3>Shipping Address</h3>
+              <p><strong>{createdOrder.fullName}</strong></p>
+              <p>{createdOrder.addressLine1}</p>
+              {createdOrder.addressLine2 && <p>{createdOrder.addressLine2}</p>}
+              <p>{createdOrder.city}, {createdOrder.state} - {createdOrder.pincode}</p>
+              <p>Phone: {createdOrder.phone}</p>
+            </div>
+
+            <div className="action-buttons">
+              <Link to={`/track?id=${createdOrder.orderId}`} className="btn-primary w-100 mb-3" style={{ display: 'inline-block', textDecoration: 'none', textAlign: 'center' }}>
+                Track Order
+              </Link>
+              <Link to="/#shop" className="btn-secondary w-100" style={{ display: 'inline-block', textDecoration: 'none', textAlign: 'center' }}>
+                Continue Shopping
+              </Link>
+            </div>
+
+            <p className="support-text mt-4">
+              Need assistance? WhatsApp us at <a href="https://wa.me/919608669041" target="_blank" rel="noopener noreferrer">9608669041</a>
+            </p>
+          </div>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div className="checkout-page">
@@ -83,6 +218,23 @@ export default function CheckoutPage() {
             <p>Enter your shipping details and confirm your order.</p>
           </div>
         </div>
+
+        {errorMessage && (
+          <div style={{
+            display: 'flex',
+            alignItems: 'center',
+            gap: '10px',
+            padding: '16px',
+            backgroundColor: '#fdeded',
+            color: '#5f2120',
+            borderRadius: '16px',
+            marginBottom: '24px',
+            border: '1px solid rgba(95, 33, 32, 0.1)'
+          }}>
+            <AlertCircle size={20} />
+            <p style={{ margin: 0, fontWeight: 500 }}>{errorMessage}</p>
+          </div>
+        )}
 
         <div className="checkout-layout">
           <form className="checkout-form-card" onSubmit={handleSubmit}>
@@ -171,8 +323,8 @@ export default function CheckoutPage() {
               </div>
             </section>
 
-            <button type="submit" className="btn-primary checkout-submit">
-              Confirm Order Request
+            <button type="submit" className="btn-primary checkout-submit" disabled={status === 'submitting'}>
+              {status === 'submitting' ? 'Processing Order...' : 'Confirm Order Request'}
             </button>
           </form>
 

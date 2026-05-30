@@ -1,0 +1,101 @@
+[
+  {
+    "id": "classic-roasted-makhana",
+    "name": "Ganga Makhana — Classic Roasted Makhana",
+    "flavor": "Normal / Classic",
+    "tagline": "Pure, wholesome, and timeless roasted goodness.",
+    "price": 350,
+    "weight": "250g",
+    "badges": ["Best Seller", "100% Natural", "Authentic Taste"],
+    "ingredients": [
+      "Roasted Makhana (Fox Nuts)",
+      "Rock Salt",
+      "Mild Seasoning",
+      "Edible Vegetable Oil"
+    ]
+  },
+  {
+    "id": "pudina-makhana",
+    "name": "Pudina Makhana",
+    "flavor": "Pudina",
+    "tagline": "Earthy and tangy with a refreshing mint twist.",
+    "price": 350,
+    "weight": "250g",
+    "badges": ["Traditional", "Refreshing", "Light Snack"],
+    "ingredients": [
+      "Roasted Makhana (Fox Nuts)",
+      "Mint Seasoning",
+      "Himalayan Salt",
+      "Mild Spices",
+      "Edible Vegetable Oil",
+      "Natural Mint Flavor"
+    ]
+  },
+  {
+    "id": "peri-peri-makhana",
+    "name": "Peri Peri Makhana",
+    "flavor": "Peri Peri",
+    "tagline": "A fiery burst of flavor in every crunchy bite.",
+    "price": 350,
+    "weight": "250g",
+    "badges": ["Spicy", "Hot Favorite", "Bold Flavor"],
+    "ingredients": [
+      "Roasted Makhana (Fox Nuts)",
+      "Peri Peri Seasoning",
+      "Chili Powder",
+      "Mixed Herbs",
+      "Salt",
+      "Edible Vegetable Oil"
+    ]
+  },
+  {
+    "id": "mint-flavoured-makhana",
+    "name": "Mint Flavoured Makhana",
+    "flavor": "Mint",
+    "tagline": "Fresh, cool, and perfectly crisp.",
+    "price": 350,
+    "weight": "250g",
+    "badges": ["Refreshing", "Cool Flavor", "Light Bite"],
+    "ingredients": [
+      "Roasted Makhana (Fox Nuts)",
+      "Mint Herbs",
+      "Mild Seasoning",
+      "Salt",
+      "Edible Vegetable Oil"
+    ]
+  },
+  {
+    "id": "chocolate-makhana",
+    "name": "Chocolate Makhana",
+    "flavor": "Chocolate",
+    "tagline": "Rich chocolate goodness with a crunchy surprise.",
+    "price": 350,
+    "weight": "250g",
+    "badges": ["Sweet", "Kids Love It", "Dessert Snack"],
+    "ingredients": [
+      "Roasted Makhana (Fox Nuts)",
+      "Cocoa Powder",
+      "Chocolate Coating",
+      "Sugar",
+      "Milk Solids",
+      "Natural Flavors"
+    ]
+  },
+  {
+    "id": "onion-makhana",
+    "name": "Onion Makhana",
+    "flavor": "Onion",
+    "tagline": "Savory onion flavor with deep roasted crunch.",
+    "price": 350,
+    "weight": "250g",
+    "badges": ["Savory", "Tea-Time Favorite", "Aromatic Flavor"],
+    "ingredients": [
+      "Roasted Makhana (Fox Nuts)",
+      "Onion Seasoning",
+      "Salt",
+      "Mild Spices",
+      "Mixed Herbs",
+      "Edible Vegetable Oil"
+    ]
+  }
+]

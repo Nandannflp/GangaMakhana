@@ -202,3 +202,64 @@
   color: var(--color-primary);
   transform: translateX(5px);
 }
+
+/* Premium Personalized Bag Nav Item */
+.nav-highlight-item {
+  display: flex;
+  align-items: center;
+}
+
+.nav-highlight-item-mobile {
+  margin: 10px 0;
+}
+
+.premium-nav-btn {
+  position: relative;
+  background: linear-gradient(135deg, var(--color-primary), var(--color-primary-dark, #0f2e21));
+  color: #fff !important;
+  padding: 8px 18px;
+  border-radius: 20px;
+  font-weight: 600 !important;
+  overflow: hidden;
+  transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.3s ease !important;
+  box-shadow: 0 4px 15px rgba(26, 67, 49, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  display: inline-block;
+}
+
+.premium-nav-btn:hover {
+  transform: translateY(-2px) scale(1.05);
+  box-shadow: 0 6px 20px rgba(26, 67, 49, 0.4);
+  color: #fff !important;
+}
+
+.premium-glow {
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 50%;
+  height: 100%;
+  background: linear-gradient(
+    to right,
+    rgba(255, 255, 255, 0) 0%,
+    rgba(255, 255, 255, 0.3) 50%,
+    rgba(255, 255, 255, 0) 100%
+  );
+  transform: skewX(-25deg);
+  animation: premiumShine 3s infinite;
+}
+
+@keyframes premiumShine {
+  0% { left: -100%; }
+  20% { left: 200%; }
+  100% { left: 200%; }
+}
+
+.dark-theme .premium-nav-btn {
+  background: linear-gradient(135deg, var(--color-accent), var(--color-accent-dark, #d08c3f));
+  box-shadow: 0 4px 15px rgba(228, 161, 89, 0.2);
+}
+
+.dark-theme .premium-nav-btn:hover {
+  box-shadow: 0 6px 20px rgba(228, 161, 89, 0.4);
+}

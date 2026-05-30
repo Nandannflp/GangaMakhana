@@ -43,6 +43,7 @@ export default function Footer() {
               <li><Link to="/terms">Terms & Conditions</Link></li>
               <li><Link to="/privacy">Privacy Policy</Link></li>
               <li><Link to="/track">Track Order</Link></li>
+              <li><Link to="/mcp">MCP Developer Hub</Link></li>
             </ul>
           </div>
 

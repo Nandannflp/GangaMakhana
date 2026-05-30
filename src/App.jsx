@@ -22,6 +22,8 @@ import TermsPage from './pages/TermsPage';
 import PrivacyPage from './pages/PrivacyPage';
 import TrackOrderPage from './pages/TrackOrderPage';
 import ProfilePage from './pages/ProfilePage';
+import McpPage from './pages/McpPage';
+import PersonalizedBagPage from './pages/PersonalizedBagPage';
 import './App.css';
 
 function App() {
@@ -48,6 +50,8 @@ function App() {
         <Route path="/privacy" element={<PrivacyPage />} />
         <Route path="/track" element={<TrackOrderPage />} />
         <Route path="/profile" element={<ProfilePage />} />
+        <Route path="/mcp" element={<McpPage />} />
+        <Route path="/build-your-bag" element={<PersonalizedBagPage />} />
         <Route path="*" element={<Navigate to="/" />} />
       </Routes>
       <Footer />
