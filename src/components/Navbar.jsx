@@ -35,7 +35,7 @@ export default function Navbar() {
       <div className="container navbar-container">
         <div className="navbar-logo">
           <Link to="/" className="logo-link">
-            <img src={theme === 'dark' ? "/images/logo.webp" : "/images/logo.jpg"} alt="Ganga Makhana Logo" className="brand-logo" />
+            <img src={theme === 'dark' ? "/images/logo.webp" : "/images/logo.png"} alt="Ganga Makhana Logo" className="brand-logo" />
           </Link>
         </div>
         
@@ -90,7 +90,7 @@ export default function Navbar() {
         <div className="mobile-menu-content">
           <div className="mobile-menu-header">
             <Link to="/" className="logo-link" onClick={() => setMobileMenuOpen(false)}>
-              <img src={theme === 'dark' ? "/images/logo.webp" : "/images/logo.jpg"} alt="Ganga Makhana Logo" className="brand-logo" />
+              <img src={theme === 'dark' ? "/images/logo.webp" : "/images/logo.png"} alt="Ganga Makhana Logo" className="brand-logo" />
             </Link>
             <button className="nav-icon-btn close-menu-btn" onClick={() => setMobileMenuOpen(false)}>
               <X size={28} color="var(--color-primary)" />
