@@ -75,11 +75,11 @@ export default function PersonalizedBagPage() {
       particle.alt = 'makhana';
       
       // Randomize position, delay, and size
-      // Makhanas should fall from the upper bag mouth (around top: -200px to -150px)
-      particle.style.left = `${Math.random() * 40 + 30}%`; // tighter spread to fit in the bag
-      particle.style.top = `${-250 + Math.random() * 50}px`; // start from the upper bag mouth
+      // Makhanas should fall from inside the upper bag
+      particle.style.left = `${Math.random() * 30 + 35}%`; // very tight spread (35% to 65%) to ensure they stay inside bag boundaries
+      particle.style.top = `${-480 + Math.random() * 50}px`; // start higher to fall through the upper bag
       particle.style.animationDelay = `${Math.random() * 3.5}s`; // spread delay out
-      const size = Math.random() * 25 + 25; // 25px to 50px
+      const size = Math.random() * 15 + 15; // smaller size: 15px to 30px
       particle.style.width = `${size}px`;
       particle.style.height = `${size}px`;
       
@@ -227,7 +227,7 @@ export default function PersonalizedBagPage() {
 
         {/* Dynamic Open Bag area */}
         {step >= 2 && selectedFlavor && (
-          <div className="pb-bag-area">
+          <div className={`pb-bag-area ${isFalling ? 'pouring-active' : ''}`}>
             
             {/* The Upper Pouring Bag */}
             {isFalling && (

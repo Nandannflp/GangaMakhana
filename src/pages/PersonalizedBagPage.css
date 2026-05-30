@@ -163,9 +163,9 @@
 }
 
 .pb-packet-wrapper.stacked {
-  top: -80px !important;
-  transform: scale(0.4);
-  opacity: 0.6;
+  top: -120px !important;
+  transform: scale(0.25);
+  opacity: 0.5;
   z-index: 5;
   pointer-events: none;
 }
@@ -187,6 +187,11 @@
   justify-content: center;
   position: relative;
   animation: slideUpFade 0.8s ease-out forwards;
+  transition: margin-top 1.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.pb-bag-area.pouring-active {
+  margin-top: 300px; /* Make room for the pouring upper bag */
 }
 
 .pb-image-bag-wrapper {
@@ -263,7 +268,7 @@
 /* Upper Pouring Bag */
 .pb-upper-bag-container {
   position: absolute;
-  top: -220px;
+  top: -450px;
   left: 50%;
   transform: translateX(-50%);
   z-index: 10;
@@ -272,7 +277,7 @@
 }
 
 @media (max-width: 768px) {
-  .pb-upper-bag-container { width: 200px; top: -180px; }
+  .pb-upper-bag-container { width: 200px; top: -350px; }
 }
 
 .pb-upper-bag {
