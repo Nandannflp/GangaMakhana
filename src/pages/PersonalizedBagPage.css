@@ -243,12 +243,12 @@
   height: 100%;
   pointer-events: none;
   z-index: 2; /* In front of inside lip, behind front image */
-  clip-path: polygon(0 -100%, 100% -100%, 100% 85%, 0 85%);
+  clip-path: polygon(0 -500px, 100% -500px, 100% 85%, 0 85%);
 }
 
 .makhana-particle {
   position: absolute;
-  top: -50px;
+  top: -100px; /* Start higher */
   object-fit: contain;
   animation: fallIntoBag 1.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
 }
@@ -256,7 +256,7 @@
 @keyframes fallIntoBag {
   0% { transform: translateY(0) rotate(0deg); opacity: 0; }
   10% { opacity: 1; }
-  100% { transform: translateY(300px) rotate(360deg); opacity: 1; bottom: 0; }
+  100% { transform: translateY(400px) rotate(360deg); opacity: 1; }
 }
 
 /* Actions & Buttons */
