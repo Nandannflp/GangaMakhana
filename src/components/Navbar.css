@@ -151,6 +151,12 @@
   justify-content: flex-end;
 }
 
+@media (min-width: 769px) {
+  .mobile-menu-overlay {
+    display: none !important;
+  }
+}
+
 .mobile-menu-overlay.open {
   right: 0;
 }
