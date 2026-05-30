@@ -32,7 +32,7 @@ export default function PersonalizedBagPage() {
       const timer = setTimeout(() => {
         setIsFalling(false);
         setStep(4);
-      }, 3000); // 3 seconds falling animation
+      }, 4000); // 4 seconds falling animation to allow them to fall one by one smoothly
       return () => clearTimeout(timer);
     }
   }, [step, isFalling]);
@@ -69,15 +69,16 @@ export default function PersonalizedBagPage() {
     let count = Math.min(20 * (qtyGrams / 250), 150); // scale by weight, max 150 particles
 
     for (let i = 0; i < count; i++) {
-      const particle = document.createElement('div');
+      const particle = document.createElement('img');
       particle.className = 'makhana-particle';
-      particle.style.backgroundColor = selectedFlavor.colorTheme.primary;
+      particle.src = selectedFlavor.makhanaImage || selectedFlavor.images[0];
+      particle.alt = 'makhana';
       
       // Randomize position, delay, and size
       // Constrain horizontal position to the center (25% to 75%) so they don't fall outside the bag
       particle.style.left = `${Math.random() * 50 + 25}%`; 
-      particle.style.animationDelay = `${Math.random() * 2}s`;
-      const size = Math.random() * 15 + 15; // 15px to 30px
+      particle.style.animationDelay = `${Math.random() * 2.5}s`;
+      const size = Math.random() * 20 + 20; // 20px to 40px
       particle.style.width = `${size}px`;
       particle.style.height = `${size}px`;
       

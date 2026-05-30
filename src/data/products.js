@@ -10,6 +10,7 @@ export const products = [
       secondary: "var(--color-flavor-normal-alt)",
       bg: "#F9F8F5"
     },
+    makhanaImage: "/images/products/normal-makhana.png",
     badges: ["Best Seller", "100% Natural", "Authentic Taste"],
     price: 350,
     weight: "250g",
@@ -62,6 +63,7 @@ export const products = [
       secondary: "var(--color-flavor-pudina-alt)",
       bg: "#F2F7F4"
     },
+    makhanaImage: "/images/products/pudina-makhana.png",
     badges: ["Traditional", "Refreshing", "Light Snack"],
     price: 350,
     weight: "250g",
@@ -118,6 +120,7 @@ export const products = [
       secondary: "var(--color-flavor-peri-alt)",
       bg: "#FFF3F1"
     },
+    makhanaImage: "/images/products/peri-makhana.png",
     badges: ["Spicy", "Hot Favorite", "Bold Flavor"],
     price: 350,
     weight: "250g",
@@ -172,6 +175,7 @@ export const products = [
       secondary: "var(--color-flavor-mint-alt)",
       bg: "#F0F9F4"
     },
+    makhanaImage: "/images/products/mint-makhana.png",
     badges: ["Refreshing", "Cool Flavor", "Light Bite"],
     price: 350,
     weight: "250g",
@@ -225,6 +229,7 @@ export const products = [
       secondary: "var(--color-flavor-choco-alt)",
       bg: "#F9F6F5"
     },
+    makhanaImage: "/images/products/choco-makhana.png",
     badges: ["Sweet", "Kids Love It", "Dessert Snack"],
     price: 350,
     weight: "250g",
@@ -279,6 +284,7 @@ export const products = [
       secondary: "var(--color-flavor-onion-alt)",
       bg: "#F8F5F8"
     },
+    makhanaImage: "/images/products/onion-makhana.png",
     badges: ["Savory", "Tea-Time Favorite", "Aromatic Flavor"],
     price: 350,
     weight: "250g",
