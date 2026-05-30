@@ -110,15 +110,16 @@ export default function WholesalePage() {
                   <MapPin className="detail-icon" size={18} />
                   <div>
                     <strong>Head Office:</strong>
-                    <p>Darbhanga, Bihar, India - 846001</p>
+                    <p>Jurabganj Gerabadi, Ps/po - Korha</p>
+                    <p>District - Katihar, Pincode - 854108</p>
+                    <p>Bihar, India</p>
                   </div>
                 </li>
                 <li>
                   <FileText className="detail-icon" size={18} />
                   <div>
                     <strong>Registrations:</strong>
-                    <p>GSTIN: 10XXXXXX</p>
-                    <p>FSSAI: 100XXXXXXXXX</p>
+                    <p>FSSAI: 20426351000323</p>
                   </div>
                 </li>
                 <li>
