@@ -199,18 +199,26 @@ export default function PersonalizedBagPage() {
         {/* Dynamic Open Bag area */}
         {step >= 2 && selectedFlavor && (
           <div className="pb-bag-area">
-            <div className={`pb-open-bag ${isClipped ? 'clipped' : ''}`} style={{
-              background: `linear-gradient(to bottom, ${selectedFlavor.colorTheme.primary}88, ${selectedFlavor.colorTheme.primary}ff)`,
-              borderColor: selectedFlavor.colorTheme.primary
-            }}>
-              <div className="pb-bag-opening"></div>
-              {/* Falling Animation Container */}
+            <div className={`pb-image-bag-wrapper ${isClipped ? 'clipped' : 'opened'}`}>
+              
+              {/* Back inside lip of the open bag */}
+              {!isClipped && (
+                <div 
+                  className="pb-bag-inside-lip" 
+                  style={{ backgroundColor: selectedFlavor.colorTheme.primary }}
+                ></div>
+              )}
+              
+              {/* Falling Animation Container (goes between back lip and front image) */}
               <div className="pb-makhana-container" ref={makhanaContainerRef}></div>
               
-              <div className="pb-bag-front-design">
-                <h3>{selectedFlavor.flavor}</h3>
-                <p>{selectedQuantity || 'Custom Bag'}</p>
-              </div>
+              {/* The actual product image, clipped when open */}
+              <img 
+                src={selectedFlavor.images[0]} 
+                alt={selectedFlavor.flavor} 
+                className="pb-real-bag-image" 
+              />
+              
             </div>
           </div>
         )}
