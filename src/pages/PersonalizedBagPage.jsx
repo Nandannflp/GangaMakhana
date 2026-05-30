@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
 import { useCart } from '../context/CartContext';
 import { products } from '../data/products';
+import { getMockDistance, calculateShipping } from '../lib/delivery';
 import './PersonalizedBagPage.css';
 
 const QUANTITIES = ['250g', '500g', '750g', '1kg', '2kg'];
@@ -13,6 +14,9 @@ export default function PersonalizedBagPage() {
   const [selectedSize, setSelectedSize] = useState('Big');
   const [quantityGrams, setQuantityGrams] = useState(250);
   const [location, setLocation] = useState(null);
+  const [city, setCity] = useState('');
+  const [country, setCountry] = useState('');
+  const [shippingEstimate, setShippingEstimate] = useState(null);
   const [isFalling, setIsFalling] = useState(false);
   const [isClipped, setIsClipped] = useState(false);
   
@@ -92,6 +96,23 @@ export default function PersonalizedBagPage() {
     setStep(6);
   };
 
+  const handleLocationChange = (loc) => {
+    setLocation(loc);
+    setCity('');
+    setCountry('');
+    setShippingEstimate(null);
+  };
+
+  const handleCalculateShipping = () => {
+    if (location === 'India' && !city) return;
+    if (location === 'International' && (!city || !country)) return;
+    
+    const actualCountry = location === 'India' ? 'India' : country;
+    const distance = getMockDistance(city, actualCountry);
+    const estimate = calculateShipping(distance, location === 'International');
+    setShippingEstimate(estimate);
+  };
+
   const handleCheckout = () => {
     if (selectedFlavor) {
       const basePrice = selectedSize === 'Big' ? 550 : 350;
@@ -144,6 +165,9 @@ export default function PersonalizedBagPage() {
     setSelectedSize('Big');
     setQuantityGrams(250);
     setLocation(null);
+    setCity('');
+    setCountry('');
+    setShippingEstimate(null);
     setIsFalling(false);
     setIsClipped(false);
   };
@@ -325,20 +349,56 @@ export default function PersonalizedBagPage() {
           <div className="pb-action-section fade-in pb-checkout-flow">
             {step === 6 && (
               <>
-                <h2 className="pb-instruction">Select Delivery Location</h2>
+                <h2 className="pb-instruction">Delivery Details</h2>
                 <div className="pb-location-options">
-                  <button className={`pb-loc-btn ${location === 'India' ? 'active' : ''}`} onClick={() => setLocation('India')}>
+                  <button className={`pb-loc-btn ${location === 'India' ? 'active' : ''}`} onClick={() => handleLocationChange('India')}>
                     India
                   </button>
-                  <button className={`pb-loc-btn ${location === 'International' ? 'active' : ''}`} onClick={() => setLocation('International')}>
+                  <button className={`pb-loc-btn ${location === 'International' ? 'active' : ''}`} onClick={() => handleLocationChange('International')}>
                     International
                   </button>
                 </div>
                 
                 {location && (
+                  <div className="pb-shipping-form fade-in">
+                    <div className="pb-input-group">
+                      <input 
+                        type="text" 
+                        placeholder="Enter your City" 
+                        value={city} 
+                        onChange={(e) => setCity(e.target.value)} 
+                        className="pb-input"
+                      />
+                    </div>
+                    {location === 'International' && (
+                      <div className="pb-input-group">
+                        <input 
+                          type="text" 
+                          placeholder="Enter your Country" 
+                          value={country} 
+                          onChange={(e) => setCountry(e.target.value)} 
+                          className="pb-input"
+                        />
+                      </div>
+                    )}
+                    <button 
+                      className="pb-action-btn calc-btn" 
+                      onClick={handleCalculateShipping}
+                      disabled={(location === 'India' && !city) || (location === 'International' && (!city || !country))}
+                      style={{ backgroundColor: selectedFlavor?.colorTheme.secondary, color: '#000', marginBottom: '20px' }}
+                    >
+                      Calculate Delivery
+                    </button>
+                  </div>
+                )}
+
+                {shippingEstimate && (
                   <div className="pb-shipping-info fade-in">
-                    <p>Estimated Shipping: {location === 'India' ? '₹50 - ₹100' : '₹1500 - ₹2500'}</p>
-                    <button className="pb-action-btn checkout-btn" onClick={handleCheckout}>
+                    <p style={{fontSize: '0.9rem', color: 'var(--color-text-light)'}}>Distance from Bihar: ~{shippingEstimate.distance} km</p>
+                    <p><strong>Delivery Range:</strong> {shippingEstimate.dateRange}</p>
+                    <p><strong>Est. Shipping Cost:</strong> ₹{shippingEstimate.minCost} - ₹{shippingEstimate.maxCost}</p>
+                    
+                    <button className="pb-action-btn checkout-btn" onClick={handleCheckout} style={{marginTop: '15px'}}>
                       Proceed to Checkout
                     </button>
                     <button className="pb-secondary-btn" onClick={handleAddAnother}>

@@ -397,12 +397,11 @@
 }
 
 .pb-loc-btn {
-  padding: 12px 30px;
+  padding: 12px 25px;
   border: 2px solid var(--color-primary);
+  border-radius: 30px;
   background: transparent;
   color: var(--color-text);
-  border-radius: 20px;
-  font-size: 1.1rem;
   font-weight: 600;
   cursor: pointer;
   transition: all 0.3s;
@@ -413,8 +412,45 @@
   color: #fff;
 }
 
-.pb-shipping-info {
+.pb-shipping-form {
+  margin-top: 20px;
   display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 15px;
+  width: 100%;
+}
+
+.pb-input-group {
+  width: 100%;
+  max-width: 300px;
+}
+
+.pb-input {
+  width: 100%;
+  padding: 12px 20px;
+  border: 1px solid #ccc;
+  border-radius: 25px;
+  font-size: 1rem;
+  background: rgba(255, 255, 255, 0.8);
+  color: var(--color-text);
+  transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+.dark-theme .pb-input {
+  background: rgba(0, 0, 0, 0.5);
+  border-color: #444;
+  color: #eee;
+}
+
+.pb-input:focus {
+  outline: none;
+  border-color: var(--color-primary);
+  box-shadow: 0 0 8px rgba(var(--color-primary-rgb), 0.3);
+}
+
+.pb-shipping-info {
+  background: rgba(255,255,255,0.7);
   flex-direction: column;
   align-items: center;
   gap: 20px;
