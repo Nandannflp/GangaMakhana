@@ -61,18 +61,14 @@ export default function PersonalInfo() {
     <div className="profile-section">
       <h2 className="profile-section-title">Personal Information</h2>
       
-      <div className="profile-photo-upload">
-        <label htmlFor="photo-upload" className="photo-upload-label">
-          <div className="photo-preview">
-            {userProfile?.photoURL ? (
-              <img src={userProfile.photoURL} alt="Profile" />
-            ) : (
-              <div className="photo-placeholder">Upload Photo</div>
-            )}
-            {uploadingImage && <div className="upload-overlay">Uploading...</div>}
-          </div>
-          <span className="btn-secondary btn-sm">Change Photo</span>
-          <span className="photo-hint">Max size: 300KB. JPG, PNG, WEBP.</span>
+      <div className="profile-photo-upload" style={{ marginBottom: '30px' }}>
+        <label htmlFor="photo-upload" className="photo-upload-label-simple" style={{ display: 'flex', alignItems: 'center', gap: '15px' }}>
+          <span className="btn-secondary btn-sm" style={{ cursor: uploadingImage ? 'not-allowed' : 'pointer' }}>
+            {uploadingImage ? 'Uploading...' : 'Change Photo'}
+          </span>
+          <span className="photo-hint" style={{ fontSize: '0.85rem', color: 'var(--color-text-light)' }}>
+            Max size: 300KB. JPG, PNG, WEBP.
+          </span>
         </label>
         <input 
           type="file" 
@@ -80,6 +76,7 @@ export default function PersonalInfo() {
           accept="image/jpeg, image/png, image/webp"
           onChange={handleImageUpload}
           style={{ display: 'none' }}
+          disabled={uploadingImage}
         />
       </div>
 
