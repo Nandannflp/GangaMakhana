@@ -1,5 +1,57 @@
 export const products = [
   {
+    id: "classic-roasted-makhana",
+    name: "Ganga Makhana — Classic Roasted Makhana",
+    flavor: "Normal / Classic",
+    tagline: "Pure, wholesome, and timeless roasted goodness.",
+    description: "Enjoy the pure, wholesome taste of our Classic Roasted Makhana. With a minimalist approach to seasoning, we let the natural, earthy flavor of premium lotus seeds shine through. It's a timeless, clean snack perfect for health-conscious individuals.",
+    colorTheme: {
+      primary: "var(--color-primary)",
+      secondary: "var(--color-flavor-normal-alt)",
+      bg: "#F9F8F5"
+    },
+    badges: ["Best Seller", "100% Natural", "Authentic Taste"],
+    price: 350,
+    weight: "250g",
+    ingredients: [
+      "Roasted Makhana (Fox Nuts)",
+      "Rock Salt",
+      "Mild Seasoning",
+      "Edible Vegetable Oil"
+    ],
+    nutrition: {
+      calories: "347 kcal",
+      protein: "9.7g",
+      fiber: "14.5g",
+      carbs: "76.9g",
+      sodium: "210mg",
+      fat: "0.1g",
+      sugar: "0.0g"
+    },
+    howToEat: [
+      "Everyday daily snack",
+      "Fasting (vrat) friendly snack",
+      "Classic tea-time snack",
+      "Pre or post-workout munch"
+    ],
+    recipe: {
+      title: "Roasted Makhana Trail Mix",
+      time: "2 mins",
+      serves: "4",
+      ingredients: ["1 cup Classic Makhana", "1/4 cup almonds", "1/4 cup pumpkin seeds", "Pinch of black pepper"],
+      instructions: "Mix the Classic Makhana with roasted almonds and pumpkin seeds. Add a pinch of black pepper and toss well. Store in an airtight container for a quick, nutritious snack."
+    },
+    qualityAssurance: [
+      "Premium-grade makhana selection",
+      "Hygienic export-quality packaging",
+      "Carefully and evenly roasted"
+    ],
+    images: [
+      "/images/products/normal-front.png",
+      "/images/products/normal-back.png"
+    ]
+  },
+  {
     id: "pudina-makhana",
     name: "Pudina Makhana",
     flavor: "Pudina",

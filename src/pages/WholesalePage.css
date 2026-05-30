@@ -90,7 +90,7 @@
 .business-details {
   padding: 2rem;
   border-radius: 12px;
-  background: white;
+  background: var(--color-card);
 }
 
 .business-details h3 {
@@ -139,7 +139,7 @@
 
 .form-card {
   padding: 2.5rem;
-  background: white;
+  background: var(--color-card);
   border-radius: 12px;
   box-shadow: 0 8px 30px rgba(0,0,0,0.08);
 }
@@ -183,11 +183,12 @@
 .inquiry-form textarea {
   width: 100%;
   padding: 0.875rem 1rem;
-  border: 1px solid rgba(26, 67, 49, 0.14);
+  border: 1px solid var(--color-border);
   border-radius: 8px;
   font-family: var(--font-secondary);
   font-size: 1rem;
-  background-color: #F9FAFB;
+  background-color: var(--color-base-alt);
+  color: var(--color-text);
   transition: all 0.3s ease;
 }
 
@@ -196,7 +197,7 @@
 .inquiry-form textarea:focus {
   outline: none;
   border-color: var(--color-primary);
-  background-color: white;
+  background-color: var(--color-base);
   box-shadow: 0 0 0 3px rgba(34, 139, 34, 0.1);
 }
 

@@ -14,7 +14,9 @@ export default function FlavorShowcase() {
   const [activeFlavor, setActiveFlavor] = useState(flavors[0]);
 
   return (
-    <section className="flavor-showcase" style={{ backgroundColor: activeFlavor.color }}>
+    <section className="flavor-showcase" style={{ 
+      background: `linear-gradient(to bottom, var(--color-base) 0%, ${activeFlavor.color} 15%, ${activeFlavor.color} 85%, var(--color-base) 100%)`
+    }}>
       <div className="container showcase-container">
         <div className="showcase-content">
           <h2 className="showcase-title" style={{ color: activeFlavor.id === 'normal' || activeFlavor.id === 'choco' ? '#fff' : 'var(--color-text)' }}>
