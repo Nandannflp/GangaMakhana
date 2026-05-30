@@ -1,13 +1,16 @@
 import { Link } from 'react-router-dom';
+import { useTheme } from '../context/ThemeContext';
 import './Footer.css';
 
 export default function Footer() {
+  const { theme } = useTheme();
+
   return (
     <footer className="footer">
       <div className="container">
         <div className="footer-grid">
           <div className="footer-col brand-col">
-            <img src="/images/logo.jpg" alt="Ganga Makhana Logo" className="footer-brand-logo" />
+            <img src={theme === 'dark' ? "/images/logo.webp" : "/images/logo.jpg"} alt="Ganga Makhana Logo" className="footer-brand-logo" />
             <p className="footer-desc">
               Authentic Bihar Heritage, Export Quality Makhana. 100% natural, handpicked, and perfectly roasted.
             </p>

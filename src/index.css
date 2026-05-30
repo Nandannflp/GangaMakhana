@@ -32,6 +32,26 @@
   --radius-sm: 8px;
   --radius-md: 16px;
   --radius-lg: 24px;
+  
+  --color-navbar-bg: rgba(253, 251, 247, 0.95);
+  --color-border: rgba(26, 67, 49, 0.05);
+  --color-overlay: rgba(253, 251, 247, 0.8);
+  --color-card: #ffffff;
+}
+
+.dark-theme {
+  --color-base: #121212;
+  --color-base-alt: #1E1E1E;
+  --color-primary: #88C999;
+  --color-primary-light: #C5E1A5;
+  --color-accent: #E5C365;
+  --color-text: #E0E0E0;
+  --color-text-light: #A0A0A0;
+  
+  --color-navbar-bg: rgba(18, 18, 18, 0.95);
+  --color-border: rgba(136, 201, 153, 0.1);
+  --color-overlay: rgba(18, 18, 18, 0.8);
+  --color-card: #1E1E1E;
 }
 
 * {
@@ -145,7 +165,7 @@ button {
 }
 
 .card {
-  background-color: #fff;
+  background-color: var(--color-card);
   border-radius: 30px;
   box-shadow: 0 12px 40px -15px rgba(0, 0, 0, 0.08);
   transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);

@@ -1,9 +1,10 @@
 import { useState, useEffect } from 'react';
-import { ShoppingBag, Menu, X, User } from 'lucide-react';
+import { ShoppingBag, Menu, X, User, Moon, Sun } from 'lucide-react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useCart } from '../context/CartContext';
 import { useCurrency } from '../context/CurrencyContext';
 import { useAuth } from '../context/AuthContext';
+import { useTheme } from '../context/ThemeContext';
 import './Navbar.css';
 
 export default function Navbar() {
@@ -12,6 +13,7 @@ export default function Navbar() {
   const { getCartCount } = useCart();
   const { currency, setCurrency, supportedCurrencies } = useCurrency();
   const { currentUser } = useAuth();
+  const { theme, toggleTheme } = useTheme();
   const cartCount = getCartCount();
   const navigate = useNavigate();
 
@@ -33,7 +35,7 @@ export default function Navbar() {
       <div className="container navbar-container">
         <div className="navbar-logo">
           <Link to="/" className="logo-link">
-            <img src="/images/logo.jpg" alt="Ganga Makhana Logo" className="brand-logo" />
+            <img src={theme === 'dark' ? "/images/logo.webp" : "/images/logo.jpg"} alt="Ganga Makhana Logo" className="brand-logo" />
           </Link>
         </div>
         
@@ -77,6 +79,10 @@ export default function Navbar() {
           <button className="nav-icon-btn mobile-menu-trigger" onClick={() => setMobileMenuOpen(true)}>
             <Menu size={24} color="var(--color-primary)" />
           </button>
+          
+          <button className="nav-icon-btn theme-toggle" onClick={toggleTheme} aria-label="Toggle Theme" style={{ marginLeft: '10px' }}>
+            {theme === 'dark' ? <Sun size={20} color="var(--color-text)" /> : <Moon size={20} color="var(--color-text)" />}
+          </button>
         </div>
       </div>
 
@@ -84,7 +90,7 @@ export default function Navbar() {
         <div className="mobile-menu-content">
           <div className="mobile-menu-header">
             <Link to="/" className="logo-link" onClick={() => setMobileMenuOpen(false)}>
-              <img src="/images/logo.jpg" alt="Ganga Makhana Logo" className="brand-logo" />
+              <img src={theme === 'dark' ? "/images/logo.webp" : "/images/logo.jpg"} alt="Ganga Makhana Logo" className="brand-logo" />
             </Link>
             <button className="nav-icon-btn close-menu-btn" onClick={() => setMobileMenuOpen(false)}>
               <X size={28} color="var(--color-primary)" />
