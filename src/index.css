@@ -125,7 +125,7 @@ button {
 .btn-primary {
   background-color: var(--color-primary);
   color: var(--color-on-primary);
-  padding: 16px 32px;
+  padding: 12px 24px;
   border-radius: 50px;
   font-weight: 500;
   font-size: 1.05rem;
@@ -149,7 +149,7 @@ button {
   background-color: transparent;
   color: var(--color-primary);
   border: 2px solid var(--color-primary);
-  padding: 14px 30px;
+  padding: 10px 24px;
   border-radius: 50px;
   font-weight: 500;
   font-size: 1.05rem;
