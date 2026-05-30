@@ -3,6 +3,7 @@ import Navbar from './components/Navbar';
 import BenefitsStrip from './components/BenefitsStrip';
 import Footer from './components/Footer';
 import WhatsAppButton from './components/WhatsAppButton';
+import ScrollToTopButton from './components/ScrollToTopButton';
 import ConsentBanner from './components/ConsentBanner';
 import HomePage from './pages/HomePage';
 import ShopPage from './pages/ShopPage';
@@ -48,6 +49,7 @@ function App() {
         <Route path="*" element={<Navigate to="/" />} />
       </Routes>
       <Footer />
+      <ScrollToTopButton />
       <ConsentBanner />
     </Router>
   );
