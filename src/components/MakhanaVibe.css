@@ -25,7 +25,23 @@
 }
 
 .dark-theme .makhana-flake {
-  filter: drop-shadow(0 15px 20px rgba(0,0,0,0.5)) brightness(0.8);
+  filter: drop-shadow(0 15px 20px rgba(0,0,0,0.5));
+}
+
+.dark-mode-img {
+  display: none;
+}
+
+.light-mode-img {
+  display: block;
+}
+
+.dark-theme .dark-mode-img {
+  display: block;
+}
+
+.dark-theme .light-mode-img {
+  display: none;
 }
 
 @keyframes floatMakhana {
