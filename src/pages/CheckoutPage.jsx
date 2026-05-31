@@ -184,7 +184,18 @@ export default function CheckoutPage() {
             </div>
 
             <div className="action-buttons">
-              <Link to={`/track?id=${createdOrder.orderId}`} className="btn-primary w-100 mb-3" style={{ display: 'inline-block', textDecoration: 'none', textAlign: 'center' }}>
+              {(createdOrder.paymentMethod === 'upi' || createdOrder.paymentMethod === 'card') && (
+                <a 
+                  href={`https://your-payment-provider.com/pay?amount=${createdOrder.total}&order_id=${createdOrder.orderId}`}
+                  target="_blank" 
+                  rel="noopener noreferrer" 
+                  className="btn-primary w-100 mb-3" 
+                  style={{ display: 'inline-block', textDecoration: 'none', textAlign: 'center', backgroundColor: '#D4AF37', borderColor: '#D4AF37', color: '#1A4331' }}
+                >
+                  Pay Now
+                </a>
+              )}
+              <Link to={`/track?id=${createdOrder.orderId}`} className={`btn-${(createdOrder.paymentMethod === 'upi' || createdOrder.paymentMethod === 'card') ? 'secondary' : 'primary'} w-100 mb-3`} style={{ display: 'inline-block', textDecoration: 'none', textAlign: 'center' }}>
                 Track Order
               </Link>
               <Link to="/#shop" className="btn-secondary w-100" style={{ display: 'inline-block', textDecoration: 'none', textAlign: 'center' }}>

@@ -1,11 +1,12 @@
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
-import { User, MapPin, Settings, ShieldCheck, LogOut } from 'lucide-react';
+import { User, MapPin, Settings, ShieldCheck, LogOut, Package } from 'lucide-react';
 import PersonalInfo from '../components/Profile/PersonalInfo';
 import AddressBook from '../components/Profile/AddressBook';
 import SettingsPanel from '../components/Profile/SettingsPanel';
 import SecuritySettings from '../components/Profile/SecuritySettings';
+import MyOrders from '../components/Profile/MyOrders';
 import './ProfilePage.css';
 
 export default function ProfilePage() {
@@ -45,6 +46,7 @@ export default function ProfilePage() {
       case 'address': return <AddressBook />;
       case 'settings': return <SettingsPanel onLogout={handleLogoutClick} />;
       case 'security': return <SecuritySettings />;
+      case 'orders': return <MyOrders />;
       default: return <PersonalInfo />;
     }
   };
@@ -77,6 +79,12 @@ export default function ProfilePage() {
               onClick={() => setActiveTab('address')}
             >
               <MapPin size={18} /> Address Book
+            </button>
+            <button 
+              className={activeTab === 'orders' ? 'active' : ''} 
+              onClick={() => setActiveTab('orders')}
+            >
+              <Package size={18} /> My Orders
             </button>
             <button 
               className={activeTab === 'security' ? 'active' : ''} 
