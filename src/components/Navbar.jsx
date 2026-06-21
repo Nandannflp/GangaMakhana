@@ -46,12 +46,7 @@ export default function Navbar() {
         <ul className="navbar-links">
           <li><Link to="/" onClick={handleHomeClick}>Home</Link></li>
           <li><Link to="/shop">Shop</Link></li>
-          <li className="nav-highlight-item">
-            <Link to="/build-your-bag" className="premium-nav-btn">
-              <span className="premium-glow"></span>
-              Personalized Makhana Bag
-            </Link>
-          </li>
+
           <li><Link to="/story">Our Story</Link></li>
           <li><Link to="/wholesale">Wholesale</Link></li>
         </ul>
@@ -109,11 +104,7 @@ export default function Navbar() {
           <ul className="mobile-nav-links">
             <li><Link to="/" onClick={() => { setMobileMenuOpen(false); handleHomeClick(); }}>Home</Link></li>
             <li><Link to="/shop" onClick={() => setMobileMenuOpen(false)}>Shop</Link></li>
-            <li className="nav-highlight-item-mobile">
-              <Link to="/build-your-bag" className="premium-nav-btn" onClick={() => setMobileMenuOpen(false)}>
-                Personalized Bag
-              </Link>
-            </li>
+
             <li><Link to="/story" onClick={() => setMobileMenuOpen(false)}>Our Story</Link></li>
             <li><Link to="/wholesale" onClick={() => setMobileMenuOpen(false)}>Wholesale</Link></li>
             {currentUser ? (
